@@ -1,0 +1,31 @@
+name: Taiwan official public data intake
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+jobs:
+  tfda-full-exports:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify raw retention and rejected malformed intake
+        run: python scripts/test_tfda_intake.py
+      - name: Collect all rows in five official TFDA exports
+        run: python scripts/ingest_tfda_open_data.py --output-dir dist/taiwan-public-intake
+      - name: Save public datasets and unreviewed candidate archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: TW-OPEN-DATA-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/taiwan-public-intake/
+          retention-days: 30
+          if-no-files-found: error
+      - name: Describe status
+        run: |
+          echo '### TFDA public datasets' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Five full official CSV exports, original bytes, candidate SQLite, source/license attribution and row counts. No reviewed composition or activated interaction rules. Linked PDFs/images not redistributed.' >> "$GITHUB_STEP_SUMMARY"
