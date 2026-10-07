@@ -1,0 +1,50 @@
+{
+  "checked_on": "2026-10-08",
+  "request_url": "https://data-api.health.gov.au/pbs/api/v3/schedules?limit=1",
+  "http_status": 200,
+  "response_sha256": "8643ca56b5a1813300f7acc8602c75aecc461762b755d6d17f0aae2fb4d72427",
+  "scope": "Single public schedules endpoint metadata; not full PBS ingestion",
+  "api_meta": {
+    "info": {
+      "publisher": {
+        "name": "Department of Health",
+        "url": "http://www.health.gov.au/"
+      },
+      "messages": [
+        {
+          "type": "copyright",
+          "content": [
+            "Copyright (c) 2024 Department of Health, Commonwealth of Australia",
+            "Permission is granted to use and redistribute this content, as long as all copyright statements are retained. Permission is not granted to modify this content.",
+            "For further copyright information of this content, please refer to: https://www.health.gov.au/using-our-websites/copyright"
+          ]
+        }
+      ]
+    },
+    "processing_time": "11 milliseconds",
+    "processing_time_ms": 11,
+    "total_records": 13,
+    "page": 1,
+    "limit": 1,
+    "sort": "",
+    "sort_fields": "",
+    "count": 1,
+    "distinct": false,
+    "fields": "",
+    "filter_params": {
+      "schedule_code": null,
+      "revision_number": null,
+      "start_tsp": null,
+      "effective_date": null,
+      "effective_month": null,
+      "effective_year": null,
+      "publication_status": null,
+      "approved_for_release": null,
+      "get_latest_schedule_only": false
+    },
+    "filter": ""
+  },
+  "commercial_use_status": "UNRESOLVED_SPECIFIC_API_NOTICE_VS_LINKED_GENERAL_TERMS",
+  "runtime_active": false,
+  "release_eligible": false
+}

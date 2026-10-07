@@ -16,11 +16,12 @@
       "source": "PBS Public API v3",
       "source_url": "https://data.pbs.gov.au/api/api-public.html",
       "api_catalogue": "https://data-api-portal.health.gov.au/apis",
-      "rights_evidence_url": "https://www.pbs.gov.au/general/copyright",
-      "status": "PUBLIC_DOWNLOAD_AVAILABLE_REDISTRIBUTION_UNRESOLVED",
-      "reason": "Official documentation permits public API downloads and local software import; general website copyright reserves rights beyond personal use. App redistribution permission not verified; portal currently returns no operations. Public accessibility does not by itself authorize commercial redistribution."
+      "rights_evidence_url": "https://www.health.gov.au/using-our-websites/copyright",
+      "status": "API_REDISTRIBUTION_EXPLICIT_COMMERCIAL_SCOPE_UNRESOLVED",
+      "reason": "Verified HTTP 200 schedules endpoint _meta explicitly allows use and redistribution with all copyright statements retained, but prohibits modifying content. It links to Department general copyright that prohibits commercial use except where otherwise indicated. Specific API notice does not explicitly clarify commercial scope or adaptation/normalisation; commercial App redistribution remains unresolved. This corrects earlier absence of data-specific redistribution evidence. No production ingestion or activation.",
+      "api_response_evidence": "pbs-api-copyright-evidence.json"
     }
   ],
   "checked_on": "2026-10-08",
-  "next_step": "Verify data-specific PBS commercial redistribution terms or obtain permission before adapting/exporting Australian records. No permission request sent."
+  "next_step": "Obtain authoritative clarification of commercial redistribution and preservation of source content during SQLite conversion/ingredient normalization; do not mark commercial approved. No permission request sent."
 }
