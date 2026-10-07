@@ -8,12 +8,16 @@ class DuplicateAuditTests(unittest.TestCase):
             with sqlite3.connect(p) as c:
                 c.executescript('CREATE TABLE candidate_sources(source_snapshot_id TEXT,metadata_json TEXT);CREATE TABLE candidate_source_rows(source_snapshot_id TEXT,source_order INTEGER,native_record_id TEXT,source_locator TEXT,raw_assertions_json TEXT);')
                 for market,rows in [('CA',[{'brand_name':'ＦＯＯ','drug_code':'0001','strength':'5'},{'drug_code':'0001','strength':'5','brand_name':'ＦＯＯ'},{'drug_code':'0001','brand_name':'ＦＯＯ','strength':'10'}]),('EMA_REGION',[{'name_of_medicine':'foo','ema_product_number':'0001'}])]:
+                    if market=='CA':
+                        for r in rows:r['drug_identification_number']='00000001'
+                        rows.append({'brand_name':'bar','drug_code':'0002','strength':'5','drug_identification_number':'00000001'})
                     sid='ca-dpd-products-sha256-test' if market=='CA' else 'ema-central-medicines-sha256-test'
                     c.execute('insert into candidate_sources values (?,?)',(sid,json.dumps({'jurisdiction':market if market=='CA' else None,'row_count':len(rows)})))
-                    for n,r in enumerate(rows):c.execute('insert into candidate_source_rows values (?,?,?,?,?)',(sid,n,'0001',f'record:{sid}/{n}',json.dumps(r)))
+                    for n,r in enumerate(rows):c.execute('insert into candidate_source_rows values (?,?,?,?,?)',(sid,n,str(r.get('drug_code','0001')),f'record:{sid}/{n}',json.dumps(r)))
             before=p.read_bytes();result=audit([p],root/'audit');self.assertEqual(p.read_bytes(),before)
             ca=next(x for x in result['sources'] if x['market']=='CA');self.assertEqual(ca['exact_content_extra_rows'],1);self.assertEqual(ca['repeated_native_with_different_content_groups'],1)
             self.assertEqual(result['cross_market_pairs'][0]['PRODUCT_NAME'],1)
+            din=next(x for x in result['secondary_identifier_audit'] if x['scheme']=='CA_DIN');self.assertEqual(din['distinct_nonempty_keys'],1);self.assertEqual(din['multiple_native_reference_groups'],1);self.assertEqual(len(din['overlap_members']),4)
             with sqlite3.connect(root/'audit'/'duplicate-audit.sqlite3') as c:
                 self.assertEqual(c.execute('select count(*) from exact_duplicate_members').fetchone()[0],2)
                 self.assertEqual(c.execute('select count(*) from cross_market_name_members').fetchone()[0],4)
