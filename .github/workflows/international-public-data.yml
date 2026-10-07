@@ -1,0 +1,47 @@
+name: International official public data intake
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONUNBUFFERED: '1'
+jobs:
+  canada-and-ema:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test retention and scope boundaries
+        run: python scripts/test_international_intake.py
+      - name: Collect complete returned Canada and EMA datasets
+        run: python scripts/ingest_international_open_data.py --output-dir dist/international-public-intake
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CA-EMA-OPEN-DATA-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/international-public-intake/
+          retention-days: 30
+          if-no-files-found: error
+      - name: Write source scope
+        run: |
+          echo '### Canada and EMA official datasets' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Complete returned JSON arrays, original bytes, source/license attribution and candidate SQLite. Canada DPD product/ingredient assertions and EMA regional centralised procedure metadata; no all-world coverage or runtime clinical rules.' >> "$GITHUB_STEP_SUMMARY"
+  france-bdpm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/test_france_intake.py
+      - run: python scripts/ingest_france_public_data.py --output-dir dist/france-public-intake
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FR-OPEN-DATA-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/france-public-intake/
+          retention-days: 30
+          if-no-files-found: error

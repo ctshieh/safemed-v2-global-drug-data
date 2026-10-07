@@ -34,3 +34,7 @@
 3. 逐標示解析交互作用內容保留原條件，canonical mapping 和 rule applicability 進真人審閱 queue，未審不啟用。
 4. 由藥師/醫師確認完整成分與 GLOBAL unconditional 適用範圍；完成權利 review 才進 reviewed table input。
 5. Actions 正式模式驗收單一 composed snapshot、previous ledger/immutable sources、來源 disclosure 與 coverage，再進後續簽章/consumer 驗收。正式發行未授權。
+
+## 後續實際納入更新
+
+其他國家來源現已完成 Canada DPD products/activeingredient、EMA centralised medicines metadata 與 France BDPM 三份全量檔案 adapter。前文「尚無本輪完成的 adapter」對這三者已由本更新取代；詳見 INTERNATIONAL_PUBLIC_DATA.md 與實際 intake reports。JP/KR/AU 仍待核實，所有醫學規則審閱未完成。
