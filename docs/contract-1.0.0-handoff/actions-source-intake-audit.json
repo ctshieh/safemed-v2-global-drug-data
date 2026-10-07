@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "source_snapshot_id": "openfda-label-sha256-748fa668282549328b839e2717f11c381c7dcc0adec54fe44fadbae67a151a83",
+      "source_url": "https://open.fda.gov/apis/drug/label/",
+      "raw_sha256": "748fa668282549328b839e2717f11c381c7dcc0adec54fe44fadbae67a151a83",
+      "retrieved_at": "2026-10-07T14:58:39Z",
+      "source_type": "OFFICIAL_LABEL",
+      "commercial_rights_review": "PENDING",
+      "redistribution_rights_review": "PENDING",
+      "release_eligible": false,
+      "coverage": "BOUNDED_INPUT_NOT_GLOBAL_COVERAGE",
+      "record_count": 100,
+      "clinical_review": "PENDING",
+      "raw_assertions_distributed": false
+    }
+  ],
+  "runtime_active": false,
+  "limitations": "Metadata only. Full raw labels are not distributed while rights remain pending."
+}
