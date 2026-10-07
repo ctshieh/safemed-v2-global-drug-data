@@ -1,0 +1,15 @@
+{
+  "source_snapshot_id": "legacy-sqlite-sha256-616f39ef10d582e70673d4334d2fa66b50f2291d9db8d0bb9433533719d609cf",
+  "source_sha256": "616f39ef10d582e70673d4334d2fa66b50f2291d9db8d0bb9433533719d609cf",
+  "counts": {
+    "drugs": 111389,
+    "ingredients": 8120,
+    "drug_ingredients": 186690,
+    "rules": 50,
+    "source_registry": 18
+  },
+  "release_eligible": false,
+  "runtime_active": false,
+  "new_contract_approved_rows": 0,
+  "candidate_archive_sha256": "3c8440cb2bbfdc32311993d54ee9d5c529b7dd14b92b367c6e0a78680b6b95cf"
+}

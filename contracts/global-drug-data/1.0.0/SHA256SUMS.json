@@ -1,0 +1,12 @@
+{
+  "contract_version": "1.0.0",
+  "sha256": {
+    "README.md": "52b1a80938d8262935d9a5ea61a3cc28891a4487873e79d16c32356e06dbd63d",
+    "schema.sql": "a673407b44370f99a264473c89f52303bf06d8858c5ccfb8871fde82490131e3",
+    "contract.json": "d74217afa2d515b74dde270f78e088c66daf4f8eab7eeb0a3f0a412a6c0e0a6b",
+    "validate_contract.py": "e10104909923ff2d30d66ed419609263b6df0a98c9010e4d2467b01b7b4f7895",
+    "test_contract.py": "6e068ddb5e762975916662b15a451b16803b1340d5137a2635858f6fc26632c4",
+    "generate_fields.py": "3e3cacf9ffc012548a578751e1aa51759b6a8ec46e40f583701dd55e1c157325",
+    "SCHEMA_FIELDS.md": "b9e736b465e8399dafe35a4799573bd839549a7213ff30dd1a5698a1c69ae273"
+  }
+}

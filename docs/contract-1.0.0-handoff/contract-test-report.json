@@ -1,0 +1,425 @@
+{
+  "status": "PASS",
+  "test_only": true,
+  "clinical_validation": "NOT_PERFORMED",
+  "cases": [
+    {
+      "name": "synthetic_composed_snapshot_accept",
+      "status": "PASS",
+      "detail": {
+        "schema_version": "safemed-mobile-safety-v2.1",
+        "contract_version": "1.0.0",
+        "test_only": true,
+        "drug_count": 5,
+        "verified_complete_count": 5,
+        "ingredient_count": 5,
+        "rule_count": 1,
+        "markets": [
+          "TW",
+          "US"
+        ],
+        "release_sequence": 1
+      }
+    },
+    {
+      "name": "partial_unmapped_third_retained",
+      "status": "PASS",
+      "detail": {
+        "schema_version": "safemed-mobile-safety-v2.1",
+        "contract_version": "1.0.0",
+        "test_only": true,
+        "drug_count": 5,
+        "verified_complete_count": 4,
+        "ingredient_count": 5,
+        "rule_count": 1,
+        "markets": [
+          "TW",
+          "US"
+        ],
+        "release_sequence": 1
+      }
+    },
+    {
+      "name": "unmapped_third_false_complete",
+      "status": "PASS",
+      "detail": "A: incomplete composition cannot be COMPLETE"
+    },
+    {
+      "name": "count_matches_but_full_review_absent",
+      "status": "PASS",
+      "detail": "A: incomplete composition cannot be COMPLETE"
+    },
+    {
+      "name": "third_raw_row_deleted_expected_count",
+      "status": "PASS",
+      "detail": "A: expected active raw row count mismatch"
+    },
+    {
+      "name": "unknown_role_false_complete",
+      "status": "PASS",
+      "detail": "A: active canonical projection mismatch"
+    },
+    {
+      "name": "unverified_mapping_false_complete",
+      "status": "PASS",
+      "detail": "A: active canonical projection mismatch"
+    },
+    {
+      "name": "source_locator_missing",
+      "status": "PASS",
+      "detail": "A component: direct evidence missing"
+    },
+    {
+      "name": "mapping_source_missing",
+      "status": "PASS",
+      "detail": "A mapping: direct evidence missing"
+    },
+    {
+      "name": "composition_identity_source_missing",
+      "status": "PASS",
+      "detail": "A: full product identity/composition evidence missing"
+    },
+    {
+      "name": "official_portal_cannot_supply_rule_evidence",
+      "status": "PASS",
+      "detail": "TEST-source-snapshot-v1: unqualified source type"
+    },
+    {
+      "name": "commercial_rights_denied",
+      "status": "PASS",
+      "detail": "TEST-source-snapshot-v1: redistribution/commercial rights not approved"
+    },
+    {
+      "name": "mobile_redistribution_denied",
+      "status": "PASS",
+      "detail": "TEST-source-snapshot-v1: redistribution/commercial rights not approved"
+    },
+    {
+      "name": "source_snapshot_checksum_changed",
+      "status": "PASS",
+      "detail": "snapshot inventory version/checksum mismatch"
+    },
+    {
+      "name": "schema_unknown",
+      "status": "PASS",
+      "detail": "schema_version unsupported"
+    },
+    {
+      "name": "legacy_relabel_without_new_user_version",
+      "status": "PASS",
+      "detail": "user_version unsupported"
+    },
+    {
+      "name": "unknown_required_capability",
+      "status": "PASS",
+      "detail": "required/unknown capability mismatch"
+    },
+    {
+      "name": "coverage_unsupported_dose_claim",
+      "status": "PASS",
+      "detail": "dose: runtime unsupported coverage claim"
+    },
+    {
+      "name": "coverage_missing",
+      "status": "PASS",
+      "detail": "coverage must describe GLOBAL and every market"
+    },
+    {
+      "name": "identity_country_unsupported",
+      "status": "PASS",
+      "detail": "A: identity must be a full supported-market triple"
+    },
+    {
+      "name": "identity_metadata_disagrees",
+      "status": "PASS",
+      "detail": "A: identity mirror missing"
+    },
+    {
+      "name": "canonical_compact_stale",
+      "status": "PASS",
+      "detail": "A: compact ingredient projection mismatch"
+    },
+    {
+      "name": "canonical_wrong_id",
+      "status": "PASS",
+      "detail": "A: role/compact ID projection mismatch"
+    },
+    {
+      "name": "excipient_not_in_active_checks",
+      "status": "PASS",
+      "detail": {
+        "schema_version": "safemed-mobile-safety-v2.1",
+        "contract_version": "1.0.0",
+        "test_only": true,
+        "drug_count": 5,
+        "verified_complete_count": 5,
+        "ingredient_count": 5,
+        "rule_count": 1,
+        "markets": [
+          "TW",
+          "US"
+        ],
+        "release_sequence": 1
+      }
+    },
+    {
+      "name": "repeated_canonical_preserves_raw_rows",
+      "status": "PASS",
+      "detail": {
+        "schema_version": "safemed-mobile-safety-v2.1",
+        "contract_version": "1.0.0",
+        "test_only": true,
+        "drug_count": 5,
+        "verified_complete_count": 5,
+        "ingredient_count": 5,
+        "rule_count": 1,
+        "markets": [
+          "TW",
+          "US"
+        ],
+        "release_sequence": 1
+      }
+    },
+    {
+      "name": "class_mapping_requires_direct_review",
+      "status": "PASS",
+      "detail": "A: class mapping evidence missing"
+    },
+    {
+      "name": "class_mapping_reviewed",
+      "status": "PASS",
+      "detail": {
+        "schema_version": "safemed-mobile-safety-v2.1",
+        "contract_version": "1.0.0",
+        "test_only": true,
+        "drug_count": 5,
+        "verified_complete_count": 5,
+        "ingredient_count": 5,
+        "rule_count": 1,
+        "markets": [
+          "TW",
+          "US"
+        ],
+        "release_sequence": 1
+      }
+    },
+    {
+      "name": "rule_direct_evidence_missing",
+      "status": "PASS",
+      "detail": "TEST-PAIR: direct rule citations missing"
+    },
+    {
+      "name": "rule_join_missing",
+      "status": "PASS",
+      "detail": "foreign key check failed"
+    },
+    {
+      "name": "conditional_active_rule_rejected",
+      "status": "PASS",
+      "detail": "TEST-PAIR: active scoped/conditional rule requires future capability"
+    },
+    {
+      "name": "market_specific_active_rule_rejected",
+      "status": "PASS",
+      "detail": "TEST-PAIR: active scoped/conditional rule requires future capability"
+    },
+    {
+      "name": "legacy_active_rule_label_rejected",
+      "status": "PASS",
+      "detail": "TEST-PAIR: invalid review status"
+    },
+    {
+      "name": "legacy_MVP_rule_label_rejected",
+      "status": "PASS",
+      "detail": "TEST-PAIR: invalid review status"
+    },
+    {
+      "name": "candidate_rule_kept_inactive",
+      "status": "PASS",
+      "detail": {
+        "schema_version": "safemed-mobile-safety-v2.1",
+        "contract_version": "1.0.0",
+        "test_only": true,
+        "drug_count": 5,
+        "verified_complete_count": 5,
+        "ingredient_count": 5,
+        "rule_count": 1,
+        "markets": [
+          "TW",
+          "US"
+        ],
+        "release_sequence": 1
+      }
+    },
+    {
+      "name": "unreviewed_rule_cannot_activate",
+      "status": "PASS",
+      "detail": "TEST-PAIR: human review/evidence missing"
+    },
+    {
+      "name": "minimum_status_cannot_weaken_rule",
+      "status": "PASS",
+      "detail": "TEST-PAIR: active rule severity/status invalid"
+    },
+    {
+      "name": "pair_key_wrong",
+      "status": "PASS",
+      "detail": "TEST-PAIR: pair key invalid"
+    },
+    {
+      "name": "pair_index_missing",
+      "status": "PASS",
+      "detail": "every rule must have exactly one supported runtime index"
+    },
+    {
+      "name": "ledger_projection_changed",
+      "status": "PASS",
+      "detail": "ledger compact projection mismatch"
+    },
+    {
+      "name": "null_review_cannot_claim_complete",
+      "status": "PASS",
+      "detail": "A composition: human review/evidence missing"
+    },
+    {
+      "name": "partial_identity_null_rejected_even_constraints_off",
+      "status": "PASS",
+      "detail": "A: identity must be a full supported-market triple"
+    },
+    {
+      "name": "mapping_review_null_rejected_even_constraints_off",
+      "status": "PASS",
+      "detail": "A: ingredient mapping review missing"
+    },
+    {
+      "name": "ingredient_without_source",
+      "status": "PASS",
+      "detail": "canonical ingredient evidence missing"
+    },
+    {
+      "name": "json_duplicate_capability",
+      "status": "PASS",
+      "detail": "capabilities: duplicate entries"
+    },
+    {
+      "name": "required_table_missing",
+      "status": "PASS",
+      "detail": "missing table class_membership_evidence"
+    },
+    {
+      "name": "raw_strength_infinity",
+      "status": "PASS",
+      "detail": "A: strength unit/value invalid"
+    },
+    {
+      "name": "source_homepage_not_direct_evidence",
+      "status": "PASS",
+      "detail": "TEST-PAIR: direct record/section locator required"
+    },
+    {
+      "name": "missing_rule_scope",
+      "status": "PASS",
+      "detail": "every rule needs explicit scope"
+    },
+    {
+      "name": "timezone_missing",
+      "status": "PASS",
+      "detail": "manifest version/date missing"
+    },
+    {
+      "name": "test_fixture_rejected_without_flag",
+      "status": "PASS",
+      "detail": "TEST-source-snapshot-v1: test source prohibited in production"
+    },
+    {
+      "name": "update_sequence_increases",
+      "status": "PASS",
+      "detail": {
+        "schema_version": "safemed-mobile-safety-v2.1",
+        "contract_version": "1.0.0",
+        "test_only": true,
+        "drug_count": 5,
+        "verified_complete_count": 5,
+        "ingredient_count": 5,
+        "rule_count": 1,
+        "markets": [
+          "TW",
+          "US"
+        ],
+        "release_sequence": 2
+      }
+    },
+    {
+      "name": "update_sequence_replay",
+      "status": "PASS",
+      "detail": "release sequence must increase for update"
+    },
+    {
+      "name": "tombstone_removed",
+      "status": "PASS",
+      "detail": "stable ID changed or tombstone removed"
+    },
+    {
+      "name": "product_identity_reused",
+      "status": "PASS",
+      "detail": "A: stable product identity changed"
+    },
+    {
+      "name": "tombstone_reassigned",
+      "status": "PASS",
+      "detail": "stable ID changed or tombstone removed"
+    },
+    {
+      "name": "third_component_compound_single_and_compound_pair",
+      "status": "PASS",
+      "detail": "A third vs SINGLE, A third vs B second duplicate; A third vs C second pair found"
+    },
+    {
+      "name": "same_brand_different_markets_not_merged",
+      "status": "PASS",
+      "detail": [
+        [
+          "A",
+          "TW"
+        ],
+        [
+          "SAME-NAME-US",
+          "US"
+        ]
+      ]
+    },
+    {
+      "name": "sql_null_composition_review_rejected",
+      "status": "PASS",
+      "detail": "CHECK constraint failed: composition_status != 'VERIFIED_COMPLETE' OR (review_status='APPROVED'\n        AND reviewer_kind IN ('PHARMACIST','PHYSICIAN','TEST_FIXTURE')\n        AND review_reference IS NOT NULL AND length(trim(review_reference))>0 AND reviewed_at IS NOT NULL)"
+    },
+    {
+      "name": "sql_null_mapping_review_rejected",
+      "status": "PASS",
+      "detail": "CHECK constraint failed: mapping_status != 'VERIFIED' OR (ingredient_id IS NOT NULL\n        AND mapping_review_reference IS NOT NULL AND length(trim(mapping_review_reference))>0 AND mapping_reviewed_at IS NOT NULL)"
+    },
+    {
+      "name": "sql_partial_identity_null_rejected",
+      "status": "PASS",
+      "detail": "CHECK constraint failed: (jurisdiction IS NULL AND identifier_namespace IS NULL AND local_product_id IS NULL)\n        OR (jurisdiction IS NOT NULL AND identifier_namespace IS NOT NULL AND local_product_id IS NOT NULL\n            AND length(jurisdiction)=2 AND jurisdiction=upper(jurisdiction)\n            AND length(trim(identifier_namespace))>0 AND length(trim(local_product_id))>0)"
+    },
+    {
+      "name": "sql_role_invalid_rejected",
+      "status": "PASS",
+      "detail": "CHECK constraint failed: role IN ('ACTIVE','EXCIPIENT','UNKNOWN')"
+    },
+    {
+      "name": "sql_compact_zero_rejected",
+      "status": "PASS",
+      "detail": "CHECK constraint failed: ingredient_int_id BETWEEN 1 AND 2147483647"
+    }
+  ],
+  "passed": 62,
+  "failed": 0,
+  "source_sha256": {
+    "schema.sql": "a673407b44370f99a264473c89f52303bf06d8858c5ccfb8871fde82490131e3",
+    "contract.json": "d74217afa2d515b74dde270f78e088c66daf4f8eab7eeb0a3f0a412a6c0e0a6b",
+    "validate_contract.py": "e10104909923ff2d30d66ed419609263b6df0a98c9010e4d2467b01b7b4f7895",
+    "test_contract.py": "6e068ddb5e762975916662b15a451b16803b1340d5137a2635858f6fc26632c4"
+  }
+}

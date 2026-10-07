@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "unsigned": true,
+  "test_only": true,
+  "release_eligible": false,
+  "sqlite_sha256": "8c11d6e3a372da63758f4a9683020543459840c382cf3f8e62cb9a7b28e90de6",
+  "gzip_sha256": "58f22d87bd4fe50f0583d529010874769ee308842160e2f7b401e5f4553ac772",
+  "sqlite_bytes": 319488,
+  "gzip_bytes": 11599,
+  "validation": {
+    "schema_version": "safemed-mobile-safety-v2.1",
+    "contract_version": "1.0.0",
+    "test_only": true,
+    "drug_count": 5,
+    "verified_complete_count": 5,
+    "ingredient_count": 5,
+    "rule_count": 1,
+    "markets": [
+      "TW",
+      "US"
+    ],
+    "release_sequence": 1
+  }
+}

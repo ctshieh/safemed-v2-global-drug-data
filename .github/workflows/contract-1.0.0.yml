@@ -1,0 +1,31 @@
+name: Contract 1.0.0 offline candidate gates
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'contracts/global-drug-data/1.0.0/**'
+      - 'scripts/*contract*'
+      - 'scripts/archive_legacy_candidate.py'
+      - 'scripts/ingest_contract_candidate.py'
+      - 'scripts/test_candidate_intake.py'
+      - '.github/workflows/contract-1.0.0.yml'
+permissions:
+  contents: read
+jobs:
+  offline-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/produce_contract_snapshot.py --help
+      - run: python contracts/global-drug-data/1.0.0/generate_fields.py --check
+      - run: python contracts/global-drug-data/1.0.0/test_contract.py --output dist/contract-1.0.0-tests
+      - run: python scripts/test_contract_producer.py
+      - run: python scripts/test_candidate_intake.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TEST-ONLY-contract-gates
+          path: dist/contract-1.0.0-tests/*report.json

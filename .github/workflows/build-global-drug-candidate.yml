@@ -1,0 +1,83 @@
+name: Build global drug candidate artifacts
+
+on:
+  workflow_dispatch:
+    inputs:
+      collect_us_labels:
+        description: Collect bounded official US label candidates (unreviewed, no runtime activation)
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths:
+      - 'contracts/global-drug-data/1.0.0/**'
+      - 'scripts/*contract*'
+      - 'scripts/build_actions_artifact.py'
+      - '.github/workflows/build-global-drug-candidate.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: global-drug-candidate-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  composed-engineering:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check frozen schema inventory
+        run: python contracts/global-drug-data/1.0.0/generate_fields.py --check
+      - name: Producer and candidate regression tests
+        run: |
+          python scripts/test_contract_producer.py
+          python scripts/test_candidate_intake.py
+      - name: Build and verify reproducible composed engineering package
+        run: python scripts/build_actions_artifact.py --output dist/actions-engineering
+      - name: Save composed package and source/gate evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: TEST-ONLY-composed-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/actions-engineering/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Write build summary
+        run: |
+          echo '### TEST ONLY composed package' >> "$GITHUB_STEP_SUMMARY"
+          echo 'SQLite + reproducible gzip + sources-and-build.json + 62 contract cases. Synthetic only; unsigned; no clinical review or Release.' >> "$GITHUB_STEP_SUMMARY"
+  official-us-candidates:
+    if: github.event_name == 'workflow_dispatch' && inputs.collect_us_labels
+    needs: composed-engineering
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve bounded official label snapshot
+        run: python scripts/ingest_openfda_labels.py --output-dir dist/raw-intake
+      - name: Preserve immutable full assertions with pending review
+        run: |
+          python scripts/ingest_contract_candidate.py --input dist/raw-intake/openfda-labels-original.json --output-dir dist/official-candidates --retrieved-at "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+      - name: Prepare public audit metadata without label text
+        run: python scripts/summarize_candidate_intake.py --input-dir dist/official-candidates --output-dir dist/official-candidates-summary
+      - name: Save unreviewed candidate evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: UNREVIEWED-US-label-candidates-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/official-candidates-summary/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Write source limitations
+        run: |
+          echo '### Official US label candidates' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Bounded openFDA sample; full original assertions retained; source IDs use raw SHA256. Commercial rights, redistribution and clinical review PENDING. Not global coverage and not an App runtime package.' >> "$GITHUB_STEP_SUMMARY"
