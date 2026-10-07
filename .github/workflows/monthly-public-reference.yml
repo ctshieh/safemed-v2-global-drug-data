@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '17 1 8 * *'
   workflow_dispatch:
+    inputs:
+      reuse_verified_archives:
+        description: Repackage the verified 2026-10-08 official snapshots without claiming a fresh retrieval (manual recovery only)
+        type: boolean
+        default: false
 permissions:
   contents: read
   actions: read
@@ -34,6 +39,7 @@ jobs:
     env:
       MHLW_PRICE_LIST_PAGE: ${{ vars.MHLW_PRICE_LIST_PAGE }}
       GH_TOKEN: ${{ github.token }}
+      SOURCE_COLLECTION_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives && 'VERIFIED_20261008_ARCHIVES' || 'LIVE_OFFICIAL_EXPORTS' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -49,12 +55,53 @@ jobs:
           python scripts/test_duplicate_audit.py
           python contracts/global-drug-data/1.0.0/generate_fields.py --check
       - name: Retrieve complete declared-reuse official exports
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives) }}
         run: |
           python scripts/ingest_tfda_open_data.py --output-dir inputs/TW
           python scripts/ingest_international_open_data.py --output-dir inputs/CA-EMA
           python scripts/ingest_france_public_data.py --output-dir inputs/FR
           python scripts/ingest_japan_korea_public_data.py --country JP --output-dir inputs/JP
           python scripts/ingest_japan_korea_public_data.py --country KR --output-dir inputs/KR
+      - name: Recover verified TW archive without changing source retrieval date
+        if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37650795312
+          name: TW-OPEN-DATA-UNREVIEWED-37650795312-1
+          path: inputs/TW
+      - name: Recover verified CA-EMA archive without changing source retrieval date
+        if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37651829456
+          name: CA-EMA-OPEN-DATA-UNREVIEWED-37651829456-1
+          path: inputs/CA-EMA
+      - name: Recover verified FR archive without changing source retrieval date
+        if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37651829456
+          name: FR-OPEN-DATA-UNREVIEWED-37651829456-1
+          path: inputs/FR
+      - name: Recover verified JP archive without changing source retrieval date
+        if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37697632621
+          name: JP-OPEN-DATA-UNREVIEWED-37697632621-1
+          path: inputs/JP
+      - name: Recover verified KR archive without changing source retrieval date
+        if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37697632621
+          name: KR-OPEN-DATA-UNREVIEWED-37697632621-1
+          path: inputs/KR
       - name: Retrieve previous successful manifest when available
         run: |
           previous=''
