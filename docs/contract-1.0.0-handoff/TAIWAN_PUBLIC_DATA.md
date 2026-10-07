@@ -29,3 +29,7 @@ actionlint .github/workflows/taiwan-public-data.yml
 ```
 
 结果：2 tests PASS、actionlint PASS、五項完整下載/CSV索引成功。中西藥查詢系統仍只找到公開入口；未把網站公告或查詢頁冒充完整可下載 DDI 数据集。已實際納入的是許可證/成分/分類/標示連結，不是已啟用交互作用規則。
+
+## GitHub Actions 實際結果
+
+Run https://github.com/ctshieh/safemed-v2-global-drug-data/actions/runs/37650795312 ：SUCCESS，job 43 秒，完整下載、測試與 artifact upload 全部成功。Artifact `TW-OPEN-DATA-UNREVIEWED-37650795312-1`，GitHub artifact ID 11495693761，壓縮下載大小 66,383,458 bytes。仍為候選，不是 App runtime 發行包。
