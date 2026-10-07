@@ -21,3 +21,9 @@ Actions workflow：.github/workflows/japan-korea-public-data.yml。JP、KR 獨�
 每份資料包提供 ATTRIBUTION.txt、source.json、intake-report.json，可供 App 來源揭露使用；App consumer 整合尚未在此資料 repository 修改或驗收。
 
 App 必須明示：本 App 僅提供參考並建議用戶諮詢藥師和醫師，不作醫療決策。沒有交互作用命中不代表沒有風險。候選收錄不等於正式 Release、醫學規則 APPROVED、成分完整 VERIFIED_COMPLETE 或全球資料已完備。
+
+## GitHub Actions 實際驗收
+
+https://github.com/ctshieh/safemed-v2-global-drug-data/actions/runs/37697632621 ：SUCCESS，建置 commit ac463ed9579ba5f1d3232e2ce420b060e16aeb28。JP job 18秒、KR job 1分42秒；兩包實際下載後核對原始檔雜湊、逐來源列數、SQLite integrity 與候選狀態全部通過，3個測試各 job PASS。
+
+JP artifact 11515483986（7,038,468 bytes），KR artifact 11516365974（27,698,766 bytes）。包內附原始檔案、來源頁面／授權證據、candidate SQLite 與署名。永久稽核 metadata 位於 japan-korea-actions-audit.json 及各國 intake-report。Actions artifacts保留30天，本機 dist 另保存來源候選。未建立正式 Release、簽章或 App runtime 核准；AU 尚無藥品列。

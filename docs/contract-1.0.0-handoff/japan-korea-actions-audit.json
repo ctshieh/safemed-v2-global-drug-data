@@ -1,0 +1,40 @@
+[
+  {
+    "jurisdiction": "JP",
+    "run_id": 37697632621,
+    "build_commit": "ac463ed9579ba5f1d3232e2ce420b060e16aeb28",
+    "conclusion": "success",
+    "artifact_id": 11515483986,
+    "artifact_name": "JP-OPEN-DATA-UNREVIEWED-37697632621-1",
+    "artifact_bytes": 7038468,
+    "artifact_digest": "sha256:7fd947c7d811db4f05a9c3b90579517dea1e8a55b219737f3feef9b22eb53f2a",
+    "retained_source_rows": 24861,
+    "verification": [
+      "Downloaded Actions artifact",
+      "Original byte SHA-256",
+      "All candidate row counts",
+      "SQLite integrity",
+      "No active medical rules or formal release"
+    ],
+    "retention_days": 30
+  },
+  {
+    "jurisdiction": "KR",
+    "run_id": 37697632621,
+    "build_commit": "ac463ed9579ba5f1d3232e2ce420b060e16aeb28",
+    "conclusion": "success",
+    "artifact_id": 11516365974,
+    "artifact_name": "KR-OPEN-DATA-UNREVIEWED-37697632621-1",
+    "artifact_bytes": 27698766,
+    "artifact_digest": "sha256:26aa320bb6482177d04c2d9d6004377bc3bd91b699b3da3a3b3997ebc76fff85",
+    "retained_source_rows": 309889,
+    "verification": [
+      "Downloaded Actions artifact",
+      "Original byte SHA-256",
+      "All candidate row counts",
+      "SQLite integrity",
+      "No active medical rules or formal release"
+    ],
+    "retention_days": 30
+  }
+]

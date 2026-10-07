@@ -1,6 +1,6 @@
 # 資料側契約 1.0.0 交接（2026-10-07）
 
-本目錄為資料 repo 的獨立進度與驗收記錄。未 commit、push、發包、簽章或修改 App/V1。App consumer 整合狀態未在本 session 驗證。
+本目錄為資料 repo 的獨立進度與驗收記錄。初始階段未 commit/push；使用者後續已明確授權候選建置的提交、推送與 Actions。未正式發包、簽章或修改 App/V1。App consumer 整合狀態未在本 session 驗證。
 
 唯一規範已原樣複製到 `contracts/global-drug-data/1.0.0/`；全部七個 SHA256SUMS 檔案雜湊相符，schema.sql 為 a673407b44370f99a264473c89f52303bf06d8858c5ccfb8871fde82490131e3。未覆蓋舊 schema、seed、README 或已有 dirty scripts。
 
