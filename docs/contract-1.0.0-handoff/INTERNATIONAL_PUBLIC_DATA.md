@@ -36,7 +36,7 @@ EMA 是區域中央程序文件：jurisdiction=NULL，不能設成某個會員�
 
 本機候選目錄：dist/international-public-20261008、dist/france-public-20261008。永久版本化稽核 metadata 位於 canada-ema-intake-report.json、france-intake-report.json；資料 archive 由 Actions artifact 保存30天，正式來源證據長期保存政策仍需落實。
 
-Actions workflow：.github/workflows/international-public-data.yml；Canada/EMA 與 France 分成兩個 job，不建立 Release。script/input tests 2+2 PASS，actionlint PASS，全量 API/file 下載與 SQLite integrity PASS。日本、韓國、澳洲等仍待具體可下載資料集與條款核實，不能宣稱已納入。
+Actions workflow：.github/workflows/international-public-data.yml；Canada/EMA 與 France 分成兩個 job，不建立 Release。script/input tests 2+2 PASS，actionlint PASS，全量 API/file 下載與 SQLite integrity PASS。日本、韓國後續完成候選收錄，澳洲授權仍待核實；詳見 JAPAN_KOREA_AUSTRALIA.md。
 
 ## GitHub Actions 已實際成功
 

@@ -1,0 +1,34 @@
+name: Japan Korea official public candidate intake
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONUNBUFFERED: '1'
+jobs:
+  official-intake:
+    strategy:
+      fail-fast: false
+      matrix:
+        country: [JP, KR]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/test_japan_korea_intake.py
+      - name: Collect original official data and source attribution
+        run: python scripts/ingest_japan_korea_public_data.py --country ${{ matrix.country }} --output-dir dist/public-intake
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.country }}-OPEN-DATA-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/public-intake/
+          retention-days: 30
+          if-no-files-found: error
+      - name: Report review boundaries
+        run: |
+          echo '### Official candidate source archive' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Original bytes, all source rows, content checksums and attribution included. Composition UNKNOWN, canonical mapping UNMAPPED, clinical review PENDING; zero active medical rules. Australia is tracked separately with redistribution rights unresolved; no Australian drug-data coverage claimed.' >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,30 @@
+{
+  "sources": [
+    {
+      "source_snapshot_id": "kr-HIRA_standard_codes.csv-sha256-2d00689474851d81e6efb2ec4ccff9e271b46c5ba0d3640adfa797dff79368fa",
+      "source_url": "https://www.data.go.kr/cmm/cmm/fileDownload.do?atchFileId=FILE_000000007666876&fileDetailSn=1&insertDataPrcus=N",
+      "jurisdiction": "KR",
+      "raw_sha256": "2d00689474851d81e6efb2ec4ccff9e271b46c5ba0d3640adfa797dff79368fa",
+      "version_label": "content-sha256:2d00689474851d81e6efb2ec4ccff9e271b46c5ba0d3640adfa797dff79368fa",
+      "retrieved_at": "2026-10-07T22:38:07.629883+00:00",
+      "row_count": 309889,
+      "composition_status": "UNKNOWN",
+      "mapping_status": "UNMAPPED",
+      "clinical_review": "PENDING",
+      "runtime_active": false,
+      "release_eligible": false,
+      "publisher": "Health Insurance Review and Assessment Service (HIRA)",
+      "source_page": "https://www.data.go.kr/data/15067462/fileData.do",
+      "license": "Korea Open Government License Type 1 / attribution",
+      "license_url": "https://www.data.go.kr/data/15067462/fileData.do",
+      "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
+      "publication_date": "2026-09-17 09:11:03.000",
+      "scope": "Full downloaded standard-code mapping CSV including withdrawn products; not current reimbursement status or complete ingredient/DDI database. File row count may differ from portal metadata.",
+      "encoding": "cp949",
+      "source_description": "건강보험심사평가원에서 제공하는 의약품 표준코드 매핑 정보입니다. 의약품 표준코드(KD코드; Korea Drug Code)는 개개의 의약품을 식별하기 위하여 고유하게 설정된 번호로서 국가식별코드(3자리), 제조·수입업체 식별코드(4자리), 품목코드(5자리) 및 검증번호(1자리)를 포함한 13자리 숫자로 구성됩니다.<br/>- 약제급여목록 및 급여상한금액표에 고시된 제품코드를 누적 매핑한 자료이며, 급여삭제가 되더라도 매핑목록에는 유지되어 있으므로 현 시점에서 급여여부는 약제급여목록표에서 확인하여 주시기 바랍니다.<br/>※ 약제급여목록표는 건강보험심사평가원 홈페이지(www.hira.or.kr) > 제도정책 > 약제기준정보 > 목록표 > 약제급여목록표에서 확인하실 수 있습니다.<br/>※ 본 자료는 2026년 8월 기준으로 현행화되었습니다."
+    }
+  ],
+  "retained_source_rows": 309889,
+  "runtime_active_rules": 0,
+  "release_eligible": false
+}

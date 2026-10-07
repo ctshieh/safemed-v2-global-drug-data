@@ -37,4 +37,4 @@
 
 ## 後續實際納入更新
 
-其他國家來源現已完成 Canada DPD products/activeingredient、EMA centralised medicines metadata 與 France BDPM 三份全量檔案 adapter。前文「尚無本輪完成的 adapter」對這三者已由本更新取代；詳見 INTERNATIONAL_PUBLIC_DATA.md 與實際 intake reports。JP/KR/AU 仍待核實，所有醫學規則審閱未完成。
+其他國家來源現已完成 Canada DPD products/activeingredient、EMA centralised medicines metadata 與 France BDPM 三份全量檔案 adapter。前文「尚無本輪完成的 adapter」對這三者已由本更新取代；詳見 INTERNATIONAL_PUBLIC_DATA.md 與實際 intake reports。JP/KR 已完成官方原始資料候選收錄；AU 仍有商業再散布授權缺口。詳見 JAPAN_KOREA_AUSTRALIA.md。所有醫學規則審閱未完成。
