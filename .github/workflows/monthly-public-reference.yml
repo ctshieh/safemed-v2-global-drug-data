@@ -1,7 +1,7 @@
 name: Monthly public medicine reference candidate
 on:
   schedule:
-    - cron: '17 1 8 * *'
+    - cron: '17 1 18 * *'
   workflow_dispatch:
     inputs:
       reuse_verified_archives:

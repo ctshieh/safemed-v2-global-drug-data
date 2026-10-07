@@ -5,8 +5,8 @@
     1,
     2
   ],
-  "schedule_utc": "17 1 8 * *",
-  "schedule_taipei": "每月8日09:17（GitHub可能延遲執行）",
+  "schedule_utc": "17 1 18 * *",
+  "schedule_taipei": "每月18日09:17（GitHub可能延遲執行）",
   "repository_variable": "PUBLIC_DATA_UPDATE_INTERVAL_MONTHS",
   "bimonthly_months": [
     2,
@@ -108,5 +108,8 @@
     "scope": "2026-10-08 verified official archives only; preserve original retrieval dates; never enabled by schedule"
   },
   "scheduled_maximum": "一次/台北日曆月；當月已有成功建置時，略過定期重複建置。手動失敗重試或復原可另外觸發。",
-  "next_regular_build_target": "2026-11-08 09:17 Asia/Taipei（GitHub排程可能延遲或停用）"
+  "next_regular_build_target": "2026-11-18 09:17 Asia/Taipei（GitHub排程可能延遲或停用）",
+  "schedule_rationale": "每月一次取各來源當時最新公開版本；18日為韓國目前預告2026-12-15發布預留3天緩衝，並非所有來源共同官方發布日。",
+  "bimonthly_schedule_taipei": "偶數月18日09:17（2、4、6、8、10、12月）",
+  "source_date_policy": "逐一記錄來源版本/更新日期與下載日期；未變更的來源不偽標為新版本。當月已有成功包則略過，因此2026-10-18不重複建置。"
 }
