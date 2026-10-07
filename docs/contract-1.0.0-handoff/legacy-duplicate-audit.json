@@ -1,0 +1,25 @@
+{
+  "scope": "Legacy package separate from current official-intake audit; not clinically approved or runtime released",
+  "legacy_drug_rows_by_source": {
+    "LOCAL_SAMPLE_CATALOG": 31,
+    "NHI_DRUG_ITEMS": 45038,
+    "TFDA_OPEN_DATA": 66301,
+    "V2_LOCKED_SEED": 19
+  },
+  "excluded_fixture_or_sample_rows": 50,
+  "legacy_TFDA_distinct_literal_license_keys": 66301,
+  "legacy_TFDA_repeated_license_groups": 0,
+  "legacy_TFDA_extra_license_reference_rows": 0,
+  "current_TFDA_distinct_literal_license_keys": 66503,
+  "same_literal_license_keys_across_old_and_current_TFDA": 66301,
+  "old_only_keys": 0,
+  "current_only_keys": 202,
+  "overlap_rule": "Exact license text with surrounding whitespace removed only; versions kept separate. NHI numeric license IDs are not equated to formatted TFDA licenses.",
+  "symmetric_ingredient_pair_groups_with_multiple_rules": 0,
+  "pair_rule_review_groups": [],
+  "limitations": [
+    "Repeated pair does not prove duplicate clinical rule: evidence/severity/conditions may differ",
+    "Legacy drug primary keys and drug_ingredient composite keys preclude repeated keys in stored DB but cannot prove upstream duplicate-free data",
+    "No raw US label data present; older seed/sample English names do not establish US market coverage"
+  ]
+}

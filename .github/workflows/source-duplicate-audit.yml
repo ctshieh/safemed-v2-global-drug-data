@@ -1,0 +1,65 @@
+name: Official country source duplicate audit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONUNBUFFERED: '1'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/test_duplicate_audit.py
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37650795312
+          name: TW-OPEN-DATA-UNREVIEWED-37650795312-1
+          path: inputs/TW
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37651829456
+          name: CA-EMA-OPEN-DATA-UNREVIEWED-37651829456-1
+          path: inputs/CA-EMA
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37651829456
+          name: FR-OPEN-DATA-UNREVIEWED-37651829456-1
+          path: inputs/FR
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37697632621
+          name: JP-OPEN-DATA-UNREVIEWED-37697632621-1
+          path: inputs/JP
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37697632621
+          name: KR-OPEN-DATA-UNREVIEWED-37697632621-1
+          path: inputs/KR
+      - name: Audit every existing official candidate record
+        run: |
+          python scripts/audit_source_duplicates.py \
+            --input inputs/TW/TW_UNREVIEWED_candidate.sqlite3 \
+            --input inputs/CA-EMA/INTERNATIONAL_UNREVIEWED_candidate.sqlite3 \
+            --input inputs/FR/FR_UNREVIEWED_candidate.sqlite3 \
+            --input inputs/JP/JP_UNREVIEWED_candidate.sqlite3 \
+            --input inputs/KR/KR_UNREVIEWED_candidate.sqlite3 \
+            --output-dir dist/duplicate-audit
+          cat dist/duplicate-audit/DUPLICATE_REPORT.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: COUNTRY-DUPLICATE-AUDIT-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/duplicate-audit/
+          retention-days: 30
+          if-no-files-found: error
