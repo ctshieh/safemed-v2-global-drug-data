@@ -27,9 +27,25 @@ jobs:
       - id: gate
         env:
           INTERVAL: ${{ vars.PUBLIC_DATA_UPDATE_INTERVAL_MONTHS || '1' }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           due=$(python scripts/build_public_reference_bundle.py --check-schedule --interval "$INTERVAL")
           if [ "${{ github.event_name }}" = workflow_dispatch ]; then due=true; fi
+          if [ "${{ github.event_name }}" = schedule ] && [ "$due" = true ]; then
+            last=$(gh run list --workflow monthly-public-reference.yml --branch main --status success --limit 1 --json updatedAt --jq '.[0].updatedAt // empty')
+            LAST_SUCCESS="$last" python - <<'PYCODE' > month-comparison.txt
+          import datetime as dt, os
+          from zoneinfo import ZoneInfo
+          text=os.environ.get('LAST_SUCCESS','')
+          previous=dt.datetime.fromisoformat(text.replace('Z','+00:00')).astimezone(ZoneInfo('Asia/Taipei')) if text else None
+          now=dt.datetime.now(ZoneInfo('Asia/Taipei'))
+          print('true' if previous and (previous.year,previous.month)==(now.year,now.month) else 'false')
+          PYCODE
+            if [ "$(cat month-comparison.txt)" = true ]; then
+              due=false
+              echo 'A successful candidate build already exists this Taipei calendar month; scheduled duplicate skipped.' >> "$GITHUB_STEP_SUMMARY"
+            fi
+          fi
           echo "due=$due" >> "$GITHUB_OUTPUT"
   build:
     needs: cadence
@@ -130,7 +146,7 @@ jobs:
             dist/public-reference/PUBLIC-REFERENCE-UNREVIEWED.tar.gz
             dist/public-reference/archive-sha256.json
           compression-level: 0
-          retention-days: 90
+          retention-days: ${{ vars.PUBLIC_DATA_UPDATE_INTERVAL_MONTHS == '2' && 70 || 35 }}
           if-no-files-found: error
       - uses: actions/upload-artifact@v4
         with:

@@ -1,0 +1,55 @@
+{
+  "verification": "PASS",
+  "run_id": 37703489670,
+  "run_attempt": 2,
+  "source_count": 17,
+  "retained_source_rows": 900823,
+  "audited_nonheader_rows": 900818,
+  "verified_source_files": 60,
+  "exact_content_extra_rows": 784,
+  "archive": {
+    "file": "PUBLIC-REFERENCE-UNREVIEWED.tar.gz",
+    "bytes": 269567181,
+    "sha256": "45357cb1a599c69c2efd48ccf2ac4ccf280ddd1868750ea91835cf1a9e35fd3d"
+  },
+  "runtime_active": false,
+  "release_eligible": false,
+  "checked_on": "2026-10-08",
+  "actions_url": "https://github.com/ctshieh/safemed-v2-global-drug-data/actions/runs/37703489670",
+  "build_head_sha": "dd97c84a5f4592a2e0988a77f2f3060024d28720",
+  "build_duration_seconds": 222,
+  "collection_mode": "LIVE_OFFICIAL_EXPORTS",
+  "artifact_id": 11518633094,
+  "artifact_zip_bytes": 269567646,
+  "artifact_digest": "sha256:e2fa9d614f3063391a126d33f8decd6940da8bce2fcbe7b46b6b053a22374191",
+  "manifest_artifact_id": 11518283562,
+  "included": [
+    "TW",
+    "CA",
+    "FR",
+    "JP",
+    "KR",
+    "EMA_REGION"
+  ],
+  "excluded": [
+    "AU",
+    "US"
+  ],
+  "notes": [
+    "First attempt encountered a Korean portal timeout; failed-job retry completed with fresh official exports.",
+    "FR CIP export contains 20912 rows, eight fewer than the preceding snapshot; snapshots were not mixed.",
+    "All 784 extra exact-content rows retained; no cross-country identity automatically merged.",
+    "Reference source archive only; not the App runtime database or a complete global interaction dataset."
+  ],
+  "schedule_validation": {
+    "yaml_parse": "PASS",
+    "bash_syntax": "PASS",
+    "same_month_success_skipped": "PASS"
+  },
+  "next_regular_build_target": "2026-11-08 09:17 Asia/Taipei",
+  "future_retention_days": {
+    "monthly": 35,
+    "bimonthly": 70,
+    "manifest": 90
+  }
+}

@@ -16,7 +16,11 @@
     10,
     12
   ],
-  "retention_days": 90,
+  "retention_days": {
+    "full_bundle_monthly": 35,
+    "full_bundle_bimonthly": 70,
+    "manifest": 90
+  },
   "candidate_only": true,
   "runtime_active": false,
   "release_eligible": false,
@@ -84,8 +88,11 @@
     "repository_visibility": "PUBLIC",
     "runner": "standard GitHub-hosted ubuntu-latest",
     "billing_evidence": "https://docs.github.com/en/billing/concepts/product-billing/github-actions",
-    "note": "標準GitHub-hosted runner在公開repository執行免費；不是已用完私人repository分鐘數的推定。每次job上限30分鐘，artifact90天保留。若實際資源不足可設定週期2，不自動支付或使用larger runner。",
-    "automatic_budget_downgrade": false
+    "note": "標準GitHub-hosted runner在公開repository執行免費；artifact儲存仍需依帳戶用量管理。每次job上限30分鐘，完整包月更保留35天、雙月保留70天；小型manifest保留90天。若實際資源不足可設定週期2，不自動支付或使用larger runner。",
+    "automatic_budget_downgrade": false,
+    "first_artifact_bytes": 269567646,
+    "first_bundle_retention_days": 90,
+    "first_bundle_retention_note": "首次成功包使用建置當時90天設定；新的35/70天政策從後續建置生效，未刪除既有artifact。"
   },
   "operational_limits": [
     "GitHub schedule runs on default branch, can delay or deactivate after 60 days repository inactivity; monitor actual runs",
@@ -94,5 +101,12 @@
     "Source update dates and retrieval dates remain distinct; unchanged sources retained",
     "Monthly checks do not imply publisher provides new monthly data",
     "Formal source rights and pharmacist/physician review remain pending; no signed Release"
-  ]
+  ],
+  "manual_recovery": {
+    "input": "reuse_verified_archives",
+    "default": false,
+    "scope": "2026-10-08 verified official archives only; preserve original retrieval dates; never enabled by schedule"
+  },
+  "scheduled_maximum": "一次/台北日曆月；當月已有成功建置時，略過定期重複建置。手動失敗重試或復原可另外觸發。",
+  "next_regular_build_target": "2026-11-08 09:17 Asia/Taipei（GitHub排程可能延遲或停用）"
 }
