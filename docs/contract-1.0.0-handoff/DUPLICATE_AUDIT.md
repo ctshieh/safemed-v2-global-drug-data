@@ -39,3 +39,9 @@ NHI使用不同形式的數字許可證參考，未把它與TFDA文字字號冒�
 ## 可重跑建置
 
 scripts/audit_source_duplicates.py 以read-only SQLite開啟來源，不重新下載更新資料混入同一次比較。source-duplicate-audit.yml 取用原已成功的台灣／加拿大-EMA／法國／日本／韓國Actions artifacts，完整重跑上述稽核，保存逐列核對資料供審查。2個測試驗證完整同內容重複、同來源鍵差異、跨國同名不合併、强度/盐類/標點區別、來源DB不變與禁止覆寫稽核結果。
+
+## Actions 已完成並下載驗證
+
+https://github.com/ctshieh/safemed-v2-global-drug-data/actions/runs/37699149959 ：SUCCESS（1分16秒）。建置commit784db1b722b6aa17fa5d26583450e64bb79c1a3d；artifact11516248477保存完整逐列定位的SQLite、Markdown與JSON。下載後再次核對17份來源snapshot IDs、所有原始內容雜湊、900,826資料列、逐來源列數、784同內容額外列、108組DIN、法國CIP13、日本跨檔重疊及SQLite完整性，全部通過。country-duplicate-report.json已更新為實際Actions產出，而非只有本機統計。
+
+Actions artifact保留30天；版本化JSON／Markdown永久留在repo；本機dist與下載artifact另存。原始來源完整保留，未刪來源、未合併市場商品、未建立正式Release。

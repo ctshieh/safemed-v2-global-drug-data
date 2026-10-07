@@ -4,7 +4,7 @@
     {
       "source_snapshot_id": "tfda-36-sha256-4257bb38c58d0c97d09400f058a85d734e17e7210c85fbf3703e4c5faec833bd",
       "market": "TW",
-      "input_path": "dist/taiwan-public-20261008/TW_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/TW/TW_UNREVIEWED_candidate.sqlite3",
       "input_rows": 72062,
       "excluded_header_rows": 0,
       "audited_record_rows": 72062,
@@ -20,7 +20,7 @@
         "license_url": "https://data.gov.tw/license",
         "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
         "attribution": "資料來源：衛生福利部食品藥物管理署－全部藥品許可證資料集。依政府資料開放授權條款第1版整理，並非機關背書。",
-        "retrieved_at": "2026-10-07T16:15:43.901681+00:00",
+        "retrieved_at": "2026-10-07T16:17:06.952392+00:00",
         "version_label": "content-sha256:4257bb38c58d0c97d09400f058a85d734e17e7210c85fbf3703e4c5faec833bd",
         "csv_sha256": "4257bb38c58d0c97d09400f058a85d734e17e7210c85fbf3703e4c5faec833bd",
         "download_sha256": "0eb8811bcbe59433fff7cbd8580c12ccb24413ce554fbe3290331df60320a31e",
@@ -181,7 +181,7 @@
     {
       "source_snapshot_id": "tfda-39-sha256-edbdf663712b9b630e4e38dfa9ab5150cdc059821ead0c59e568e4af2c087d08",
       "market": "TW",
-      "input_path": "dist/taiwan-public-20261008/TW_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/TW/TW_UNREVIEWED_candidate.sqlite3",
       "input_rows": 29880,
       "excluded_header_rows": 0,
       "audited_record_rows": 29880,
@@ -197,7 +197,7 @@
         "license_url": "https://data.gov.tw/license",
         "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
         "attribution": "資料來源：衛生福利部食品藥物管理署－藥品仿單或外盒資料集。依政府資料開放授權條款第1版整理，並非機關背書。",
-        "retrieved_at": "2026-10-07T16:15:43.901681+00:00",
+        "retrieved_at": "2026-10-07T16:17:06.952392+00:00",
         "version_label": "content-sha256:edbdf663712b9b630e4e38dfa9ab5150cdc059821ead0c59e568e4af2c087d08",
         "csv_sha256": "edbdf663712b9b630e4e38dfa9ab5150cdc059821ead0c59e568e4af2c087d08",
         "download_sha256": "aee50292055432c58c51337af5f050ac1f427ffd4c6c8af09be79d5587647b78",
@@ -227,7 +227,7 @@
     {
       "source_snapshot_id": "tfda-40-sha256-0ca28b5c4c2d1616a7f64bacdde5a8e89acae3716daf2a05522d7e5ebc00e4cc",
       "market": "TW",
-      "input_path": "dist/taiwan-public-20261008/TW_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/TW/TW_UNREVIEWED_candidate.sqlite3",
       "input_rows": 6363,
       "excluded_header_rows": 0,
       "audited_record_rows": 6363,
@@ -243,7 +243,7 @@
         "license_url": "https://data.gov.tw/license",
         "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
         "attribution": "資料來源：衛生福利部食品藥物管理署－藥品藥理治療分類AHFS/DI碼資料集。依政府資料開放授權條款第1版整理，並非機關背書。",
-        "retrieved_at": "2026-10-07T16:15:43.901681+00:00",
+        "retrieved_at": "2026-10-07T16:17:06.952392+00:00",
         "version_label": "content-sha256:0ca28b5c4c2d1616a7f64bacdde5a8e89acae3716daf2a05522d7e5ebc00e4cc",
         "csv_sha256": "0ca28b5c4c2d1616a7f64bacdde5a8e89acae3716daf2a05522d7e5ebc00e4cc",
         "download_sha256": "dc3b4eef83bc4bbe0a60fbe729672a6edae76488a4f4b130feeaa5369d029eb7",
@@ -273,7 +273,7 @@
     {
       "source_snapshot_id": "tfda-41-sha256-7d01ded3b7c33ae45005807c7b8ee4ef7400c9219052dfe956ec250d1b9686c8",
       "market": "TW",
-      "input_path": "dist/taiwan-public-20261008/TW_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/TW/TW_UNREVIEWED_candidate.sqlite3",
       "input_rows": 80584,
       "excluded_header_rows": 0,
       "audited_record_rows": 80584,
@@ -289,7 +289,7 @@
         "license_url": "https://data.gov.tw/license",
         "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
         "attribution": "資料來源：衛生福利部食品藥物管理署－藥品藥理治療分類ATC碼資料集。依政府資料開放授權條款第1版整理，並非機關背書。",
-        "retrieved_at": "2026-10-07T16:15:43.901681+00:00",
+        "retrieved_at": "2026-10-07T16:17:06.952392+00:00",
         "version_label": "content-sha256:7d01ded3b7c33ae45005807c7b8ee4ef7400c9219052dfe956ec250d1b9686c8",
         "csv_sha256": "7d01ded3b7c33ae45005807c7b8ee4ef7400c9219052dfe956ec250d1b9686c8",
         "download_sha256": "4d8212c7fe07b77c9e70e6071b1b2057bcb4118ddb70dc3128d3064a5eef42fb",
@@ -319,7 +319,7 @@
     {
       "source_snapshot_id": "tfda-43-sha256-9c1a562399d5a169b48794db8a59696deb04091ba59022e17b6bc0b24252d264",
       "market": "TW",
-      "input_path": "dist/taiwan-public-20261008/TW_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/TW/TW_UNREVIEWED_candidate.sqlite3",
       "input_rows": 126017,
       "excluded_header_rows": 0,
       "audited_record_rows": 126017,
@@ -335,7 +335,7 @@
         "license_url": "https://data.gov.tw/license",
         "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
         "attribution": "資料來源：衛生福利部食品藥物管理署－藥品詳細處方成分資料集。依政府資料開放授權條款第1版整理，並非機關背書。",
-        "retrieved_at": "2026-10-07T16:15:43.901681+00:00",
+        "retrieved_at": "2026-10-07T16:17:06.952392+00:00",
         "version_label": "content-sha256:9c1a562399d5a169b48794db8a59696deb04091ba59022e17b6bc0b24252d264",
         "csv_sha256": "9c1a562399d5a169b48794db8a59696deb04091ba59022e17b6bc0b24252d264",
         "download_sha256": "5b0e7fdf2ad3fd378c0069e4553b945b0c79a2dd22e3cc1e6f340aff0b0a01c2",
@@ -367,7 +367,7 @@
     {
       "source_snapshot_id": "ca-dpd-active-ingredients-sha256-3d56ed2c396fbc8d2f8349e290ffe1bfb349cc6280ebf20ebec70fa6352d1a66",
       "market": "CA",
-      "input_path": "dist/international-public-20261008/INTERNATIONAL_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/CA-EMA/INTERNATIONAL_UNREVIEWED_candidate.sqlite3",
       "input_rows": 120863,
       "excluded_header_rows": 0,
       "audited_record_rows": 120863,
@@ -386,7 +386,7 @@
         "source_snapshot_id": "ca-dpd-active-ingredients-sha256-3d56ed2c396fbc8d2f8349e290ffe1bfb349cc6280ebf20ebec70fa6352d1a66",
         "raw_sha256": "3d56ed2c396fbc8d2f8349e290ffe1bfb349cc6280ebf20ebec70fa6352d1a66",
         "version_label": "content-sha256:3d56ed2c396fbc8d2f8349e290ffe1bfb349cc6280ebf20ebec70fa6352d1a66",
-        "retrieved_at": "2026-10-07T16:21:35.793779+00:00",
+        "retrieved_at": "2026-10-07T16:25:01.473178+00:00",
         "row_count": 120863,
         "source_metadata": {},
         "rights_status": "OPEN_REUSE_DECLARED_FORMAL_REVIEW_PENDING",
@@ -407,7 +407,7 @@
     {
       "source_snapshot_id": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
       "market": "CA",
-      "input_path": "dist/international-public-20261008/INTERNATIONAL_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/CA-EMA/INTERNATIONAL_UNREVIEWED_candidate.sqlite3",
       "input_rows": 58324,
       "excluded_header_rows": 0,
       "audited_record_rows": 58324,
@@ -426,7 +426,7 @@
         "source_snapshot_id": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
         "raw_sha256": "90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
         "version_label": "content-sha256:90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
-        "retrieved_at": "2026-10-07T16:21:35.793779+00:00",
+        "retrieved_at": "2026-10-07T16:25:01.473178+00:00",
         "row_count": 58324,
         "source_metadata": {},
         "rights_status": "OPEN_REUSE_DECLARED_FORMAL_REVIEW_PENDING",
@@ -447,7 +447,7 @@
     {
       "source_snapshot_id": "ema-central-medicines-sha256-4dcce6f760c8fb2f57107e4ea687e8354c69cb9182e34b40a7723939a14c0869",
       "market": "EMA_REGION",
-      "input_path": "dist/international-public-20261008/INTERNATIONAL_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/CA-EMA/INTERNATIONAL_UNREVIEWED_candidate.sqlite3",
       "input_rows": 2746,
       "excluded_header_rows": 0,
       "audited_record_rows": 2746,
@@ -466,7 +466,7 @@
         "source_snapshot_id": "ema-central-medicines-sha256-4dcce6f760c8fb2f57107e4ea687e8354c69cb9182e34b40a7723939a14c0869",
         "raw_sha256": "4dcce6f760c8fb2f57107e4ea687e8354c69cb9182e34b40a7723939a14c0869",
         "version_label": "content-sha256:4dcce6f760c8fb2f57107e4ea687e8354c69cb9182e34b40a7723939a14c0869",
-        "retrieved_at": "2026-10-07T16:21:35.793779+00:00",
+        "retrieved_at": "2026-10-07T16:25:01.473178+00:00",
         "row_count": 2746,
         "source_metadata": {
           "total_records": 2746,
@@ -490,7 +490,7 @@
     {
       "source_snapshot_id": "fr-bdpm-CIS_CIP_bdpm.txt-sha256-2a8f5fa2df840b8de9266cac7eda2e6c9a8e85d8a01dde04ff6590766674f00c",
       "market": "FR",
-      "input_path": "dist/france-public-20261008/FR_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/FR/FR_UNREVIEWED_candidate.sqlite3",
       "input_rows": 20920,
       "excluded_header_rows": 0,
       "audited_record_rows": 20920,
@@ -506,7 +506,7 @@
         "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
         "raw_sha256": "2a8f5fa2df840b8de9266cac7eda2e6c9a8e85d8a01dde04ff6590766674f00c",
         "version_label": "content-sha256:2a8f5fa2df840b8de9266cac7eda2e6c9a8e85d8a01dde04ff6590766674f00c",
-        "retrieved_at": "2026-10-07T16:23:31.231762+00:00",
+        "retrieved_at": "2026-10-07T16:25:07.218733+00:00",
         "encoding": "utf-8-sig",
         "row_count": 20920,
         "date_evidence": "Per-file official update dates preserved verbatim in download-page-evidence.html; retrieval time is not publication date",
@@ -529,7 +529,7 @@
     {
       "source_snapshot_id": "fr-bdpm-CIS_COMPO_bdpm.txt-sha256-90a6e8ee286b6245c3938dd417ac75d1135a61b15ba50cfad70ee6b3bd181b7a",
       "market": "FR",
-      "input_path": "dist/france-public-20261008/FR_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/FR/FR_UNREVIEWED_candidate.sqlite3",
       "input_rows": 32439,
       "excluded_header_rows": 0,
       "audited_record_rows": 32439,
@@ -545,7 +545,7 @@
         "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
         "raw_sha256": "90a6e8ee286b6245c3938dd417ac75d1135a61b15ba50cfad70ee6b3bd181b7a",
         "version_label": "content-sha256:90a6e8ee286b6245c3938dd417ac75d1135a61b15ba50cfad70ee6b3bd181b7a",
-        "retrieved_at": "2026-10-07T16:23:28.105495+00:00",
+        "retrieved_at": "2026-10-07T16:25:05.316436+00:00",
         "encoding": "cp1252",
         "row_count": 32439,
         "date_evidence": "Per-file official update dates preserved verbatim in download-page-evidence.html; retrieval time is not publication date",
@@ -568,7 +568,7 @@
     {
       "source_snapshot_id": "fr-bdpm-CIS_bdpm.txt-sha256-332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640",
       "market": "FR",
-      "input_path": "dist/france-public-20261008/FR_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/FR/FR_UNREVIEWED_candidate.sqlite3",
       "input_rows": 15883,
       "excluded_header_rows": 0,
       "audited_record_rows": 15883,
@@ -584,7 +584,7 @@
         "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
         "raw_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640",
         "version_label": "content-sha256:332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640",
-        "retrieved_at": "2026-10-07T16:23:24.802218+00:00",
+        "retrieved_at": "2026-10-07T16:25:03.488711+00:00",
         "encoding": "cp1252",
         "row_count": 15883,
         "date_evidence": "Per-file official update dates preserved verbatim in download-page-evidence.html; retrieval time is not publication date",
@@ -607,7 +607,7 @@
     {
       "source_snapshot_id": "jp-tp20260401-01_04.xlsx-sha256-1f523b83fd121cec341caba4efdf8acd9d001b547a6a94c03c8c21068e126f66",
       "market": "JP",
-      "input_path": "dist/japan-public-20261008/JP_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/JP/JP_UNREVIEWED_candidate.sqlite3",
       "input_rows": 29,
       "excluded_header_rows": 1,
       "audited_record_rows": 28,
@@ -617,7 +617,7 @@
         "jurisdiction": "JP",
         "raw_sha256": "1f523b83fd121cec341caba4efdf8acd9d001b547a6a94c03c8c21068e126f66",
         "version_label": "content-sha256:1f523b83fd121cec341caba4efdf8acd9d001b547a6a94c03c8c21068e126f66",
-        "retrieved_at": "2026-10-07T22:38:06.084606+00:00",
+        "retrieved_at": "2026-10-07T22:40:23.802645+00:00",
         "row_count": 29,
         "composition_status": "UNKNOWN",
         "mapping_status": "UNMAPPED",
@@ -645,7 +645,7 @@
     {
       "source_snapshot_id": "jp-tp20260813-01_01.xlsx-sha256-22c3cc369ab6bcee581c0d8890e35b03d42ced51202680019eff33f21b9b7425",
       "market": "JP",
-      "input_path": "dist/japan-public-20261008/JP_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/JP/JP_UNREVIEWED_candidate.sqlite3",
       "input_rows": 7065,
       "excluded_header_rows": 1,
       "audited_record_rows": 7064,
@@ -655,7 +655,7 @@
         "jurisdiction": "JP",
         "raw_sha256": "22c3cc369ab6bcee581c0d8890e35b03d42ced51202680019eff33f21b9b7425",
         "version_label": "content-sha256:22c3cc369ab6bcee581c0d8890e35b03d42ced51202680019eff33f21b9b7425",
-        "retrieved_at": "2026-10-07T22:38:05.117660+00:00",
+        "retrieved_at": "2026-10-07T22:40:20.873291+00:00",
         "row_count": 7065,
         "composition_status": "UNKNOWN",
         "mapping_status": "UNMAPPED",
@@ -683,7 +683,7 @@
     {
       "source_snapshot_id": "jp-tp20260813-01_02.xlsx-sha256-b6dac0211014e7f09f3db8098f9d05bdcf33cff8f7cda7c14c23654762a393a5",
       "market": "JP",
-      "input_path": "dist/japan-public-20261008/JP_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/JP/JP_UNREVIEWED_candidate.sqlite3",
       "input_rows": 3477,
       "excluded_header_rows": 1,
       "audited_record_rows": 3476,
@@ -693,7 +693,7 @@
         "jurisdiction": "JP",
         "raw_sha256": "b6dac0211014e7f09f3db8098f9d05bdcf33cff8f7cda7c14c23654762a393a5",
         "version_label": "content-sha256:b6dac0211014e7f09f3db8098f9d05bdcf33cff8f7cda7c14c23654762a393a5",
-        "retrieved_at": "2026-10-07T22:38:05.704180+00:00",
+        "retrieved_at": "2026-10-07T22:40:22.597080+00:00",
         "row_count": 3477,
         "composition_status": "UNKNOWN",
         "mapping_status": "UNMAPPED",
@@ -721,7 +721,7 @@
     {
       "source_snapshot_id": "jp-tp20260813-01_03.xlsx-sha256-5dbb5e20314a53d1ee028bce8679b404851502b91869c9be23105377a0381960",
       "market": "JP",
-      "input_path": "dist/japan-public-20261008/JP_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/JP/JP_UNREVIEWED_candidate.sqlite3",
       "input_rows": 1861,
       "excluded_header_rows": 1,
       "audited_record_rows": 1860,
@@ -731,7 +731,7 @@
         "jurisdiction": "JP",
         "raw_sha256": "5dbb5e20314a53d1ee028bce8679b404851502b91869c9be23105377a0381960",
         "version_label": "content-sha256:5dbb5e20314a53d1ee028bce8679b404851502b91869c9be23105377a0381960",
-        "retrieved_at": "2026-10-07T22:38:06.012251+00:00",
+        "retrieved_at": "2026-10-07T22:40:23.549830+00:00",
         "row_count": 1861,
         "composition_status": "UNKNOWN",
         "mapping_status": "UNMAPPED",
@@ -759,7 +759,7 @@
     {
       "source_snapshot_id": "jp-tp20261001-01_05.xlsx-sha256-d801709df828e78c767d2ffcc05c762cb5b289d8200fb7feea34a6d6a79c01cb",
       "market": "JP",
-      "input_path": "dist/japan-public-20261008/JP_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/JP/JP_UNREVIEWED_candidate.sqlite3",
       "input_rows": 12429,
       "excluded_header_rows": 1,
       "audited_record_rows": 12428,
@@ -769,7 +769,7 @@
         "jurisdiction": "JP",
         "raw_sha256": "d801709df828e78c767d2ffcc05c762cb5b289d8200fb7feea34a6d6a79c01cb",
         "version_label": "content-sha256:d801709df828e78c767d2ffcc05c762cb5b289d8200fb7feea34a6d6a79c01cb",
-        "retrieved_at": "2026-10-07T22:38:06.870842+00:00",
+        "retrieved_at": "2026-10-07T22:40:26.229900+00:00",
         "row_count": 12429,
         "composition_status": "UNKNOWN",
         "mapping_status": "UNMAPPED",
@@ -797,7 +797,7 @@
     {
       "source_snapshot_id": "kr-HIRA_standard_codes.csv-sha256-2d00689474851d81e6efb2ec4ccff9e271b46c5ba0d3640adfa797dff79368fa",
       "market": "KR",
-      "input_path": "dist/korea-public-20261008/KR_UNREVIEWED_candidate.sqlite3",
+      "input_path": "inputs/KR/KR_UNREVIEWED_candidate.sqlite3",
       "input_rows": 309889,
       "excluded_header_rows": 0,
       "audited_record_rows": 309889,
@@ -807,7 +807,7 @@
         "jurisdiction": "KR",
         "raw_sha256": "2d00689474851d81e6efb2ec4ccff9e271b46c5ba0d3640adfa797dff79368fa",
         "version_label": "content-sha256:2d00689474851d81e6efb2ec4ccff9e271b46c5ba0d3640adfa797dff79368fa",
-        "retrieved_at": "2026-10-07T22:38:07.629883+00:00",
+        "retrieved_at": "2026-10-07T22:41:43.208005+00:00",
         "row_count": 309889,
         "composition_status": "UNKNOWN",
         "mapping_status": "UNMAPPED",
@@ -817,7 +817,9 @@
         "publisher": "Health Insurance Review and Assessment Service (HIRA)",
         "source_page": "https://www.data.go.kr/data/15067462/fileData.do",
         "license": "Korea Open Government License Type 1 / attribution",
-        "license_url": "https://www.data.go.kr/data/15067462/fileData.do",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "dataset_license_declaration_url": "https://www.data.go.kr/data/15067462/fileData.do",
+        "original_file_name": "건강보험심사평가원_약가마스터_의약품표준코드_2026.08.csv",
         "rights_status": "OPEN_LICENSE_DECLARED_FORMAL_REVIEW_PENDING",
         "publication_date": "2026-09-17 09:11:03.000",
         "scope": "Full downloaded standard-code mapping CSV including withdrawn products; not current reimbursement status or complete ingredient/DDI database. File row count may differ from portal metadata.",
@@ -945,6 +947,2083 @@
       "PRODUCT_NAME": 0,
       "INGREDIENT_TEXT": 0,
       "meaning": "Literal normalized text overlap only; NOT proven same product or canonical ingredient"
+    }
+  ],
+  "secondary_identifier_audit": [
+    {
+      "scheme": "CA_DIN",
+      "distinct_nonempty_keys": 58178,
+      "repeated_key_groups": 108,
+      "multiple_native_reference_groups": 108,
+      "overlap_members": [
+        {
+          "scheme": "CA_DIN",
+          "value": "00002631",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 81,
+          "native": "1017",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1017/row/81"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00002631",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 82,
+          "native": "3067",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3067/row/82"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00021423",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 307,
+          "native": "577",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/577/row/307"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00021423",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 308,
+          "native": "2812",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2812/row/308"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00037826",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 529,
+          "native": "3821",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3821/row/529"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00037826",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 530,
+          "native": "1239",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1239/row/530"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00092754",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 760,
+          "native": "1196",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1196/row/760"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00092754",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 761,
+          "native": "1153",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1153/row/761"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00110566",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 861,
+          "native": "174",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/174/row/861"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00110566",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 862,
+          "native": "6428",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6428/row/862"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00139696",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 964,
+          "native": "752",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/752/row/964"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00139696",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 965,
+          "native": "1893",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1893/row/965"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00162507",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1076,
+          "native": "4686",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4686/row/1076"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00162507",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1077,
+          "native": "4683",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4683/row/1077"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00162507",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1078,
+          "native": "1659",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1659/row/1078"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00172944",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1125,
+          "native": "332",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/332/row/1125"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00172944",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1126,
+          "native": "1517",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1517/row/1126"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00179981",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1219,
+          "native": "1791",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1791/row/1219"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00179981",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1220,
+          "native": "1365",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1365/row/1220"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00180009",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1221,
+          "native": "1792",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1792/row/1221"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00180009",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1222,
+          "native": "1364",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1364/row/1222"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00180017",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1223,
+          "native": "1122",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1122/row/1223"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00180017",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1224,
+          "native": "1363",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1363/row/1224"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00180041",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1226,
+          "native": "11065",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11065/row/1226"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00180041",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1227,
+          "native": "7120",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7120/row/1227"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00223077",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1353,
+          "native": "2991",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2991/row/1353"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00223077",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1354,
+          "native": "2992",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2992/row/1354"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00231770",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1421,
+          "native": "1361",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1361/row/1421"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00231770",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1422,
+          "native": "1278",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1278/row/1422"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00243108",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1504,
+          "native": "1432",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1432/row/1504"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00243108",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1505,
+          "native": "1418",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1418/row/1505"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00243108",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1506,
+          "native": "1419",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1419/row/1506"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00243108",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1507,
+          "native": "1520",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1520/row/1507"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00244341",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1526,
+          "native": "1789",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1789/row/1526"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00244341",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1527,
+          "native": "1433",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1433/row/1527"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00244341",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1528,
+          "native": "1790",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1790/row/1528"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00274577",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1776,
+          "native": "1591",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1591/row/1776"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00274577",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1777,
+          "native": "1592",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1592/row/1777"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00274577",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1778,
+          "native": "1590",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1590/row/1778"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00274860",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1780,
+          "native": "5978",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5978/row/1780"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00274860",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1781,
+          "native": "5883",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5883/row/1781"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00289426",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1864,
+          "native": "1918",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1918/row/1864"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00289426",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1865,
+          "native": "1917",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1917/row/1865"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00296163",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1924,
+          "native": "2526",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2526/row/1924"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00296163",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1925,
+          "native": "5295",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5295/row/1925"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00306584",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1975,
+          "native": "1908",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/1908/row/1975"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00306584",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 1976,
+          "native": "7296",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7296/row/1976"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00325295",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2107,
+          "native": "2115",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2115/row/2107"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00325295",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2108,
+          "native": "2118",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2118/row/2108"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00325295",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2109,
+          "native": "2117",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2117/row/2109"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00328162",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2131,
+          "native": "4091",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4091/row/2131"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00328162",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2132,
+          "native": "2334",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2334/row/2132"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00328804",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2143,
+          "native": "2123",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2123/row/2143"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00328804",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2144,
+          "native": "2124",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2124/row/2144"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00336858",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2206,
+          "native": "2163",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2163/row/2206"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00336858",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2207,
+          "native": "2162",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2162/row/2207"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00344230",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2256,
+          "native": "2340",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2340/row/2256"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00344230",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2257,
+          "native": "2338",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2338/row/2257"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00346632",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2282,
+          "native": "2262",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2262/row/2282"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00346632",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2283,
+          "native": "2192",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2192/row/2283"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00354279",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2325,
+          "native": "5564",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5564/row/2325"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00354279",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2326,
+          "native": "5148",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5148/row/2326"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00365890",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2428,
+          "native": "2415",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2415/row/2428"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00365890",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2429,
+          "native": "2414",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2414/row/2429"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00365890",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2430,
+          "native": "2416",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2416/row/2430"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00365904",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2431,
+          "native": "2418",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2418/row/2431"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00365904",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2432,
+          "native": "2417",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2417/row/2432"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00365904",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2433,
+          "native": "2419",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2419/row/2433"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00365904",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2434,
+          "native": "2768",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2768/row/2434"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00366676",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2439,
+          "native": "2693",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2693/row/2439"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00366676",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2440,
+          "native": "2694",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2694/row/2440"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00379085",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2537,
+          "native": "2678",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2678/row/2537"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00379085",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2538,
+          "native": "3617",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3617/row/2538"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00379727",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2543,
+          "native": "5557",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5557/row/2543"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00379727",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2544,
+          "native": "2730",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2730/row/2544"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00385441",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2579,
+          "native": "3055",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3055/row/2579"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00385441",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2580,
+          "native": "2661",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2661/row/2580"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00393630",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2663,
+          "native": "2624",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2624/row/2663"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00393630",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2664,
+          "native": "2626",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2626/row/2664"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00393630",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2665,
+          "native": "2607",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2607/row/2665"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00393630",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2666,
+          "native": "2625",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2625/row/2666"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00393819",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2671,
+          "native": "4143",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4143/row/2671"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00393819",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2672,
+          "native": "2882",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2882/row/2672"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00401838",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2770,
+          "native": "10508",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10508/row/2770"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00401838",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 2771,
+          "native": "4012",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4012/row/2771"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00430862",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3061,
+          "native": "4249",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4249/row/3061"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00430862",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3062,
+          "native": "3074",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3074/row/3062"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00437840",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3127,
+          "native": "2995",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2995/row/3127"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00437840",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3128,
+          "native": "2993",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2993/row/3128"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00437840",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3129,
+          "native": "2994",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/2994/row/3129"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00449989",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3249,
+          "native": "5060",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5060/row/3249"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00449989",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3250,
+          "native": "10199",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10199/row/3250"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00463108",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3371,
+          "native": "8530",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8530/row/3371"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00463108",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3372,
+          "native": "4909",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4909/row/3372"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00463108",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3373,
+          "native": "5735",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5735/row/3373"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00463108",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3374,
+          "native": "3303",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3303/row/3374"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00470910",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3468,
+          "native": "3826",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3826/row/3468"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00470910",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3469,
+          "native": "3827",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3827/row/3469"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00479306",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3566,
+          "native": "3504",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3504/row/3566"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00479306",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3567,
+          "native": "3505",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3505/row/3567"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00479306",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3568,
+          "native": "3506",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3506/row/3568"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00479306",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3569,
+          "native": "6047",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6047/row/3569"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00479306",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3570,
+          "native": "5285",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5285/row/3570"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00484830",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3649,
+          "native": "3615",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3615/row/3649"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00484830",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3650,
+          "native": "3616",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3616/row/3650"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00486256",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3665,
+          "native": "7415",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7415/row/3665"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00486256",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3666,
+          "native": "3860",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3860/row/3666"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00486256",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3667,
+          "native": "16496",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/16496/row/3667"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00486256",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3668,
+          "native": "8485",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8485/row/3668"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00488372",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3695,
+          "native": "4589",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4589/row/3695"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00488372",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3696,
+          "native": "3635",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3635/row/3696"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00490490",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3710,
+          "native": "3593",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3593/row/3710"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00490490",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3711,
+          "native": "3637",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3637/row/3711"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00497193",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3787,
+          "native": "6547",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6547/row/3787"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00497193",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3788,
+          "native": "4226",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4226/row/3788"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00499617",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3835,
+          "native": "4711",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4711/row/3835"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00499617",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 3836,
+          "native": "4614",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4614/row/3836"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00517208",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4073,
+          "native": "3983",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3983/row/4073"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00517208",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4074,
+          "native": "3987",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3987/row/4074"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00517224",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4076,
+          "native": "3984",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3984/row/4076"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00517224",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4077,
+          "native": "3988",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3988/row/4077"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00517232",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4078,
+          "native": "3985",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3985/row/4078"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00517232",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4079,
+          "native": "3986",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/3986/row/4079"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00530808",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4277,
+          "native": "4244",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4244/row/4277"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00530808",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4278,
+          "native": "8339",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8339/row/4278"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00532266",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4315,
+          "native": "4878",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4878/row/4315"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00532266",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4316,
+          "native": "6199",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6199/row/4316"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00539333",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4388,
+          "native": "4460",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4460/row/4388"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00539333",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4389,
+          "native": "4461",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4461/row/4389"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00539341",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4390,
+          "native": "4462",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4462/row/4390"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00539341",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4391,
+          "native": "6147",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6147/row/4391"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00545384",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4479,
+          "native": "5624",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5624/row/4479"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00545384",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4480,
+          "native": "5627",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5627/row/4480"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00548987",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4517,
+          "native": "4672",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4672/row/4517"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00548987",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4518,
+          "native": "4671",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4671/row/4518"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00564826",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4733,
+          "native": "5408",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5408/row/4733"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00564826",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4734,
+          "native": "5376",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5376/row/4734"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00572632",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4849,
+          "native": "5669",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5669/row/4849"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00572632",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4850,
+          "native": "4979",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/4979/row/4850"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00579947",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4966,
+          "native": "6900",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6900/row/4966"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00579947",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4967,
+          "native": "6345",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6345/row/4967"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00579955",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4968,
+          "native": "6901",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6901/row/4968"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00579955",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4969,
+          "native": "6207",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6207/row/4969"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00579971",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4971,
+          "native": "6902",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6902/row/4971"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00579971",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 4972,
+          "native": "6435",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6435/row/4972"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00597449",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5262,
+          "native": "9375",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9375/row/5262"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00597449",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5263,
+          "native": "9014",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9014/row/5263"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00599905",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5300,
+          "native": "7026",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7026/row/5300"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00599905",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5301,
+          "native": "6146",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6146/row/5301"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00609463",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5463,
+          "native": "5867",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5867/row/5463"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00609463",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5464,
+          "native": "6191",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6191/row/5464"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00610445",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5482,
+          "native": "5515",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5515/row/5482"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00610445",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5483,
+          "native": "5517",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5517/row/5483"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00610453",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5484,
+          "native": "5513",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5513/row/5484"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00610453",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5485,
+          "native": "5516",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5516/row/5485"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00617806",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5642,
+          "native": "6137",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6137/row/5642"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00617806",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5643,
+          "native": "5642",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5642/row/5643"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00617814",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5644,
+          "native": "5751",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5751/row/5644"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00617814",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5645,
+          "native": "5656",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/5656/row/5645"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00631698",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5861,
+          "native": "7028",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7028/row/5861"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00631698",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5862,
+          "native": "6144",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6144/row/5862"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00631701",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5863,
+          "native": "7027",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7027/row/5863"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00631701",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5864,
+          "native": "6145",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6145/row/5864"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00632333",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5882,
+          "native": "6393",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6393/row/5882"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00632333",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5883,
+          "native": "10449",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10449/row/5883"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00632333",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 5884,
+          "native": "7513",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7513/row/5884"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00647187",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6131,
+          "native": "6155",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6155/row/6131"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00647187",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6132,
+          "native": "6153",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6153/row/6132"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00651613",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6185,
+          "native": "6802",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6802/row/6185"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00651613",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6186,
+          "native": "6219",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6219/row/6186"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00651613",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6187,
+          "native": "6218",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6218/row/6187"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00652334",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6198,
+          "native": "11051",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11051/row/6198"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00652334",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6199,
+          "native": "7342",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7342/row/6199"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00653217",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6215,
+          "native": "6823",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6823/row/6215"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00653217",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6216,
+          "native": "6620",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6620/row/6216"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00659290",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6332,
+          "native": "6541",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6541/row/6332"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00659290",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6333,
+          "native": "6544",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6544/row/6333"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00659290",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6334,
+          "native": "6542",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6542/row/6334"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00659290",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6335,
+          "native": "6543",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/6543/row/6335"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00668419",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6525,
+          "native": "8031",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8031/row/6525"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00668419",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6526,
+          "native": "8028",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8028/row/6526"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00670642",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6606,
+          "native": "9672",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9672/row/6606"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00670642",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6607,
+          "native": "7219",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7219/row/6607"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00682764",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6883,
+          "native": "7238",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7238/row/6883"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00682764",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6884,
+          "native": "7939",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7939/row/6884"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00682764",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6885,
+          "native": "7906",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7906/row/6885"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00682764",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6886,
+          "native": "7907",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7907/row/6886"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00682764",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6887,
+          "native": "7941",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7941/row/6887"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00683663",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6939,
+          "native": "7237",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7237/row/6939"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00683663",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6940,
+          "native": "9143",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9143/row/6940"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00683779",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6945,
+          "native": "9736",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9736/row/6945"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00683779",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6946,
+          "native": "7938",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7938/row/6946"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00683779",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 6947,
+          "native": "7937",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7937/row/6947"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00690988",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7166,
+          "native": "8783",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8783/row/7166"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00690988",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7167,
+          "native": "8848",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8848/row/7167"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00704059",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7553,
+          "native": "7195",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7195/row/7553"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00704059",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7554,
+          "native": "7966",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7966/row/7554"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00714372",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7692,
+          "native": "13017",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/13017/row/7692"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00714372",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7693,
+          "native": "8481",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8481/row/7693"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00721670",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7830,
+          "native": "8293",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8293/row/7830"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00721670",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7831,
+          "native": "8295",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8295/row/7831"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00721689",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7832,
+          "native": "8294",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8294/row/7832"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00721689",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7833,
+          "native": "8306",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8306/row/7833"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00721751",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7839,
+          "native": "39658",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/39658/row/7839"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00721751",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7840,
+          "native": "8301",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8301/row/7840"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00728934",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7977,
+          "native": "9454",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9454/row/7977"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00728934",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7978,
+          "native": "9457",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9457/row/7978"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00728934",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7979,
+          "native": "9464",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9464/row/7979"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00728934",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7980,
+          "native": "9463",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9463/row/7980"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00728934",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7981,
+          "native": "9459",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9459/row/7981"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00728934",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7982,
+          "native": "9458",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9458/row/7982"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00728934",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7983,
+          "native": "9462",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9462/row/7983"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00728934",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 7984,
+          "native": "9455",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9455/row/7984"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00732052",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8035,
+          "native": "7320",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7320/row/8035"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00732052",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8036,
+          "native": "7321",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/7321/row/8036"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00744689",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8162,
+          "native": "9034",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9034/row/8162"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00744689",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8163,
+          "native": "8719",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/8719/row/8163"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00750212",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8237,
+          "native": "9600",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9600/row/8237"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00750212",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8238,
+          "native": "10994",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10994/row/8238"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00763519",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8479,
+          "native": "10161",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10161/row/8479"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00763519",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8480,
+          "native": "10159",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10159/row/8480"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00768251",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8596,
+          "native": "9155",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9155/row/8596"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00768251",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8597,
+          "native": "9108",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9108/row/8597"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00773530",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8674,
+          "native": "11106",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11106/row/8674"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00773530",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 8675,
+          "native": "9256",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9256/row/8675"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00794511",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9034,
+          "native": "9779",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9779/row/9034"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00794511",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9035,
+          "native": "9778",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/9778/row/9035"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00815357",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9306,
+          "native": "10132",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10132/row/9306"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00815357",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9307,
+          "native": "10846",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10846/row/9307"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00815357",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9308,
+          "native": "10133",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10133/row/9308"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00815357",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9309,
+          "native": "10005",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10005/row/9309"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00815357",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9310,
+          "native": "10006",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10006/row/9310"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00816132",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9322,
+          "native": "11682",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11682/row/9322"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00816132",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9323,
+          "native": "11860",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11860/row/9323"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00855545",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9758,
+          "native": "10348",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10348/row/9758"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00855545",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9759,
+          "native": "11581",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11581/row/9759"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00855626",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9765,
+          "native": "10355",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10355/row/9765"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00855626",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 9766,
+          "native": "11605",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11605/row/9766"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00868167",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10045,
+          "native": "10365",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/10365/row/10045"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00868167",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10046,
+          "native": "11281",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11281/row/10046"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00872695",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10153,
+          "native": "12206",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/12206/row/10153"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00872695",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10154,
+          "native": "12205",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/12205/row/10154"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00876526",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10217,
+          "native": "13663",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/13663/row/10217"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "00876526",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10218,
+          "native": "14621",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/14621/row/10218"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01905058",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10781,
+          "native": "11840",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11840/row/10781"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01905058",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10782,
+          "native": "11694",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11694/row/10782"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01905058",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10783,
+          "native": "12330",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/12330/row/10783"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01905058",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 10784,
+          "native": "11693",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11693/row/10784"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01915274",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 11100,
+          "native": "11587",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11587/row/11100"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01915274",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 11101,
+          "native": "21465",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/21465/row/11101"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01922394",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 11281,
+          "native": "11715",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11715/row/11281"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01922394",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 11282,
+          "native": "11714",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/11714/row/11282"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01924303",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 11331,
+          "native": "12185",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/12185/row/11331"
+        },
+        {
+          "scheme": "CA_DIN",
+          "value": "01924303",
+          "source": "ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13",
+          "row_order": 11332,
+          "native": "21690",
+          "locator": "record:ca-dpd-products-sha256-90aab47f7909abae19664947514d33755daedbbbda9d1b6f8bf416142f035d13/native/21690/row/11332"
+        }
+      ],
+      "interpretation": "Actual identifier overlap requiring review; no automatic identity merge"
+    },
+    {
+      "scheme": "FR_CIP13",
+      "distinct_nonempty_keys": 20920,
+      "repeated_key_groups": 0,
+      "multiple_native_reference_groups": 0,
+      "overlap_members": [],
+      "interpretation": "Actual identifier overlap requiring review; no automatic identity merge"
+    }
+  ],
+  "same_market_product_name_audit": [
+    {
+      "market": "CA",
+      "multiple_reference_product_name_groups": 6615
+    },
+    {
+      "market": "EMA_REGION",
+      "multiple_reference_product_name_groups": 51
+    },
+    {
+      "market": "FR",
+      "multiple_reference_product_name_groups": 118
+    },
+    {
+      "market": "JP",
+      "multiple_reference_product_name_groups": 289
+    },
+    {
+      "market": "KR",
+      "multiple_reference_product_name_groups": 82800
+    },
+    {
+      "market": "TW",
+      "multiple_reference_product_name_groups": 9976
     }
   ],
   "japan_cross_file_overlaps": [

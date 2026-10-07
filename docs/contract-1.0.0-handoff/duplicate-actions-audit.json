@@ -1,0 +1,28 @@
+{
+  "run_id": 37699149959,
+  "run_url": "https://github.com/ctshieh/safemed-v2-global-drug-data/actions/runs/37699149959",
+  "build_commit": "784db1b722b6aa17fa5d26583450e64bb79c1a3d",
+  "conclusion": "SUCCESS",
+  "job_duration": "1m16s",
+  "artifact_id": 11516248477,
+  "artifact_name": "COUNTRY-DUPLICATE-AUDIT-37699149959-1",
+  "artifact_size_bytes": 141205022,
+  "github_artifact_digest": "sha256:d359704d4f86fb199b0f377c98141b0aa20076fb5a66997c8ca850f73cb5d48f",
+  "retention_days": 30,
+  "downloaded_artifact_verified": true,
+  "checks": [
+    "17 source snapshot IDs match local immutable inputs",
+    "Original bytes checksums verified",
+    "900831 input rows / 900826 record rows",
+    "784 exact-content extra rows",
+    "JP 12428 distinct price-list codes",
+    "CA 108 DIN multiple-native-reference groups",
+    "FR 20920 unique CIP13",
+    "SQLite integrity and per-source record counts",
+    "All DIN overlap members retained"
+  ],
+  "source_rows_deleted": 0,
+  "market_products_auto_merged": 0,
+  "runtime_medical_rules_activated": 0,
+  "release_created": false
+}
