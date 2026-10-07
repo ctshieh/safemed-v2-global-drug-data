@@ -23,5 +23,12 @@
     }
   ],
   "checked_on": "2026-10-08",
-  "next_step": "Obtain authoritative clarification of commercial redistribution and preservation of source content during SQLite conversion/ingredient normalization; do not mark commercial approved. No permission request sent."
+  "next_step": "Await written clarification of commercial redistribution and preservation of source content during SQLite conversion/ingredient normalization. No approval or response verified; AU excluded from monthly bundle.",
+  "permission_enquiry": {
+    "sent_on": "2026-10-08",
+    "status": "SENT_AWAITING_OFFICIAL_RESPONSE",
+    "to": "copyright@health.gov.au",
+    "cc": "hpp.support@health.gov.au",
+    "verified_in_sent_mail": true
+  }
 }
