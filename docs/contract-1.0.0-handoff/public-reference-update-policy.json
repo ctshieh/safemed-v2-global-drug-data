@@ -1,0 +1,98 @@
+{
+  "checked_on": "2026-10-08",
+  "default_interval_months": 1,
+  "allowed_interval_months": [
+    1,
+    2
+  ],
+  "schedule_utc": "17 1 8 * *",
+  "schedule_taipei": "每月8日09:17（GitHub可能延遲執行）",
+  "repository_variable": "PUBLIC_DATA_UPDATE_INTERVAL_MONTHS",
+  "bimonthly_months": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12
+  ],
+  "retention_days": 90,
+  "candidate_only": true,
+  "runtime_active": false,
+  "release_eligible": false,
+  "included": [
+    "TW",
+    "CA",
+    "FR",
+    "JP",
+    "KR",
+    "EMA_REGION"
+  ],
+  "excluded": [
+    "AU",
+    "US"
+  ],
+  "sources": [
+    {
+      "source": "TFDA許可證與仿單/外盒目錄",
+      "publisher_cadence": "每7日",
+      "evidence": [
+        "https://data.gov.tw/dataset/9122",
+        "https://data.gov.tw/dataset/9117"
+      ]
+    },
+    {
+      "source": "Health Canada DPD",
+      "publisher_cadence": "nightly; our job retrieves latest public API returned data",
+      "evidence": [
+        "https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database.html"
+      ]
+    },
+    {
+      "source": "France BDPM",
+      "publisher_cadence": "monthly; per-file dates may differ and important information can update more often",
+      "evidence": [
+        "https://base-donnees-publique.medicaments.gouv.fr/telechargement"
+      ]
+    },
+    {
+      "source": "Japan MHLW price lists",
+      "publisher_cadence": "公告版本；未確認固定每月或每兩月更新保證",
+      "evidence": [
+        "https://www.mhlw.go.jp/topics/2026/04/tp20260401-01.html"
+      ],
+      "maintenance": "2027年起須確認當年度官方來源頁並設定 MHLW_PRICE_LIST_PAGE；未確認則建置失敗，不默認舊年資料最新"
+    },
+    {
+      "source": "Korea HIRA standard code mapping",
+      "publisher_cadence": "quarterly",
+      "next_scheduled_publication_as_reported": "2026-12-15",
+      "data_as_of": "2026-08",
+      "evidence": [
+        "https://www.data.go.kr/data/15067462/fileData.do"
+      ]
+    },
+    {
+      "source": "EMA centralised procedure metadata",
+      "publisher_cadence": "以官方記錄last_updated_date及來源checksum判斷；未確認固定更新間隔",
+      "evidence": [
+        "https://www.ema.europa.eu/en/scientific-guidelines/download-website-data-json-data-format"
+      ]
+    }
+  ],
+  "resource_policy": {
+    "repository_visibility": "PUBLIC",
+    "runner": "standard GitHub-hosted ubuntu-latest",
+    "billing_evidence": "https://docs.github.com/en/billing/concepts/product-billing/github-actions",
+    "note": "標準GitHub-hosted runner在公開repository執行免費；不是已用完私人repository分鐘數的推定。每次job上限30分鐘，artifact90天保留。若實際資源不足可設定週期2，不自動支付或使用larger runner。",
+    "automatic_budget_downgrade": false
+  },
+  "operational_limits": [
+    "GitHub schedule runs on default branch, can delay or deactivate after 60 days repository inactivity; monitor actual runs",
+    "All five groups must succeed; no partial bundle labelled complete",
+    "Candidate bundle contains source DBs/raw bytes and app source catalogue, not App runtime schema or reviewed DDI rules",
+    "Source update dates and retrieval dates remain distinct; unchanged sources retained",
+    "Monthly checks do not imply publisher provides new monthly data",
+    "Formal source rights and pharmacist/physician review remain pending; no signed Release"
+  ]
+}

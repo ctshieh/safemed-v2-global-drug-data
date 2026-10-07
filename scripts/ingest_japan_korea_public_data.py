@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Lossless JP/KR official candidate intake. AU records rights blockers only."""
-import argparse,csv,datetime as dt,hashlib,io,json,re,shutil,sqlite3,tempfile,urllib.parse,zipfile
+import os,argparse,csv,datetime as dt,hashlib,io,json,re,shutil,sqlite3,tempfile,urllib.parse,zipfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from ingest_tfda_open_data import download
-JP_PAGE='https://www.mhlw.go.jp/topics/2026/04/tp20260401-01.html'
+JP_PAGE=os.environ.get('MHLW_PRICE_LIST_PAGE') or 'https://www.mhlw.go.jp/topics/2026/04/tp20260401-01.html'
 JP_LICENSE='https://www.mhlw.go.jp/chosakuken/index.html'
 KR_PAGE='https://www.data.go.kr/data/15067462/fileData.do'
 NS={'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
@@ -45,6 +45,8 @@ def build(country,output):
         with sqlite3.connect(root/(country+'_UNREVIEWED_candidate.sqlite3')) as db:
             db.executescript('CREATE TABLE candidate_sources(source_snapshot_id TEXT PRIMARY KEY,metadata_json TEXT);CREATE TABLE candidate_rows(source_snapshot_id TEXT,source_order INTEGER,native_reference TEXT,source_locator TEXT,raw_json TEXT,PRIMARY KEY(source_snapshot_id,source_order));')
             if country=='JP':
+                if not os.environ.get('MHLW_PRICE_LIST_PAGE') and dt.datetime.now(dt.timezone.utc).year != 2026:raise ValueError('Confirm current MHLW source page via MHLW_PRICE_LIST_PAGE before a new-year build')
+                if not JP_PAGE.startswith('https://www.mhlw.go.jp/'):raise ValueError('Japan source must be official MHLW')
                 page=download(JP_PAGE);html=page.decode('shift_jis');(root/'source-page.html').write_bytes(page)
                 license_raw=download(JP_LICENSE);(root/'license-evidence.html').write_bytes(license_raw)
                 if b'PDL1.0' not in license_raw:raise ValueError('Japan license changed')
