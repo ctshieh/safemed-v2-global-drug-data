@@ -37,3 +37,9 @@ EMA 是區域中央程序文件：jurisdiction=NULL，不能設成某個會員�
 本機候選目錄：dist/international-public-20261008、dist/france-public-20261008。永久版本化稽核 metadata 位於 canada-ema-intake-report.json、france-intake-report.json；資料 archive 由 Actions artifact 保存30天，正式來源證據長期保存政策仍需落實。
 
 Actions workflow：.github/workflows/international-public-data.yml；Canada/EMA 與 France 分成兩個 job，不建立 Release。script/input tests 2+2 PASS，actionlint PASS，全量 API/file 下載與 SQLite integrity PASS。日本、韓國、澳洲等仍待具體可下載資料集與條款核實，不能宣稱已納入。
+
+## GitHub Actions 已實際成功
+
+Run https://github.com/ctshieh/safemed-v2-global-drug-data/actions/runs/37651829456 ：SUCCESS。Canada/EMA job 19 秒，France job 13 秒；四個合成保留/拒絕 tests 與真實資料整份下載成功。
+
+已保存候選 artifacts：CA-EMA-OPEN-DATA-UNREVIEWED-37651829456-1（ID 11496274269，19,043,324 bytes）、FR-OPEN-DATA-UNREVIEWED-37651829456-1（ID 11497480034，5,853,850 bytes）。包含原始資料、候選 SQLite、intake-report.json 与 ATTRIBUTION.txt；不含正式簽章或 runtime 包。
