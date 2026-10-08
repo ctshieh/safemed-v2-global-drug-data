@@ -12,36 +12,36 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - run: python scripts/test_duplicate_audit.py
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37650795312
           name: TW-OPEN-DATA-UNREVIEWED-37650795312-1
           path: inputs/TW
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37651829456
           name: CA-EMA-OPEN-DATA-UNREVIEWED-37651829456-1
           path: inputs/CA-EMA
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37651829456
           name: FR-OPEN-DATA-UNREVIEWED-37651829456-1
           path: inputs/FR
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37697632621
           name: JP-OPEN-DATA-UNREVIEWED-37697632621-1
           path: inputs/JP
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37697632621
@@ -57,7 +57,7 @@ jobs:
             --input inputs/KR/KR_UNREVIEWED_candidate.sqlite3 \
             --output-dir dist/duplicate-audit
           cat dist/duplicate-audit/DUPLICATE_REPORT.md >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: COUNTRY-DUPLICATE-AUDIT-${{ github.run_id }}-${{ github.run_attempt }}
           path: dist/duplicate-audit/

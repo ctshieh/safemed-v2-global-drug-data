@@ -23,7 +23,7 @@ jobs:
     outputs:
       due: ${{ steps.gate.outputs.due }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - id: gate
         env:
           INTERVAL: ${{ vars.PUBLIC_DATA_UPDATE_INTERVAL_MONTHS || '1' }}
@@ -57,8 +57,8 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       SOURCE_COLLECTION_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives && 'VERIFIED_20261008_ARCHIVES' || 'LIVE_OFFICIAL_EXPORTS' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Verify retention and fail-closed gates
@@ -80,7 +80,7 @@ jobs:
           python scripts/ingest_japan_korea_public_data.py --country KR --output-dir inputs/KR
       - name: Recover verified TW archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37650795312
@@ -88,7 +88,7 @@ jobs:
           path: inputs/TW
       - name: Recover verified CA-EMA archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37651829456
@@ -96,7 +96,7 @@ jobs:
           path: inputs/CA-EMA
       - name: Recover verified FR archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37651829456
@@ -104,7 +104,7 @@ jobs:
           path: inputs/FR
       - name: Recover verified JP archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37697632621
@@ -112,7 +112,7 @@ jobs:
           path: inputs/JP
       - name: Recover verified KR archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37697632621
@@ -139,7 +139,7 @@ jobs:
           python scripts/build_public_reference_bundle.py --input-root inputs --output-dir dist/public-reference "${args[@]}"
           cat dist/public-reference/duplicate-audit/DUPLICATE_REPORT.md >> "$GITHUB_STEP_SUMMARY"
           echo 'AU/US excluded. Source reference candidate only; no clinical runtime activation, signing or Release.' >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: PUBLIC-REFERENCE-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
@@ -148,7 +148,7 @@ jobs:
           compression-level: 0
           retention-days: ${{ vars.PUBLIC_DATA_UPDATE_INTERVAL_MONTHS == '2' && 70 || 35 }}
           if-no-files-found: error
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: PUBLIC-REFERENCE-MANIFEST
           path: |

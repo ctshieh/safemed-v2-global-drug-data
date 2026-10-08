@@ -11,15 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Test retention and scope boundaries
         run: python scripts/test_international_intake.py
       - name: Collect complete returned Canada and EMA datasets
         run: python scripts/ingest_international_open_data.py --output-dir dist/international-public-intake
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: CA-EMA-OPEN-DATA-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
           path: dist/international-public-intake/
@@ -33,13 +33,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - run: python scripts/test_france_intake.py
       - run: python scripts/ingest_france_public_data.py --output-dir dist/france-public-intake
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: FR-OPEN-DATA-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
           path: dist/france-public-intake/

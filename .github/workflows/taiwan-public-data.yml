@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Verify raw retention and rejected malformed intake
@@ -19,7 +19,7 @@ jobs:
       - name: Collect all rows in five official TFDA exports
         run: python scripts/ingest_tfda_open_data.py --output-dir dist/taiwan-public-intake
       - name: Save public datasets and unreviewed candidate archive
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: TW-OPEN-DATA-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
           path: dist/taiwan-public-intake/

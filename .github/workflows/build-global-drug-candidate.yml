@@ -30,8 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Check frozen schema inventory
@@ -43,7 +43,7 @@ jobs:
       - name: Build and verify reproducible composed engineering package
         run: python scripts/build_actions_artifact.py --output dist/actions-engineering
       - name: Save composed package and source/gate evidence
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: TEST-ONLY-composed-${{ github.sha }}-${{ github.run_attempt }}
           path: dist/actions-engineering/
@@ -59,8 +59,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Retrieve bounded official label snapshot
@@ -71,7 +71,7 @@ jobs:
       - name: Prepare public audit metadata without label text
         run: python scripts/summarize_candidate_intake.py --input-dir dist/official-candidates --output-dir dist/official-candidates-summary
       - name: Save unreviewed candidate evidence
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: UNREVIEWED-US-label-candidates-${{ github.run_id }}-${{ github.run_attempt }}
           path: dist/official-candidates-summary/
