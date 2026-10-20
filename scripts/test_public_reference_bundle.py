@@ -1,5 +1,5 @@
 import datetime as dt, unittest
-from build_public_reference_bundle import scheduled_due, build
+from build_public_reference_bundle import scheduled_due, build, compare_sources
 class BundleGates(unittest.TestCase):
     def test_calendar_not_sixty_day_drift(self):
         for year,month,want in [(2026,10,True),(2026,11,False),(2026,12,True),(2027,1,False),(2027,2,True)]:
@@ -12,6 +12,10 @@ class BundleGates(unittest.TestCase):
     def test_new_publisher_filename_in_delta(self):
         # Japanese publishers replace dated filenames rather than mutating source IDs.
         old={'jp-20260813':'a','TW':'b'}; current={'jp-20261014':'c','TW':'b'}
-        same=sorted(k for k in current if k in old and current[k]==old[k])
-        self.assertEqual(same,['TW'])
+        diff=compare_sources(current,old)
+        self.assertEqual(diff['unchanged_source_keys'],['TW'])
+        self.assertEqual(diff['added_source_keys'],['jp-20261014'])
+        self.assertEqual(diff['removed_source_keys'],['jp-20260813'])
+        self.assertEqual(diff['changed_source_keys'],[])
+        self.assertFalse(compare_sources(current,None)['baseline_available'])
 if __name__=='__main__':unittest.main()
