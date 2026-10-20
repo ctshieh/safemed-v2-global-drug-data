@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build a lossless official reference candidate bundle; never a clinical runtime release."""
-import argparse, datetime as dt, hashlib, json, os, sqlite3, tarfile
+import argparse, datetime as dt, gzip, hashlib, json, os, sqlite3, tarfile
 from pathlib import Path
 from audit_source_duplicates import audit
 
@@ -17,6 +17,11 @@ def sha(path):
     with path.open('rb') as f:
         for block in iter(lambda: f.read(1024 * 1024), b''): h.update(block)
     return h.hexdigest()
+
+def stable_tar_metadata(info):
+    info.uid=info.gid=0; info.uname=info.gname=''; info.mtime=0
+    info.mode=0o755 if info.isdir() else 0o644
+    return info
 
 def build(inputs, output, previous=None):
     if set(inputs) != set(LABELS): raise ValueError('Require exactly TW, CA-EMA, FR, JP, KR; AU and US are excluded')
@@ -44,15 +49,15 @@ def build(inputs, output, previous=None):
     def fingerprints(items): return {x['source_snapshot_id'].split('-sha256-')[0]:x.get('csv_sha256') or x['raw_sha256'] for x in items}
     current=fingerprints(sources); old=fingerprints(json.loads(previous.read_text())['sources']) if previous else None
     changes={'baseline_available':old is not None,'added_source_keys':sorted(set(current)-set(old or {})),'removed_source_keys':sorted(set(old or {})-set(current)),'changed_source_keys':sorted(k for k in current if old is not None and k in old and current[k]!=old[k]),'unchanged_source_keys':sorted(k for k in current if old is not None and current[k]==old[k]),'note':'Content checksums, not inferred clinical changes. Date-labelled Japanese files may appear as added/removed keys.'}
-    manifest={'format':'safemed-public-reference-candidate-bundle-v1','source_collection_mode':os.environ.get('SOURCE_COLLECTION_MODE','PROVIDED_LOCAL_ARCHIVES'),'built_at':dt.datetime.now(dt.timezone.utc).isoformat(),'git_sha':os.environ.get('GITHUB_SHA'),'actions_run_id':os.environ.get('GITHUB_RUN_ID'),'included_markets':['TW','CA','FR','JP','KR'],'regional_scope':['EMA centralised procedures only; not all EU medicines'],'source_count':17,'retained_source_rows':result['total_input_rows'],'audited_nonheader_rows':result['total_audited_record_rows'],'sources':sources,'source_files':files,'changes':changes,'excluded':{'AU':'PBS commercial scope awaits written clarification; TGA restrictions unresolved','US':'Legacy US/raw label rights and review unresolved; no US data in this new bundle'},'runtime_active':False,'runtime_active_rules':0,'verified_complete_products':0,'release_eligible':False,'signed':False,'clinical_review':'PENDING','disclaimer':DISCLAIMER,'limitations':['Full rows from these 17 source exports only, not complete global medicine or interaction coverage','Independent source SQLite databases; this is not the 29-table App runtime schema','No name-based cross-market merges, deduplication deletions, salt equivalence or inferred clinical rules','Source licences permit declared reuse subject to conditions; formal rights/content review is still pending','Retrieval time is not publisher update date; original publisher date evidence is retained']}
+    manifest={'format':'safemed-public-reference-candidate-bundle-v1','source_collection_mode':os.environ.get('SOURCE_COLLECTION_MODE','PROVIDED_LOCAL_ARCHIVES'),'built_at':dt.datetime.fromtimestamp(int(os.environ['SOURCE_DATE_EPOCH']),dt.timezone.utc).isoformat() if 'SOURCE_DATE_EPOCH' in os.environ else dt.datetime.now(dt.timezone.utc).isoformat(),'git_sha':os.environ.get('GITHUB_SHA'),'actions_run_id':os.environ.get('GITHUB_RUN_ID'),'included_markets':['TW','CA','FR','JP','KR'],'regional_scope':['EMA centralised procedures only; not all EU medicines'],'source_count':17,'retained_source_rows':result['total_input_rows'],'audited_nonheader_rows':result['total_audited_record_rows'],'sources':sources,'source_files':files,'changes':changes,'excluded':{'AU':'PBS commercial scope awaits written clarification; TGA restrictions unresolved','US':'Legacy US/raw label rights and review unresolved; no US data in this new bundle'},'runtime_active':False,'runtime_active_rules':0,'verified_complete_products':0,'release_eligible':False,'signed':False,'clinical_review':'PENDING','disclaimer':DISCLAIMER,'limitations':['Full rows from these 17 source exports only, not complete global medicine or interaction coverage','Independent source SQLite databases; this is not the 29-table App runtime schema','No name-based cross-market merges, deduplication deletions, salt equivalence or inferred clinical rules','Source licences permit declared reuse subject to conditions; formal rights/content review is still pending','Retrieval time is not publisher update date; original publisher date evidence is retained']}
     (output/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     (output/'APP_SOURCE_CATALOG.json').write_text(json.dumps({'disclaimer':DISCLAIMER,'runtime_active':False,'sources':sources,'excluded':manifest['excluded']},ensure_ascii=False,indent=2)+'\n')
     (output/'ATTRIBUTION.txt').write_text('\n'.join(attrs)+'\n'+DISCLAIMER+'\n')
     (output/'README.txt').write_text('SafeMed official public reference candidate bundle.\nCandidate only; unsigned, not an App runtime package or formal Release.\nOriginal source bytes, all source rows and per-source SQLite archives are retained in sources/.\nApp-readable source catalogue, licence URLs and retrieval dates: APP_SOURCE_CATALOG.json.\nFull-row checksum and duplicate checks: duplicate-audit/. No rows merged or removed.\nAU and US are excluded. '+DISCLAIMER+'\n')
     archive=output/'PUBLIC-REFERENCE-UNREVIEWED.tar.gz'
-    with tarfile.open(archive,'w:gz',compresslevel=6) as t:
-        for label in LABELS: t.add(inputs[label],arcname='sources/'+label,recursive=True)
-        for name in ['manifest.json','APP_SOURCE_CATALOG.json','ATTRIBUTION.txt','README.txt','duplicate-audit']: t.add(output/name,arcname=name,recursive=True)
+    with archive.open('wb') as raw, gzip.GzipFile(filename='', mode='wb', fileobj=raw, mtime=0) as gz, tarfile.open(fileobj=gz, mode='w') as t:
+        for label in LABELS: t.add(inputs[label],arcname='sources/'+label,recursive=True,filter=stable_tar_metadata)
+        for name in ['manifest.json','APP_SOURCE_CATALOG.json','ATTRIBUTION.txt','README.txt','duplicate-audit']: t.add(output/name,arcname=name,recursive=True,filter=stable_tar_metadata)
     (output/'archive-sha256.json').write_text(json.dumps({'file':archive.name,'bytes':archive.stat().st_size,'sha256':sha(archive)},indent=2)+'\n')
     print(json.dumps({'source_count':17,'retained_source_rows':manifest['retained_source_rows'],'archive_bytes':archive.stat().st_size,'release_eligible':False}),flush=True)
     return manifest

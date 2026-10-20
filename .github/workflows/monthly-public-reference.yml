@@ -19,11 +19,11 @@ env:
   PYTHONUNBUFFERED: '1'
 jobs:
   cadence:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       due: ${{ steps.gate.outputs.due }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - id: gate
         env:
           INTERVAL: ${{ vars.PUBLIC_DATA_UPDATE_INTERVAL_MONTHS || '1' }}
@@ -32,7 +32,14 @@ jobs:
           due=$(python scripts/build_public_reference_bundle.py --check-schedule --interval "$INTERVAL")
           if [ "${{ github.event_name }}" = workflow_dispatch ]; then due=true; fi
           if [ "${{ github.event_name }}" = schedule ] && [ "$due" = true ]; then
-            last=$(gh run list --workflow monthly-public-reference.yml --branch main --status success --limit 1 --json updatedAt --jq '.[0].updatedAt // empty')
+            last=''
+            for run in $(gh run list --workflow monthly-public-reference.yml --branch main --status success --limit 30 --json databaseId --jq '.[].databaseId'); do
+              found=$(gh api "repos/${{ github.repository }}/actions/runs/$run/artifacts" --jq '.artifacts[] | select(.name == "PUBLIC-REFERENCE-MANIFEST" and .expired == false) | .id')
+              if [ -n "$found" ]; then
+                last=$(gh run view "$run" --json updatedAt --jq .updatedAt)
+                break
+              fi
+            done
             LAST_SUCCESS="$last" python - <<'PYCODE' > month-comparison.txt
           import datetime as dt, os
           from zoneinfo import ZoneInfo
@@ -50,17 +57,17 @@ jobs:
   build:
     needs: cadence
     if: needs.cadence.outputs.due == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       MHLW_PRICE_LIST_PAGE: ${{ vars.MHLW_PRICE_LIST_PAGE }}
       GH_TOKEN: ${{ github.token }}
       SOURCE_COLLECTION_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives && 'VERIFIED_20261008_ARCHIVES' || 'LIVE_OFFICIAL_EXPORTS' }}
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
-          python-version: '3.12'
+          python-version: '3.12.12'
       - name: Verify retention and fail-closed gates
         run: |
           python scripts/test_public_reference_bundle.py
@@ -73,14 +80,15 @@ jobs:
       - name: Retrieve complete declared-reuse official exports
         if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives) }}
         run: |
-          python scripts/ingest_tfda_open_data.py --output-dir inputs/TW
-          python scripts/ingest_international_open_data.py --output-dir inputs/CA-EMA
-          python scripts/ingest_france_public_data.py --output-dir inputs/FR
-          python scripts/ingest_japan_korea_public_data.py --country JP --output-dir inputs/JP
-          python scripts/ingest_japan_korea_public_data.py --country KR --output-dir inputs/KR
+          mkdir -p evidence
+          python scripts/ingest_tfda_open_data.py --output-dir inputs/TW 2>&1 | tee evidence/TW.log
+          python scripts/ingest_international_open_data.py --output-dir inputs/CA-EMA 2>&1 | tee evidence/CA-EMA.log
+          python scripts/ingest_france_public_data.py --output-dir inputs/FR 2>&1 | tee evidence/FR.log
+          python scripts/ingest_japan_korea_public_data.py --country JP --output-dir inputs/JP 2>&1 | tee evidence/JP.log
+          python scripts/ingest_japan_korea_public_data.py --country KR --output-dir inputs/KR 2>&1 | tee evidence/KR.log
       - name: Recover verified TW archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37650795312
@@ -88,7 +96,7 @@ jobs:
           path: inputs/TW
       - name: Recover verified CA-EMA archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37651829456
@@ -96,7 +104,7 @@ jobs:
           path: inputs/CA-EMA
       - name: Recover verified FR archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37651829456
@@ -104,7 +112,7 @@ jobs:
           path: inputs/FR
       - name: Recover verified JP archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37697632621
@@ -112,7 +120,7 @@ jobs:
           path: inputs/JP
       - name: Recover verified KR archive without changing source retrieval date
         if: github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: 37697632621
@@ -136,24 +144,45 @@ jobs:
         run: |
           args=()
           if [ -n "${PREVIOUS_MANIFEST:-}" ]; then args+=(--previous "$PREVIOUS_MANIFEST"); fi
-          python scripts/build_public_reference_bundle.py --input-root inputs --output-dir dist/public-reference "${args[@]}"
+          python scripts/build_public_reference_bundle.py --input-root inputs --output-dir dist/public-reference "${args[@]}" 2>&1 | tee evidence/build.log
+          python scripts/build_country_matrix.py --bundle-dir dist/public-reference
+          python scripts/verify_public_reference_bundle.py --bundle-dir dist/public-reference 2>&1 | tee evidence/verify.log
           cat dist/public-reference/duplicate-audit/DUPLICATE_REPORT.md >> "$GITHUB_STEP_SUMMARY"
           echo 'AU/US excluded. Source reference candidate only; no clinical runtime activation, signing or Release.' >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: PUBLIC-REFERENCE-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             dist/public-reference/PUBLIC-REFERENCE-UNREVIEWED.tar.gz
             dist/public-reference/archive-sha256.json
           compression-level: 0
-          retention-days: ${{ vars.PUBLIC_DATA_UPDATE_INTERVAL_MONTHS == '2' && 70 || 35 }}
+          retention-days: 90
           if-no-files-found: error
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: PUBLIC-REFERENCE-MANIFEST
           path: |
             dist/public-reference/manifest.json
             dist/public-reference/APP_SOURCE_CATALOG.json
             dist/public-reference/archive-sha256.json
+            dist/public-reference/verification.json
+            dist/public-reference/COUNTRY_SOURCE_MATRIX.json
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Preserve logs and partial sources on success or failure
+        if: always()
+        run: |
+          mkdir -p evidence
+          python --version > evidence/python-version.txt
+          git rev-parse HEAD > evidence/commit.txt
+          echo '${{ job.status }}' > evidence/job-status.txt
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: BUILD-EVIDENCE-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            evidence/
+            inputs/
           retention-days: 90
           if-no-files-found: error
