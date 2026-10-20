@@ -3,6 +3,7 @@
 import os,argparse,csv,datetime as dt,hashlib,io,json,re,shutil,sqlite3,tempfile,urllib.parse,zipfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from retained_source_temp import retained_temp
 from ingest_tfda_open_data import download
 JP_PAGE=os.environ.get('MHLW_PRICE_LIST_PAGE') or 'https://www.mhlw.go.jp/topics/2026/04/tp20260401-01.html'
 JP_LICENSE='https://www.mhlw.go.jp/chosakuken/index.html'
@@ -40,7 +41,7 @@ def csv_rows(raw):
 def build(country,output):
     if output.exists():raise ValueError('Refuse overwriting source archive')
     output.parent.mkdir(parents=True,exist_ok=True)
-    with tempfile.TemporaryDirectory(dir=output.parent) as tmp:
+    with retained_temp(dir=output.parent) as tmp:
         root=Path(tmp)/'intake';root.mkdir();reports=[]
         with sqlite3.connect(root/(country+'_UNREVIEWED_candidate.sqlite3')) as db:
             db.executescript('CREATE TABLE candidate_sources(source_snapshot_id TEXT PRIMARY KEY,metadata_json TEXT);CREATE TABLE candidate_rows(source_snapshot_id TEXT,source_order INTEGER,native_reference TEXT,source_locator TEXT,raw_json TEXT,PRIMARY KEY(source_snapshot_id,source_order));')

@@ -2,6 +2,7 @@
 """Whole official Canada/EMA JSON intake; no clinical activation or cross-market name merging."""
 import argparse,datetime as dt,hashlib,json,shutil,sqlite3,tempfile
 from pathlib import Path
+from retained_source_temp import retained_temp
 from ingest_tfda_open_data import download
 CANADA_PAGE='https://open.canada.ca/data/en/dataset/bf55e42a-63cb-4556-bfd8-44f26e5a36fe'
 CANADA_LICENSE='https://open.canada.ca/en/open-government-licence-canada/'
@@ -35,7 +36,7 @@ def build(output,input_dir=None,retrieved_at=None):
     retrieved_at=retrieved_at or dt.datetime.now(dt.timezone.utc).isoformat()
     if dt.datetime.fromisoformat(retrieved_at.replace('Z','+00:00')).tzinfo is None:raise ValueError('Timezone required')
     output.parent.mkdir(parents=True,exist_ok=True)
-    with tempfile.TemporaryDirectory(dir=output.parent) as td:
+    with retained_temp(dir=output.parent) as td:
         root=Path(td)/'intake';root.mkdir();reports=[]
         with sqlite3.connect(root/'INTERNATIONAL_UNREVIEWED_candidate.sqlite3') as c:
             c.executescript("""

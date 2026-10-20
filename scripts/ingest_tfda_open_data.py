@@ -2,6 +2,7 @@
 """Full TFDA open CSV intake. Candidate only; preserve all assertions and original bytes."""
 import argparse,csv,datetime as dt,hashlib,io,json,shutil,sqlite3,tempfile,time,zipfile
 from pathlib import Path
+from retained_source_temp import retained_temp
 from urllib.request import urlopen
 SOURCES=[(36,9122,'全部藥品許可證資料集'),(43,9121,'藥品詳細處方成分資料集'),(39,9117,'藥品仿單或外盒資料集'),(41,9119,'藥品藥理治療分類ATC碼資料集'),(40,9118,'藥品藥理治療分類AHFS/DI碼資料集')]
 LIMIT=128*1024*1024
@@ -73,7 +74,7 @@ def build(output,input_dir=None,retrieved_at=None):
     if dt.datetime.fromisoformat(retrieved_at.replace('Z','+00:00')).tzinfo is None:
         raise ValueError('Timezone required')
     output.parent.mkdir(parents=True,exist_ok=True)
-    with tempfile.TemporaryDirectory(dir=output.parent) as td:
+    with retained_temp(dir=output.parent) as td:
         root=Path(td)/'intake';root.mkdir()
         with sqlite3.connect(root/'TW_UNREVIEWED_candidate.sqlite3') as c:
             c.executescript("""

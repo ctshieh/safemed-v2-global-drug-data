@@ -2,6 +2,7 @@
 """France BDPM full original tab-file intake; no guessed semantic mapping or activated rules."""
 import argparse,datetime as dt,hashlib,json,shutil,sqlite3,tempfile
 from pathlib import Path
+from retained_source_temp import retained_temp
 from ingest_tfda_open_data import download
 BASE='https://base-donnees-publique.medicaments.gouv.fr'
 FILES=['CIS_bdpm.txt','CIS_COMPO_bdpm.txt','CIS_CIP_bdpm.txt']
@@ -15,7 +16,7 @@ def parse(raw):
 def build(output,input_dir=None):
     if output.exists():raise ValueError('Refuse overwriting immutable source archive')
     output.parent.mkdir(parents=True,exist_ok=True);reports=[]
-    with tempfile.TemporaryDirectory(dir=output.parent) as td:
+    with retained_temp(dir=output.parent) as td:
         root=Path(td)/'intake';root.mkdir()
         page=download(BASE+'/telechargement') if not input_dir else b'TEST ONLY offline intake'
         (root/'download-page-evidence.html').write_bytes(page)
