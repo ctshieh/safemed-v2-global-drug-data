@@ -9,4 +9,9 @@ class BundleGates(unittest.TestCase):
         for interval in (0,3,-1):
             with self.assertRaises(ValueError):scheduled_due(interval,dt.date(2026,10,8))
         with self.assertRaises(ValueError):build({'AU':None},None)
+    def test_new_publisher_filename_in_delta(self):
+        # Japanese publishers replace dated filenames rather than mutating source IDs.
+        old={'jp-20260813':'a','TW':'b'}; current={'jp-20261014':'c','TW':'b'}
+        same=sorted(k for k in current if k in old and current[k]==old[k])
+        self.assertEqual(same,['TW'])
 if __name__=='__main__':unittest.main()
