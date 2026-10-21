@@ -8,6 +8,9 @@ on:
         description: Repackage the verified 2026-10-08 official snapshots without claiming a fresh retrieval (manual recovery only)
         type: boolean
         default: false
+defaults:
+  run:
+    shell: bash
 permissions:
   contents: read
   actions: read
@@ -68,6 +71,8 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12.12'
+      - name: Prepare evidence directory
+        run: mkdir -p evidence
       - name: Verify retention and fail-closed gates
         run: |
           python scripts/test_public_reference_bundle.py
