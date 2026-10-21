@@ -8,6 +8,10 @@ on:
         description: Repackage the verified 2026-10-08 official snapshots without claiming a fresh retrieval (manual recovery only)
         type: boolean
         default: false
+      initialize_logical_candidate:
+        description: Explicit first unreviewed logical ledger proposal only; never human medical or production ID approval
+        type: boolean
+        default: false
 defaults:
   run:
     shell: bash
@@ -72,9 +76,24 @@ jobs:
         with:
           python-version: '3.12.12'
       - name: Prepare evidence directory
-        run: mkdir -p evidence
+        run: |
+          mkdir -p evidence
+          created=$(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}" --jq .created_at)
+          epoch=$(CREATED="$created" python -c 'import datetime,os; print(int(datetime.datetime.fromisoformat(os.environ["CREATED"].replace("Z","+00:00")).timestamp()))')
+          echo "SOURCE_DATE_EPOCH=$epoch" >> "$GITHUB_ENV"
+          SOURCE_DATE_EPOCH="$epoch" python - <<'PYCODE' > evidence/build-context.json
+          import json,os,platform,sqlite3
+          print(json.dumps({'SOURCE_DATE_EPOCH':os.environ['SOURCE_DATE_EPOCH'],'GITHUB_SHA':os.environ['GITHUB_SHA'],'GITHUB_RUN_ID':os.environ['GITHUB_RUN_ID'],'SOURCE_COLLECTION_MODE':os.environ['SOURCE_COLLECTION_MODE'],'python':platform.python_version(),'sqlite':sqlite3.sqlite_version},indent=2))
+          PYCODE
       - name: Verify retention and fail-closed gates
         run: |
+          python scripts/test_reference_archive_limits.py
+          python scripts/test_reconcile_logical_candidate.py
+          python scripts/test_reconcile_original_source_rows.py
+          python scripts/test_build_logical_runtime_candidate.py
+          python scripts/test_strategy_fixture.py
+          python scripts/test_measure_schema_layout.py
+          python scripts/test_measure_logical_candidate.py
           python scripts/test_public_reference_bundle.py
           python scripts/test_tfda_intake.py
           python scripts/test_international_intake.py
@@ -171,10 +190,58 @@ jobs:
             dist/public-reference/APP_SOURCE_CATALOG.json
             dist/public-reference/archive-sha256.json
             dist/public-reference/verification.json
+            dist/public-reference/original-row-reconciliation.json
             dist/public-reference/COUNTRY_SOURCE_MATRIX.json
           retention-days: 90
           if-no-files-found: error
 
+      - name: Retrieve previous logical candidate ledger when available
+        run: |
+          recovered=false
+          for run in $(gh run list --workflow monthly-public-reference.yml --branch main --status success --limit 30 --json databaseId --jq '.[].databaseId'); do
+            found=$(gh api "repos/${{ github.repository }}/actions/runs/$run/artifacts" --jq '.artifacts[] | select(.name == "LOGICAL-RUNTIME-CANDIDATE") | [.id,.expired] | @tsv')
+            if [ -n "$found" ]; then
+              if echo "$found" | grep -q true; then
+                echo 'Previous candidate ledger expired; refusing to silently reset stable IDs.' >&2
+                exit 1
+              fi
+              gh run download "$run" --name LOGICAL-RUNTIME-CANDIDATE --dir previous-logical
+              echo 'PREVIOUS_LOGICAL=previous-logical/snapshot.sqlite3' >> "$GITHUB_ENV"
+              recovered=true
+              break
+            fi
+            built=$(gh run view "$run" --json jobs --jq '[.jobs[].steps[] | select(.name == "Build isolated real-source logical 29-table candidate" and .conclusion == "success")] | length')
+            if [ "$built" -gt 0 ]; then
+              echo 'Previous successful logical build has no artifact; refusing ledger reset.' >&2
+              exit 1
+            fi
+          done
+          if [ "$recovered" != true ] && [ '${{ github.event_name == 'workflow_dispatch' && inputs.initialize_logical_candidate }}' != true ]; then
+            echo 'No previous ledger recovered. First candidate requires explicit manual initialize_logical_candidate=true; scheduled resets are prohibited.' >&2
+            exit 1
+          fi
+      - name: Build isolated real-source logical 29-table candidate
+        run: |
+          args=()
+          if [ -n "${PREVIOUS_LOGICAL:-}" ]; then args+=(--previous "$PREVIOUS_LOGICAL"); fi
+          python scripts/build_logical_runtime_candidate.py --inputs inputs --output dist/logical-candidate --version "candidate-${{ github.run_id }}-${{ github.run_attempt }}" "${args[@]}" 2>&1 | tee evidence/logical-build.log
+          python scripts/reconcile_logical_candidate.py --inputs inputs --candidate dist/logical-candidate/snapshot.sqlite3 --output-dir evidence/logical-row-reconciliation 2>&1 | tee evidence/logical-row-reconciliation.log
+          python scripts/measure_schema_layout.py --sqlite dist/logical-candidate/snapshot.sqlite3 --output evidence/logical-schema.json
+          python scripts/measure_logical_candidate.py --sqlite dist/logical-candidate/snapshot.sqlite3 --gzip dist/logical-candidate/snapshot.sqlite3.gz --output evidence/logical-measurements.json 2>&1 | tee evidence/logical-measurements.log
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: LOGICAL-RUNTIME-CANDIDATE
+          path: dist/logical-candidate/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Build isolated TEST_ONLY unknown-composition fixture
+        run: python scripts/build_strategy_fixture.py --output-dir dist/TEST_ONLY-fixture
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: TEST_ONLY-NOT-PRODUCTION-${{ github.run_id }}
+          path: dist/TEST_ONLY-fixture/
+          retention-days: 90
+          if-no-files-found: error
       - name: Preserve logs and partial sources on success or failure
         if: always()
         run: |
@@ -189,5 +256,14 @@ jobs:
           path: |
             evidence/
             inputs/
+            dist/logical-candidate/*.json
           retention-days: 90
           if-no-files-found: error
+
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: failure()
+        with:
+          name: FAILED-LOGICAL-CANDIDATE-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/logical-candidate/
+          retention-days: 90
+          if-no-files-found: ignore

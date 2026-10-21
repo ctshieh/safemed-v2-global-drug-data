@@ -3,7 +3,33 @@
 import argparse, collections, hashlib, json, sqlite3, tarfile, tempfile
 from pathlib import Path, PurePosixPath
 from audit_source_duplicates import audit
+from reconcile_original_source_rows import run as reconcile_original_rows
 from build_public_reference_bundle import LABELS, COUNTS, sha
+
+# Current 17-export archive: 90 members, 2,387,320,468 expanded bytes,
+# largest member 1,072,308,224 bytes. These are explicit safety ceilings,
+# not automatic source-growth allowances; increases require review.
+MAX_ARCHIVE_MEMBERS = 4096
+MAX_MEMBER_BYTES = 2 * 1024**3
+MAX_EXPANDED_BYTES = 4 * 1024**3
+
+def bounded_members(archive):
+    names=set(); members=[]; expanded=0
+    # Iterate instead of getmembers(): reject excessive headers before retaining
+    # an unbounded list, and reject all sizes before extracting any member.
+    for member in archive:
+        if len(members) >= MAX_ARCHIVE_MEMBERS:
+            raise ValueError('Archive member count exceeds limit')
+        path=PurePosixPath(member.name)
+        if path.is_absolute() or '..' in path.parts or member.name in names or not (member.isfile() or member.isdir()):
+            raise ValueError('Unsafe or duplicate archive member')
+        if member.size < 0 or member.size > MAX_MEMBER_BYTES:
+            raise ValueError('Archive member size exceeds limit')
+        expanded += member.size
+        if expanded > MAX_EXPANDED_BYTES:
+            raise ValueError('Archive expanded size exceeds limit')
+        names.add(member.name); members.append(member)
+    return members
 
 def verify(root):
     checksum=json.loads((root/'archive-sha256.json').read_text())
@@ -13,13 +39,8 @@ def verify(root):
     with tempfile.TemporaryDirectory() as td:
         base=Path(td)
         with tarfile.open(archive,'r:gz') as t:
-            names=set()
-            for m in t.getmembers():
-                path=PurePosixPath(m.name)
-                if path.is_absolute() or '..' in path.parts or m.name in names or not (m.isfile() or m.isdir()):
-                    raise ValueError('Unsafe or duplicate archive member')
-                names.add(m.name)
-            t.extractall(base,filter='data')
+            members=bounded_members(t)
+            t.extractall(base,members=members,filter='data')
         manifest=json.loads((base/'manifest.json').read_text())
         if manifest['source_count']!=17 or manifest['runtime_active'] is not False or manifest['release_eligible'] is not False:
             raise ValueError('Reference-only gates changed')
@@ -48,7 +69,10 @@ def verify(root):
         report=audit(paths,base/'independent-audit')
         if report['skipped'] or report['total_input_rows']!=manifest['retained_source_rows'] or not all(x['original_source_checksum_verified'] for x in report['sources']):
             raise ValueError('Original source/row audit failed')
-        result={'status':'PASS','archive_sha256':checksum['sha256'],'source_count':len(source_ids),'source_rows_by_jurisdiction':dict(countries),'retained_source_rows':report['total_input_rows'],'runtime_consumer_compatible':False,'runtime_rejection_reason':'Reference databases are not contract 1.0.0 COMPOSED_SNAPSHOT; no rights approvals or reviewed mappings fabricated','test_fixture_policy':'Only 17 declared official snapshots accepted; fixture databases rejected by source identity/count/checksum audit','clinical_rules_active':0}
+        reconciliation=reconcile_original_rows(base/'sources',base/'manifest.json',base/'independent-reconciliation')
+        if reconciliation['status']!='PASS':raise ValueError('Original byte-to-row reconciliation failed')
+        (root/'original-row-reconciliation.json').write_text(json.dumps(reconciliation,ensure_ascii=False,indent=2)+'\n')
+        result={'original_row_reconciliation':{k:reconciliation[k] for k in ['status','source_count','source_rows_compared','ingredient_rows_compared','mismatch_records','method','tool_and_parser_sha256']},'status':'PASS','archive_sha256':checksum['sha256'],'source_count':len(source_ids),'source_rows_by_jurisdiction':dict(countries),'retained_source_rows':report['total_input_rows'],'runtime_consumer_compatible':False,'runtime_rejection_reason':'Reference databases are not contract 1.0.0 COMPOSED_SNAPSHOT; no rights approvals or reviewed mappings fabricated','test_fixture_policy':'Only 17 declared official snapshots accepted; fixture databases rejected by source identity/count/checksum audit','clinical_rules_active':0}
     (root/'verification.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     return result
 
