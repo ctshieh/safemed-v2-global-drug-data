@@ -33,6 +33,9 @@ def eligible(release):
         {'MONTHLY_SUCCESS.json','snapshot.sqlite3.gz','ledger-checkpoint.sqlite3.gz'} <=
         {a['name'] for a in release.get('assets',[]) if a.get('state')=='uploaded'})
 
+def completed_month(rows,month):
+    return any(eligible(r) and PATTERN.fullmatch(r['tag_name'])[1]==month for r in rows)
+
 def plan(rows,current_tag,new_verified=False):
     """Pure planner: failure, unknown tags and incomplete releases can never delete."""
     if not new_verified:return {'keep':[],'delete':[],'reason':'New package not verified; no deletion'}
@@ -151,9 +154,10 @@ def publish(repo,root,month,commit):
     print(json.dumps({'url':f'https://github.com/{repo}/releases/tag/{tag}',**retention}))
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['previous','publish','has-monthly'])
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['previous','publish','has-monthly','has-month'])
     p.add_argument('--repo',required=True);p.add_argument('--root',type=Path)
     p.add_argument('--month');p.add_argument('--commit');a=p.parse_args()
     if a.mode=='previous':previous(a.repo,a.root)
     elif a.mode=='has-monthly':print('true' if any(eligible(r) for page in releases(a.repo) for r in page) else 'false')
+    elif a.mode=='has-month':print('true' if completed_month([r for page in releases(a.repo) for r in page],a.month) else 'false')
     else:publish(a.repo,a.root,a.month or dt.datetime.now(ZoneInfo('Asia/Taipei')).strftime('%Y-%m'),a.commit)

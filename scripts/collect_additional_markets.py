@@ -80,7 +80,9 @@ def kr_dictionary(root):
     if not rows or not required <= rows[0].keys():
         raise ValueError('Dictionary schema changed')
     receipt.update(source_page=page_url, encoding=encoding, rows=len(rows),
-        publisher_date=obj['dataSetFileDetailInfo'].get('updtDt'), rights_status='PENDING', clinical_review='PENDING')
+        portal_updated_at=obj['dataSetFileDetailInfo'].get('updtDt'),
+        original_file_name=obj.get('fileDataRegistVO',{}).get('orginlFileNm'),
+        publisher_date=None, rights_status='PENDING', clinical_review='PENDING')
     save(root / 'DICTIONARY_DOWNLOAD.json', receipt)
 
 def pbs(root):

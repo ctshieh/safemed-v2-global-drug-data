@@ -1,8 +1,9 @@
 """Regression tests for irreversible month-retention decisions and source gates."""
 import copy, json, tempfile, unittest
 from pathlib import Path
-from monthly_release import eligible, plan, legacy_artifact_plan, MARKER, PREFIX
-from collect_additional_markets import sha
+from unittest.mock import patch
+from monthly_release import eligible, plan, legacy_artifact_plan, completed_month, MARKER, PREFIX
+from collect_additional_markets import sha, kr_dictionary
 from build_jp_native import cells
 
 def release(month, **overrides):
@@ -11,6 +12,12 @@ def release(month, **overrides):
     value.update(overrides); return value
 
 class Retention(unittest.TestCase):
+    def test_cadence_only_skips_a_complete_candidate_in_same_month(self):
+        rows=[release('2026-10'),release('2026-11',draft=True)]
+        self.assertTrue(completed_month(rows,'2026-10'))
+        self.assertFalse(completed_month(rows,'2026-11'))
+        self.assertFalse(completed_month(rows,'2026-12'))
+        self.assertFalse(completed_month([{'tag_name':'PUBLIC-REFERENCE-MANIFEST'}],'2026-10'))
     def test_november_keeps_october_november(self):
         rows=[release(m) for m in ['2026-08','2026-09','2026-10','2026-11']]
         result=plan(rows,PREFIX+'2026-11',True)
@@ -65,6 +72,21 @@ class Retention(unittest.TestCase):
         self.assertEqual(legacy_artifact_plan([a],'2026-11'),[])
 
 class Sources(unittest.TestCase):
+    def test_dictionary_portal_update_is_not_inferred_data_edition(self):
+        page="출처표시 (제 1유형) fn_fileDataDown('15067461', 'detail', 'attach','1', 'history')".encode()
+        response={'status':True,'atchFileId':'FILE_123','fileDetailSn':'1',
+            'fileDataRegistVO':{'orginlFileNm':'dictionary 2025.10.csv'},
+            'dataSetFileDetailInfo':{'updtDt':'2026-01-20'}}
+        raw='일반명코드,일반명,함량,단위,제형,투여\n123,ORIGINAL,1,mg,FORM,ROUTE\n'.encode()
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            with patch('collect_additional_markets.download',side_effect=[page,json.dumps(response).encode()]),patch('collect_additional_markets.retrieve',return_value=(raw,{'sha256':'a'*64,'retrieved_at':'2026-10-23T00:00:00+00:00'})):
+                kr_dictionary(root)
+            receipt=json.loads((root/'DICTIONARY_DOWNLOAD.json').read_text())
+            self.assertIsNone(receipt['publisher_date'])
+            self.assertEqual(receipt['portal_updated_at'],'2026-01-20')
+            self.assertEqual(receipt['original_file_name'],'dictionary 2025.10.csv')
+            self.assertEqual(receipt['rows'],1)
     def test_jp_original_cell_duplicate_address_rejected(self):
         with self.assertRaises(ValueError):cells({'cells':[{'attributes':{'r':'A1'},'value':'one'},{'attributes':{'r':'A2'},'value':'two'}]})
     def test_whole_download_hash_changes(self):

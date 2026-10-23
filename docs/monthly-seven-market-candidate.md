@@ -2,6 +2,7 @@
 
 The existing `monthly-public-reference.yml` workflow runs on the 18th of each
 month at 01:17 UTC (09:17 Asia/Taipei). GitHub may queue scheduled runs.
+A scheduled run skips only when a completed, verified seven-market candidate already exists for that Taipei month. A legacy reference-only recovery does not suppress a fresh monthly build.
 The runner retrieves official TW, CA, FR, US, JP, KR and AU source exports,
 builds source-native projections, produces the 29-table SQLite/gzip candidate,
 and checks every market, SQLite integrity, foreign keys, transport roundtrip,
