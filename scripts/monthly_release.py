@@ -26,6 +26,23 @@ def api(path,method='GET',body=None):
 def releases(repo):
     return json.loads(gh('api',f'repos/{repo}/releases','--paginate','--slurp'))
 
+def check_workflow_alignment(repo,commit):
+    """Use only GITHUB_TOKEN; fail clearly if main workflow bytes moved.
+
+    GitHub cannot grant this token Workflows:write for a release targeting
+    workflow files that differ from the default branch. Never relabel a built
+    payload as a different commit or copy a personal token into Actions.
+    """
+    snapshots=[]
+    for ref in (commit,'main'):
+        items=api(f'repos/{repo}/contents/.github/workflows?ref={ref}')
+        if not isinstance(items,list) or len(items)>=1000:
+            raise ValueError('Cannot establish complete workflow tree identity')
+        snapshots.append(sorted((x['path'],x['type'],x['sha']) for x in items))
+    if snapshots[0]!=snapshots[1]:
+        raise ValueError('Workflow files changed on main after this run was selected. Re-run latest main; do not publish the old workflow commit or expand token permissions. No old package cleanup permitted.')
+    return {'status':'PASS_WORKFLOW_ALIGNMENT','build_commit':commit}
+
 def eligible(release):
     return (bool(PATTERN.fullmatch(release.get('tag_name',''))) and
         not release.get('draft',True) and release.get('prerelease') is True and
@@ -110,6 +127,7 @@ def previous(repo,output):
     print(output/'checkpoint.sqlite3')
 
 def publish(repo,root,month,commit):
+    check_workflow_alignment(repo,commit)
     if not re.fullmatch(r'\d{4}-(0[1-9]|1[0-2])',month):raise ValueError('Invalid month')
     tag=PREFIX+month+'-run-'+os.environ['GITHUB_RUN_ID']+'-'+os.environ.get('GITHUB_RUN_ATTEMPT','1')
     verification=json.loads((root/'MONTHLY_VERIFICATION.json').read_text())
@@ -154,10 +172,11 @@ def publish(repo,root,month,commit):
     print(json.dumps({'url':f'https://github.com/{repo}/releases/tag/{tag}',**retention}))
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['previous','publish','has-monthly','has-month'])
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['previous','publish','has-monthly','has-month','check-workflow'])
     p.add_argument('--repo',required=True);p.add_argument('--root',type=Path)
     p.add_argument('--month');p.add_argument('--commit');a=p.parse_args()
-    if a.mode=='previous':previous(a.repo,a.root)
+    if a.mode=='check-workflow':print(json.dumps(check_workflow_alignment(a.repo,a.commit)))
+    elif a.mode=='previous':previous(a.repo,a.root)
     elif a.mode=='has-monthly':print('true' if any(eligible(r) for page in releases(a.repo) for r in page) else 'false')
     elif a.mode=='has-month':print('true' if completed_month([r for page in releases(a.repo) for r in page],a.month) else 'false')
     else:publish(a.repo,a.root,a.month or dt.datetime.now(ZoneInfo('Asia/Taipei')).strftime('%Y-%m'),a.commit)

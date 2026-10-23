@@ -47,3 +47,5 @@ vs bulk discrepancies remain visible in the US intake report; KR component
 gaps remain UNKNOWN; JP is price-list scope and AU is PBS subsidy scope.
 All clinical/right statuses remain PENDING/UNKNOWN and no formal App manifest,
 signature, TestFlight upload or runtime gate is changed.
+
+The workflow checks that its workflow-file bytes still match `main` before expensive collection and before publication. GitHub requires a permission unavailable to `GITHUB_TOKEN` when releasing a commit with different workflow files. If workflow files change during a run, rerun latest main; the old run fails without publishing or deleting older packages. No personal access token is stored in Actions.

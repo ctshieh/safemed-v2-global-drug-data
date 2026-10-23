@@ -2,7 +2,7 @@
 import copy, json, tempfile, unittest
 from pathlib import Path
 from unittest.mock import patch
-from monthly_release import eligible, plan, legacy_artifact_plan, completed_month, MARKER, PREFIX
+from monthly_release import eligible, plan, legacy_artifact_plan, completed_month, check_workflow_alignment, MARKER, PREFIX
 from collect_additional_markets import sha, kr_dictionary
 from build_jp_native import cells
 
@@ -12,6 +12,13 @@ def release(month, **overrides):
     value.update(overrides); return value
 
 class Retention(unittest.TestCase):
+    def test_release_preflight_requires_same_workflow_bytes(self):
+        one=[{'path':'.github/workflows/monthly.yml','type':'file','sha':'a'}]
+        two=[{'path':'.github/workflows/monthly.yml','type':'file','sha':'b'}]
+        with patch('monthly_release.api',side_effect=[one,one]):
+            self.assertEqual(check_workflow_alignment('owner/repo','commit')['status'],'PASS_WORKFLOW_ALIGNMENT')
+        with patch('monthly_release.api',side_effect=[one,two]):
+            with self.assertRaisesRegex(ValueError,'Re-run latest main'):check_workflow_alignment('owner/repo','old')
     def test_cadence_only_skips_a_complete_candidate_in_same_month(self):
         rows=[release('2026-10'),release('2026-11',draft=True)]
         self.assertTrue(completed_month(rows,'2026-10'))

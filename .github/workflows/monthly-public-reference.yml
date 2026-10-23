@@ -61,6 +61,8 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12.12'
+      - name: Confirm workflow commit can publish with the scoped Actions token
+        run: python scripts/monthly_release.py check-workflow --repo '${{ github.repository }}' --commit '${{ github.sha }}'
       - name: Prepare evidence directory
         run: |
           mkdir -p evidence
@@ -267,6 +269,9 @@ jobs:
           path: |
             evidence/
             inputs/
+            intermediate/KR/raw/
+            intermediate/KR-supplement/downloads/
+            dist/global-candidate/source-archive/*.json
             dist/logical-candidate/*.json
           retention-days: 90
           if-no-files-found: error
