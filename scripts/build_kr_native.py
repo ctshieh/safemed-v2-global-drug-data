@@ -74,7 +74,7 @@ def build(source,output):
   if not name or not name.strip():con.execute('insert into exclusions values (?,?,?,?)',('missing_explicit_ingredient_text',xid,n,serial));continue
   # F is the complete official主成分 assertion; preserve multiple constituent text
   # intact. It is not asserted to be one chemical ingredient or complete current composition.
-  assertion={'official_ingredient_count':obj.get('E'),'general_ingredient_code':obj.get('D'),'source_product_code':pc,'full_name_strength_as_listed':name,'status':'RAW_COMPOSITION_TEXT_UNSPLIT','temporal_mismatch':'2026-01 reimbursement vs2026-08 standard mapping','raw_source_row':n}
+  assertion={'official_ingredient_count':obj.get('E'),'general_ingredient_code':obj.get('D'),'source_product_code':pc,'full_name_strength_as_listed':name,'status':'RAW_COMPOSITION_TEXT_UNSPLIT','temporal_mismatch':'Historical 2026-01 reimbursement versus mapping snapshot; actual mapping publisher date retained in source metadata','raw_source_row':n}
   con.execute('insert into raw_components values (?,?,?,?,?,?,?,?,?)',(native,n,name,None,'UNKNOWN','UNMAPPED',xid,loc,js(assertion)));con.execute('insert into product_source_rows values (?,?,?)',(native,xid,n));matched+=1;xrefs[native].append(ref(xid,loc))
   if obj.get('B'):routes[native].add(obj['B'])
   seen_assertions[obj.get('E')]+=1

@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - id: gate
         env:
-          INTERVAL: ${{ vars.PUBLIC_DATA_UPDATE_INTERVAL_MONTHS || '1' }}
+          INTERVAL: '1'
           GH_TOKEN: ${{ github.token }}
         run: |
           due=$(python scripts/build_public_reference_bundle.py --check-schedule --interval "$INTERVAL")
@@ -88,6 +88,7 @@ jobs:
       - name: Verify retention and fail-closed gates
         run: |
           python scripts/test_monthly_pipeline.py
+          python scripts/test_seven_market_builder.py
           python scripts/test_reference_archive_limits.py
           python scripts/test_reconcile_logical_candidate.py
           python scripts/test_reconcile_original_source_rows.py
