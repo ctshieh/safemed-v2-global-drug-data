@@ -234,7 +234,7 @@ jobs:
           if [ -n "${PREVIOUS_LOGICAL:-}" ]; then args+=(--previous "$PREVIOUS_LOGICAL"); fi
           python scripts/build_logical_runtime_candidate.py --monthly --inputs inputs --output dist/logical-candidate --version "candidate-${{ github.run_id }}-${{ github.run_attempt }}" "${args[@]}" 2>&1 | tee evidence/logical-build.log
           python scripts/reconcile_logical_candidate.py --inputs inputs --candidate dist/logical-candidate/snapshot.sqlite3 --output-dir evidence/logical-row-reconciliation 2>&1 | tee evidence/logical-row-reconciliation.log
-          python scripts/measure_schema_layout.py --sqlite dist/logical-candidate/snapshot.sqlite3 --output evidence/logical-schema.json
+          python scripts/measure_schema_layout.py --physical-layout compact-source-v1 --sqlite dist/logical-candidate/snapshot.sqlite3 --output evidence/logical-schema.json
           python scripts/measure_logical_candidate.py --sqlite dist/logical-candidate/snapshot.sqlite3 --gzip dist/logical-candidate/snapshot.sqlite3.gz --output evidence/logical-measurements.json 2>&1 | tee evidence/logical-measurements.log
       - name: Retrieve additional official markets and build source-native projections
         if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives) }}
