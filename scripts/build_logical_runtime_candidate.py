@@ -54,7 +54,7 @@ def resolve_created_at(value=None):
  if parsed.tzinfo is None or parsed.utcoffset() is None:raise ValueError('created_at requires explicit timezone')
  return value
 
-def build(inputs,output,version='candidate-20261021-full-tw-ca-fr-v1',previous=None,created_at=None):
+def build(inputs,output,version='candidate-20261021-full-tw-ca-fr-v1',previous=None,created_at=None,monthly=False):
  if output.exists():raise ValueError('Refuse overwrite '+str(output))
  output.mkdir(parents=True)
  frozen=json.loads((CONTRACT/'SHA256SUMS.json').read_text())['sha256']
@@ -71,12 +71,18 @@ def build(inputs,output,version='candidate-20261021-full-tw-ca-fr-v1',previous=N
    sources[sid]=json.loads(m);source_cons[sid]=c
  if len(sources)!=17:raise ValueError('Require all seventeen input source inventories')
  db=output/'snapshot.sqlite3';c=sqlite3.connect(db)
- c.executescript((CONTRACT/'schema.sql').read_text());c.execute('PRAGMA journal_mode=DELETE');c.execute('PRAGMA synchronous=FULL')
- old_registry={};old_ledger={};next_ingredient=0;release_sequence=1
+ schema=(CONTRACT/'schema.sql').read_text()
+ if monthly:
+  import re
+  for table in ['drug_source_links','ingredient_sources','id_ledger']:
+   schema=re.sub(r'(CREATE TABLE '+table+r'\s*\(.*?\));',r'\1 WITHOUT ROWID;',schema,flags=re.S)
+ c.executescript(schema);c.execute('PRAGMA journal_mode=DELETE');c.execute('PRAGMA synchronous=FULL')
+ old_registry={};old_rights={};old_ledger={};next_ingredient=0;release_sequence=1
  if previous:
   with sqlite3.connect('file:'+str(previous.resolve())+'?mode=ro',uri=True) as old:
    old.row_factory=sqlite3.Row
    old_registry={r['source_id']:dict(r) for r in old.execute('SELECT * FROM source_registry')}
+   old_rights={r['source_id']:dict(r) for r in old.execute('SELECT * FROM source_rights')} if monthly else {}
    old_ledger={(r['entity_kind'],r['stable_id']):dict(r) for r in old.execute('SELECT * FROM id_ledger')}
    next_ingredient=max([r['compact_int_id'] or 0 for r in old_ledger.values() if r['entity_kind']=='INGREDIENT']+[0])
    release_sequence=old.execute('SELECT release_sequence FROM package_contract').fetchone()[0]+1
@@ -88,6 +94,10 @@ def build(inputs,output,version='candidate-20261021-full-tw-ca-fr-v1',previous=N
    insert(c,'source_registry',**old_registry[sid])
   else: insert(c,'source_registry',source_id=sid,source_name=m.get('dataset_name') or m.get('source_name') or m.get('name') or source_key(sid),source_url=m.get('source_url') or m['url'],version_label=ver,license_note=m.get('license','')+'; AI audit pending; isolated engineering candidate only.',source_type='OFFICIAL_REGULATOR',retrieved_at=m['retrieved_at'],checksum=checksum)
   insert(c,'source_rights',source_id=sid,commercial_use_allowed=0,mobile_redistribution_allowed=0,license_evidence_url=m.get('license_evidence_url') or m.get('license_url'),attribution_text=m.get('attribution') or 'Source: '+m.get('publisher','official publisher')+'; '+source_key(sid),review_status='PENDING',review_reference=None,reviewed_at=None)
+ if monthly:
+  for sid,r in sorted(old_registry.items()):
+   if sid not in sources:
+    insert(c,'source_registry',**r);insert(c,'source_rights',**old_rights[sid]);snaps.append({'source_id':sid,'version_label':r['version_label'],'checksum':r['checksum']})
  insert(c,'package_manifest',package_id=version,schema_version='safemed-mobile-safety-v2.1',package_major_version='2',product_line='safemed_pro',license_tier='professional',requires_entitlement=1,compatible_app_major_versions='[2]',data_version=version,rules_version='NONE-0',created_at=created,package_format='sqlite3+gzip',source_snapshots=js(snaps),quality_gate_result='CANDIDATE_ONLY',locked_regression_result='NOT_RUN')
  insert(c,'package_contract',package_id=version,contract_version='1.0.0',core_namespace='safemed-global-core-v1',core_version=version,release_sequence=release_sequence,snapshot_kind='COMPOSED_SNAPSHOT',market_codes_json=js(markets),required_capabilities_json=js(contract['required_capabilities']),coverage_json=js(coverage))
  bykey={source_key(s):s for s in sources};products={};stats=collections.Counter();excluded=collections.Counter();used=set();ingredient_ids={};raw_entity_occurrences=collections.Counter()
@@ -157,15 +167,20 @@ def build(inputs,output,version='candidate-20261021-full-tw-ca-fr-v1',previous=N
   if r['source_snapshot_id']!=sid:continue
   x=json.loads(r['raw_columns_json']);component('FR','BDPM_CIS',x[0],sid,r['source_locator'],r['source_order'],x[3],code=x[2],strength=x[4],basis=js({'reference_dosage':x[5],'element':x[1],'source_role_code':x[6],'source_link_number':x[7] if len(x)>7 else ''}))
  # Product locators retain the original source row number; source_order is deterministic sequence per product.
+ metadata_archive=gzip.open(output/'METADATA_EXACT.jsonl.gz','wt',encoding='utf-8') if monthly else None
  for did,p in sorted(products.items()):
   ids=sorted({s for s,_,_ in p['links']});metadata={'safemed_product_identity':{'contract_version':'safemed-product-identity-v1','jurisdiction':p['market'],'identifier_namespace':p['ns'],'local_product_id':p['native'],'source_ids':ids},'original_medical_assertions':[json.loads(x) for x in sorted(p['medical'])],'automated_candidate':True,'identity_source_rows':len([1 for _,purpose,_ in p['links'] if purpose=='IDENTITY'])}
+  if monthly:
+   metadata_archive.write(js({'drug_id':did,'original_metadata_json':metadata})+'\n')
   c.execute('UPDATE drugs SET metadata_json=? WHERE drug_id=?',(js(metadata),did))
   insert(c,'product_composition',drug_id=did,composition_status='UNKNOWN',expected_active_row_count=None,review_status='PENDING',reviewer_kind='AUTOMATED',review_reference='AI_ENGINEERING_ONLY:'+version,reviewed_at=created,completeness_note='All acquired matching raw rows retained; source coverage and roles/completeness are not clinically approved. No canonical product mappings. Zero verified ingredients does not mean none present.')
   for sid,purpose,loc in sorted(p['links']):insert(c,'drug_source_links',drug_id=did,source_id=sid,purpose=purpose,source_locator=loc)
   for alias,language,kind in sorted(p['aliases']):insert(c,'drug_aliases',alias_id=stable('alias',did,alias,language),drug_id=did,alias=alias,normalized_alias=normalized(alias),alias_type=kind,language=language,source=p['sid'],source_version=sources[p['sid']]['version_label'],confidence=1)
+ if metadata_archive:metadata_archive.close()
  for key,r in sorted(old_ledger.items()):
   if not c.execute('SELECT 1 FROM id_ledger WHERE entity_kind=? AND stable_id=?',key).fetchone():
-   r['lifecycle']='RETIRED';insert(c,'id_ledger',**r)
+   if not (monthly and r['entity_kind']=='DRUG'):r['lifecycle']='RETIRED'
+   insert(c,'id_ledger',**r)
  c.commit()
  integrity=c.execute('PRAGMA integrity_check').fetchall();fk=c.execute('PRAGMA foreign_key_check').fetchall()
  measurements,nodes=measure(c,tables);totalrows=sum(v['rows'] for v in measurements.values());totalbytes=sum(v['text_blob_bytes'] for v in measurements.values())
@@ -187,4 +202,4 @@ def build(inputs,output,version='candidate-20261021-full-tw-ca-fr-v1',previous=N
  print(json.dumps({'output':str(output),'products':len(products),'ingredients':len(ingredient_ids),'rows':totalrows,'sqlite_bytes':measured['sqlite_bytes'],'gzip_bytes':measured['gzip_bytes'],'runtime_compatible':False,'gate':gate_result},ensure_ascii=False,indent=2),flush=True)
  return report
 if __name__=='__main__':
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--inputs',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--previous',type=Path);p.add_argument('--created-at',help='Deterministic timezone-aware ISO timestamp; otherwise SOURCE_DATE_EPOCH, otherwise current UTC');p.add_argument('--version',default='candidate-20261021-full-tw-ca-fr-v1');a=p.parse_args();build(a.inputs,a.output,a.version,a.previous,a.created_at)
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--inputs',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--previous',type=Path);p.add_argument('--monthly',action='store_true');p.add_argument('--created-at',help='Deterministic timezone-aware ISO timestamp; otherwise SOURCE_DATE_EPOCH, otherwise current UTC');p.add_argument('--version',default='candidate-20261021-full-tw-ca-fr-v1');a=p.parse_args();build(a.inputs,a.output,a.version,a.previous,a.created_at,a.monthly)

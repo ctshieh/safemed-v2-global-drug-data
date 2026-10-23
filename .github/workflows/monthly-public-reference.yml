@@ -16,7 +16,7 @@ defaults:
   run:
     shell: bash
 permissions:
-  contents: read
+  contents: write
   actions: read
 concurrency:
   group: monthly-public-reference
@@ -65,7 +65,7 @@ jobs:
     needs: cadence
     if: needs.cadence.outputs.due == 'true'
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 90
     env:
       MHLW_PRICE_LIST_PAGE: ${{ vars.MHLW_PRICE_LIST_PAGE }}
       GH_TOKEN: ${{ github.token }}
@@ -87,6 +87,7 @@ jobs:
           PYCODE
       - name: Verify retention and fail-closed gates
         run: |
+          python scripts/test_monthly_pipeline.py
           python scripts/test_reference_archive_limits.py
           python scripts/test_reconcile_logical_candidate.py
           python scripts/test_reconcile_original_source_rows.py
@@ -172,7 +173,7 @@ jobs:
           python scripts/build_country_matrix.py --bundle-dir dist/public-reference
           python scripts/verify_public_reference_bundle.py --bundle-dir dist/public-reference 2>&1 | tee evidence/verify.log
           cat dist/public-reference/duplicate-audit/DUPLICATE_REPORT.md >> "$GITHUB_STEP_SUMMARY"
-          echo 'AU/US excluded. Source reference candidate only; no clinical runtime activation, signing or Release.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Reference archive assembled; the following stage adds US/JP/KR/AU to the seven-market unsigned candidate. No formal App manifest or activation.' >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: PUBLIC-REFERENCE-UNREVIEWED-${{ github.run_id }}-${{ github.run_attempt }}
@@ -198,6 +199,11 @@ jobs:
       - name: Retrieve previous logical candidate ledger when available
         run: |
           recovered=false
+          if [ "$(python scripts/monthly_release.py has-monthly --repo '${{ github.repository }}')" = true ]; then
+            python scripts/monthly_release.py previous --repo '${{ github.repository }}' --root previous-logical
+            echo 'PREVIOUS_LOGICAL=previous-logical/checkpoint.sqlite3' >> "$GITHUB_ENV"
+            recovered=true
+          else
           for run in $(gh run list --workflow monthly-public-reference.yml --branch main --status success --limit 30 --json databaseId --jq '.[].databaseId'); do
             found=$(gh api "repos/${{ github.repository }}/actions/runs/$run/artifacts" --jq '.artifacts[] | select(.name == "LOGICAL-RUNTIME-CANDIDATE") | [.id,.expired] | @tsv')
             if [ -n "$found" ]; then
@@ -216,6 +222,7 @@ jobs:
               exit 1
             fi
           done
+          fi
           if [ "$recovered" != true ] && [ '${{ github.event_name == 'workflow_dispatch' && inputs.initialize_logical_candidate }}' != true ]; then
             echo 'No previous ledger recovered. First candidate requires explicit manual initialize_logical_candidate=true; scheduled resets are prohibited.' >&2
             exit 1
@@ -224,16 +231,33 @@ jobs:
         run: |
           args=()
           if [ -n "${PREVIOUS_LOGICAL:-}" ]; then args+=(--previous "$PREVIOUS_LOGICAL"); fi
-          python scripts/build_logical_runtime_candidate.py --inputs inputs --output dist/logical-candidate --version "candidate-${{ github.run_id }}-${{ github.run_attempt }}" "${args[@]}" 2>&1 | tee evidence/logical-build.log
+          python scripts/build_logical_runtime_candidate.py --monthly --inputs inputs --output dist/logical-candidate --version "candidate-${{ github.run_id }}-${{ github.run_attempt }}" "${args[@]}" 2>&1 | tee evidence/logical-build.log
           python scripts/reconcile_logical_candidate.py --inputs inputs --candidate dist/logical-candidate/snapshot.sqlite3 --output-dir evidence/logical-row-reconciliation 2>&1 | tee evidence/logical-row-reconciliation.log
           python scripts/measure_schema_layout.py --sqlite dist/logical-candidate/snapshot.sqlite3 --output evidence/logical-schema.json
           python scripts/measure_logical_candidate.py --sqlite dist/logical-candidate/snapshot.sqlite3 --gzip dist/logical-candidate/snapshot.sqlite3.gz --output evidence/logical-measurements.json 2>&1 | tee evidence/logical-measurements.log
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
-        with:
-          name: LOGICAL-RUNTIME-CANDIDATE
-          path: dist/logical-candidate/
-          retention-days: 90
-          if-no-files-found: error
+      - name: Retrieve additional official markets and build source-native projections
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives) }}
+        run: python scripts/collect_additional_markets.py --inputs inputs --intermediate intermediate 2>&1 | tee evidence/additional-markets.log
+      - name: Produce exact Foundation alias keys without building the App
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives) }}
+        run: |
+          swift --version | tee evidence/producer-swift-version.txt
+          python scripts/prepare_producer_normalization.py --base dist/logical-candidate/snapshot.sqlite3 --config intermediate/GLOBAL_INPUTS.json --output normalization-inputs.json
+          swiftc scripts/ProducerNormalization.swift -o producer-normalization
+          ./producer-normalization normalization-inputs.json normalization-reference.json
+      - name: Build and verify full seven-market candidate
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives) }}
+        run: |
+          created=$(python -c 'import datetime,os; print(datetime.datetime.fromtimestamp(int(os.environ["SOURCE_DATE_EPOCH"]),datetime.timezone.utc).isoformat())')
+          python scripts/build_seven_market_candidate.py --base dist/logical-candidate/snapshot.sqlite3 --inputs intermediate/GLOBAL_INPUTS.json --reference normalization-reference.json --output dist/global-candidate --version "candidate-${{ github.run_id }}-${{ github.run_attempt }}" --created-at "$created" 2>&1 | tee evidence/global-build.log
+          args=()
+          if [ -n "${PREVIOUS_LOGICAL:-}" ]; then args+=(--previous "$PREVIOUS_LOGICAL"); fi
+          python scripts/verify_monthly_candidate.py --root dist/global-candidate --config intermediate/GLOBAL_INPUTS.json "${args[@]}" 2>&1 | tee evidence/global-verification.log
+      - name: Archive complete sources, notices, transformations and verification
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives) }}
+        run: |
+          # A tar stream is split into <2GB Release assets; no second giant local tar.
+          tar -czf - inputs intermediate evidence dist/logical-candidate/METADATA_EXACT.jsonl.gz dist/global-candidate/source-archive normalization-reference.json | split -b 1000000000 -d - dist/global-candidate/sources.tar.gz.part-
       - name: Build isolated TEST_ONLY unknown-composition fixture
         run: python scripts/build_strategy_fixture.py --output-dir dist/TEST_ONLY-fixture
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
@@ -260,10 +284,14 @@ jobs:
           retention-days: 90
           if-no-files-found: error
 
+      - name: Publish verified unsigned monthly candidate then retain two successful months
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.reuse_verified_archives) }}
+        run: python scripts/monthly_release.py publish --repo '${{ github.repository }}' --root dist/global-candidate --commit '${{ github.sha }}' 2>&1 | tee evidence/monthly-publish.log
+
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: failure()
         with:
           name: FAILED-LOGICAL-CANDIDATE-${{ github.run_id }}-${{ github.run_attempt }}
-          path: dist/logical-candidate/
+          path: dist/global-candidate/*.json
           retention-days: 90
           if-no-files-found: ignore
