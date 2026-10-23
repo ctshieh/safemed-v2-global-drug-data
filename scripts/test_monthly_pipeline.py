@@ -1,7 +1,7 @@
 """Regression tests for irreversible month-retention decisions and source gates."""
 import copy, json, tempfile, unittest
 from pathlib import Path
-from monthly_release import eligible, plan, MARKER, PREFIX
+from monthly_release import eligible, plan, legacy_artifact_plan, MARKER, PREFIX
 from collect_additional_markets import sha
 from build_jp_native import cells
 
@@ -52,6 +52,17 @@ class Retention(unittest.TestCase):
     def test_invalid_month_not_managed(self):
         self.assertFalse(eligible(release('2026-13')))
         self.assertFalse(eligible(release('2026-10-extra')))
+    def test_legacy_payload_cleanup_respects_two_month_cutoff(self):
+        def artifact(n,date):return {'name':n,'created_at':date,'expired':False}
+        old=artifact('LOGICAL-RUNTIME-CANDIDATE','2026-10-18T01:17:00Z')
+        nov=artifact('LOGICAL-RUNTIME-CANDIDATE','2026-11-18T01:17:00Z')
+        evidence=artifact('BUILD-EVIDENCE-100-1','2026-09-18T01:17:00Z')
+        failed=artifact('FAILED-LOGICAL-CANDIDATE-100-1','2026-09-18T01:17:00Z')
+        unrelated=artifact('OTHER-PROJECT','2026-09-18T01:17:00Z')
+        self.assertEqual(legacy_artifact_plan([old,nov,evidence,failed,unrelated],'2026-11'),[old])
+    def test_legacy_artifact_month_uses_taipei_boundary(self):
+        a={'name':'PUBLIC-REFERENCE-UNREVIEWED-100-1','created_at':'2026-10-31T16:00:00Z','expired':False}
+        self.assertEqual(legacy_artifact_plan([a],'2026-11'),[])
 
 class Sources(unittest.TestCase):
     def test_jp_original_cell_duplicate_address_rejected(self):

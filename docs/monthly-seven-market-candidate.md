@@ -21,8 +21,7 @@ The newest two successful months are retained. Failed builds never clean up.
 A retry creates a new immutable run release. Only after the new copy is verified may an older success in the same month be removed; the previous successful month stays.
 An incomplete draft is retained for inspection and is never treated
 as the previous ledger. Original local source/evidence/FAIL files and unrelated
-releases are outside this cleanup policy. Existing legacy workflow artifacts
-retain their existing 90-day evidence lifecycle during migration.
+releases are outside this cleanup policy. Legacy successful package payload artifacts from this same workflow are also removed once their Taipei month is older than the two retained months. Diagnostic, failed and unrelated artifacts are excluded; their existing evidence lifecycle is preserved.
 
 November therefore retains October and November; December retains November
 and December. Missing months retain the last two successful months rather than

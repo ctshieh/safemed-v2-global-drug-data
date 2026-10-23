@@ -51,6 +51,37 @@ def ordered(rows):
         m=PATTERN.fullmatch(r['tag_name']);return (m[1],int(m[2] or 0),int(m[3] or 0))
     return sorted((r for r in rows if eligible(r)),key=key,reverse=True)
 
+def legacy_artifact_plan(artifacts, oldest_kept_month):
+    """Select only legacy package payloads; never diagnostic or failed evidence.
+
+    Caller must additionally verify the producing workflow and success status.
+    """
+    result=[]
+    for artifact in artifacts:
+        name=artifact.get('name','')
+        managed=(name=='LOGICAL-RUNTIME-CANDIDATE' or
+            re.fullmatch(r'PUBLIC-REFERENCE-UNREVIEWED-\d+-\d+',name))
+        if not managed or artifact.get('expired',True):continue
+        created=dt.datetime.fromisoformat(artifact['created_at'].replace('Z','+00:00'))
+        if created.tzinfo is None:raise ValueError('Artifact date lacks timezone')
+        month=created.astimezone(ZoneInfo('Asia/Taipei')).strftime('%Y-%m')
+        if month<oldest_kept_month:result.append(artifact)
+    return result
+
+def cleanup_legacy(repo, kept):
+    cutoff=min(PATTERN.fullmatch(tag)[1] for tag in kept)
+    pages=json.loads(gh('api',f'repos/{repo}/actions/artifacts','--paginate','--slurp'))
+    artifacts=[a for page in pages for a in page['artifacts']]
+    candidates=legacy_artifact_plan(artifacts,cutoff)
+    workflow=api(f'repos/{repo}/actions/workflows/monthly-public-reference.yml')['id']
+    deleted=[]
+    for artifact in candidates:
+        run=api(f'repos/{repo}/actions/runs/{artifact["workflow_run"]["id"]}')
+        if run['workflow_id']!=workflow or run['conclusion']!='success':continue
+        api(f'repos/{repo}/actions/artifacts/{artifact["id"]}','DELETE')
+        deleted.append({'id':artifact['id'],'name':artifact['name'],'created_at':artifact['created_at']})
+    return deleted
+
 def sha(path):
     with path.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 
@@ -115,6 +146,7 @@ def publish(repo,root,month,commit):
         fresh=api(f'repos/{repo}/releases/{old["id"]}')
         if not eligible(fresh) or fresh['tag_name']!=oldtag:raise ValueError('Cleanup identity changed')
         subprocess.run(['gh','release','delete',oldtag,'--repo',repo,'--yes','--cleanup-tag'],check=True)
+    retention['legacy_payload_artifacts_deleted']=cleanup_legacy(repo,retention['keep'])
     (root/'RETENTION_RESULT.json').write_text(json.dumps(retention,indent=2)+'\n')
     print(json.dumps({'url':f'https://github.com/{repo}/releases/tag/{tag}',**retention}))
 

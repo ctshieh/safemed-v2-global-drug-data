@@ -17,7 +17,7 @@ defaults:
     shell: bash
 permissions:
   contents: write
-  actions: read
+  actions: write
 concurrency:
   group: monthly-public-reference
   cancel-in-progress: false
