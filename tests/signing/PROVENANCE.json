@@ -1,0 +1,12 @@
+{
+  "scope": "Public macOS producer artifact and TEST_ONLY ephemeral CryptoKit vectors; no private key persisted; not App QA",
+  "reference_app_verifier_sha256": "f42ea61536a7c522b6a9191b0a7a3dde628ef7faab88e213951634b4b7a88152",
+  "production_source_run": 40290625844,
+  "production_signing_run": 40295056581,
+  "production_release_url": "https://github.com/ctshieh/safemed-v2-global-drug-data/releases/tag/signed-drug-reference-2026-10-run-40290625844-2-sign-40295056581-1",
+  "sha256": {
+    "macos-production-manifest.json": "91aa6c27a5f60bdd537145f29b490679972fdd5d76e9baef3882624ffdd2bdd8",
+    "macos-production-canonical.json": "1d36f3b42d685b33c0fab19cc95e94da3ae6cde137f316f5a552866b242408f9",
+    "macos-app-reference-vectors.json": "513c9bbf0015ef4819832f8bc16d1a1a4d8fede72a63e84ef6a9f6762430ef2c"
+  }
+}

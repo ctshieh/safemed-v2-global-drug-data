@@ -1,5 +1,12 @@
 import Foundation
+#if canImport(DrugManifestReference)
+import DrugManifestReference
+#endif
+#if canImport(CryptoKit)
 import CryptoKit
+#else
+import Crypto
+#endif
 
 @main
 struct SignDrugManifest {

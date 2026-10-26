@@ -7,6 +7,8 @@ It resolves only the immutable candidate tag matching that exact source run
 and attempt. A successful cadence skip with no new candidate does not sign
 an unrelated previous package. Failed, foreign-repository, non-main and
 unrelated workflow runs cannot sign. Neither step needs a local computer.
+Both collection and signing run on standard `ubuntu-24.04` Linux runners.
+No macOS job, persistent dependency cache, or larger runner is required.
 
 `sign-monthly-reference.yml` also accepts the exact tag of a successful monthly
 seven-market build through manual dispatch for recovery. It runs only from
@@ -22,10 +24,15 @@ the original data_version. The signed manifest binds the final immutable
 release asset URL, exact compressed/decompressed lengths and hashes, and
 consumer compatibility declarations.
 
-`scripts/DataPackageSignatureVerifier.swift` is the unchanged App consumer
-reference encoder/verifier (SHA-256
-`f42ea61536a7c522b6a9191b0a7a3dde628ef7faab88e213951634b4b7a88152`).
-`SignDrugManifest.swift` uses that implementation and CryptoKit Ed25519.
+`signing/Reference/DataPackageSignatureVerifier.swift` preserves the App
+consumer encoder/verifier logic. Only conditional CryptoKit/Crypto imports
+and Swift module access modifiers differ; a regression removes those
+adapters and requires the original App file SHA-256
+`f42ea61536a7c522b6a9191b0a7a3dde628ef7faab88e213951634b4b7a88152`.
+The signer uses Apple Swift Crypto on Linux and CryptoKit on Apple platforms.
+Swift Crypto 5.0.3 is fixed to commit
+`c2cbadd7263439d8015189668f96ff5b5be565ce`; `Package.resolved` pins its
+transitive dependency, and builds disable automatic resolution.
 The contract is `ED25519_SAFEMED_SORTED_JSON_V1`, Foundation sorted JSON
 without escaped slashes, including explicit legacy `sha256:null`. This is
 not RFC 8785. `canonical-payload.json` is the exact signed byte stream, with
@@ -33,6 +40,14 @@ no trailing newline. The publisher verifies the signature again before
 uploading, and checks every remote asset's server digest and bytes before
 publishing the draft. Independent copies of the payload and original source
 archives prevent candidate retention from breaking a signed download.
+
+Each Linux run verifies the actual published macOS manifest and its exact
+812-byte canonical payload, plus six macOS App-reference CryptoKit vectors
+covering Unicode normalization-sensitive strings, controls, escapes and
+Int64.max. The original rejection and ephemeral sign/verify regressions
+remain. A manual `verification_only=true` run executes these checks without
+exposing the production signing secret, downloading the giant package, or
+republishing duplicate assets. It does not claim a new full package build.
 
 ## Key configuration
 

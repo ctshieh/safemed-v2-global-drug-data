@@ -4,6 +4,7 @@ import gzip
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import sqlite3
@@ -50,6 +51,16 @@ class SignedSourceGate(unittest.TestCase):
             self.assertFalse(allowed_asset(name))
         r = copy.deepcopy(self.release); r['assets'].append({'name': 'private.key'})
         with self.assertRaises(ValueError): validate_remote(r, self.marker)
+
+
+class ReferenceLogicIntegrity(unittest.TestCase):
+    def test_only_import_and_access_adapters_differ_from_app_reference(self):
+        root=Path(__file__).resolve().parents[1]
+        text=(root/'signing/Reference/DataPackageSignatureVerifier.swift').read_text()
+        text=text.replace('#if canImport(CryptoKit)\nimport CryptoKit\n#else\nimport Crypto\n#endif\n','import CryptoKit\n')
+        text=re.sub(r'(?m)^(\s*)public ',r'\1',text)
+        self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),
+            'f42ea61536a7c522b6a9191b0a7a3dde628ef7faab88e213951634b4b7a88152')
 
 
 class FullPrepareBoundary(unittest.TestCase):

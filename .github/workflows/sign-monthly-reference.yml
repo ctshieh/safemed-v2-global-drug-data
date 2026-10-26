@@ -10,6 +10,11 @@ on:
         description: Exact successful immutable global-drug-candidate monthly release tag
         required: true
         type: string
+      verification_only:
+        description: Verify Linux signing and macOS interoperability without downloading or republishing the full package
+        required: false
+        default: false
+        type: boolean
 permissions:
   contents: read
 concurrency:
@@ -26,7 +31,7 @@ jobs:
       (github.event_name == 'workflow_dispatch' ||
        (github.event.workflow_run.conclusion == 'success' &&
         github.event.workflow_run.head_repository.full_name == github.repository))
-    runs-on: macos-15
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     permissions:
       contents: write
@@ -40,7 +45,7 @@ jobs:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
-          python-version: '3.13.17' # Official macOS arm64 binary; 3.12.12 has none.
+          python-version: '3.12.12' # Available on Ubuntu; same as the collection workflow.
       - name: Validate public key pin and producer regressions
         run: |
           python scripts/test_signed_monthly_release.py
@@ -52,11 +57,22 @@ jobs:
           assert os.environ['SAFEMED_DATA_PACKAGE_SIGNING_KEY_ID']==p['key_id']
           assert os.environ['SAFEMED_DATA_PACKAGE_ED25519_PUBLIC_KEY_B64']==p['public_key_base64']
           PY
-          swiftc scripts/DataPackageSignatureVerifier.swift scripts/TestSignedManifest.swift -o "$RUNNER_TEMP/test-manifest"
-          swiftc scripts/DataPackageSignatureVerifier.swift scripts/SignDrugManifest.swift -o "$RUNNER_TEMP/sign-manifest"
-          "$RUNNER_TEMP/test-manifest" "$RUNNER_TEMP/sign-manifest"
+          swift --version
+          swift build --disable-automatic-resolution --scratch-path "$RUNNER_TEMP/signing-build" -c release --jobs 4
+          bin=$(swift build --disable-automatic-resolution --scratch-path "$RUNNER_TEMP/signing-build" -c release --show-bin-path)
+          cp "$bin/test-manifest" "$RUNNER_TEMP/test-manifest"
+          cp "$bin/sign-manifest" "$RUNNER_TEMP/sign-manifest"
+          "$RUNNER_TEMP/test-manifest" "$RUNNER_TEMP/sign-manifest" tests/signing
+          "$RUNNER_TEMP/sign-manifest" verify tests/signing/macos-production-manifest.json "$RUNNER_TEMP/production-canonical.json" "$SAFEMED_DATA_PACKAGE_ED25519_PUBLIC_KEY_B64"
+          cmp tests/signing/macos-production-canonical.json "$RUNNER_TEMP/production-canonical.json"
+          python - <<'PY' > LINUX_INTEROP_RESULT.json
+          import json,platform,hashlib
+          from pathlib import Path
+          print(json.dumps({'status':'PASS_LINUX_SWIFT_CRYPTO_AND_MACOS_APP_REFERENCE_INTEROP','platform':platform.platform(),'macos_reference_vectors':6,'manifest_rejection_cases':15,'production_manifest_sha256':hashlib.sha256(Path('tests/signing/macos-production-manifest.json').read_bytes()).hexdigest(),'canonical_payload_sha256':hashlib.sha256(Path('tests/signing/macos-production-canonical.json').read_bytes()).hexdigest(),'production_private_key_used_for_tests':False,'full_package_rebuilt_for_interop':False},indent=2))
+          PY
       - name: Resolve successful monthly source release
         id: source
+        if: inputs.verification_only != true
         run: python scripts/resolve_monthly_signing_source.py --repo "$GITHUB_REPOSITORY" --event "$GITHUB_EVENT_PATH" --manual-tag "$SOURCE_TAG"
       - name: Download successful source and independently validate complete payload
         if: steps.source.outputs.ready == 'true'
@@ -76,6 +92,9 @@ jobs:
       - name: Explain successful cadence skip
         if: steps.source.outputs.ready == 'false'
         run: echo 'The source workflow produced no new complete monthly release (for example an already-built monthly cadence skip). No signing or publication was performed.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Explain verification-only run
+        if: inputs.verification_only == true
+        run: cat LINUX_INTEROP_RESULT.json >> "$GITHUB_STEP_SUMMARY"
       - name: Preserve small public receipts on success or failure
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
@@ -87,5 +106,6 @@ jobs:
             signed-reference/canonical-payload.json
             signed-reference/SIGNED_RELEASE.json
             publication-result.json
+            LINUX_INTEROP_RESULT.json
           retention-days: 90
           if-no-files-found: warn

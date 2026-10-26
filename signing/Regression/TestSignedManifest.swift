@@ -1,5 +1,12 @@
 import Foundation
+#if canImport(DrugManifestReference)
+import DrugManifestReference
+#endif
+#if canImport(CryptoKit)
 import CryptoKit
+#else
+import Crypto
+#endif
 
 @main
 struct TestSignedManifest {
@@ -40,7 +47,7 @@ struct TestSignedManifest {
         let wrong = DataPackageSignatureVerifier(trustedKeys: [id: Curve25519.Signing.PrivateKey().publicKey.rawRepresentation])
         do { _ = try wrong.verify(manifestData: encode(object)); fatalError("Wrong key accepted") } catch { rejected += 1 }
         precondition(rejected == 15)
-        if CommandLine.arguments.count == 2 {
+        if CommandLine.arguments.count >= 2 {
             let directory = FileManager.default.temporaryDirectory.appendingPathComponent("safemed-ephemeral-sign-test-" + UUID().uuidString)
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: false)
             defer { try? FileManager.default.removeItem(at: directory) }
@@ -74,6 +81,24 @@ struct TestSignedManifest {
             precondition(wrongKeyStatus != 0)
             precondition(!FileManager.default.fileExists(atPath: wrongOutput.path))
             print("PASS_PRODUCER_CLI: sign + reference verify + exact canonical bytes + overwrite/mismatched-key rejection")
+        }
+        if CommandLine.arguments.count == 3 {
+            let root = URL(fileURLWithPath: CommandLine.arguments[2])
+            let raw = try Data(contentsOf: root.appendingPathComponent("macos-app-reference-vectors.json"))
+            let fixture = try JSONSerialization.jsonObject(with: raw) as! [String: Any]
+            let vectors = fixture["vectors"] as! [[String: String]]
+            precondition(vectors.count == 6)
+            for vector in vectors {
+                let signed = Data(base64Encoded: vector["manifest_base64"]!)!
+                let pub = Data(base64Encoded: vector["public_key_base64"]!)!
+                let signedObject = try JSONSerialization.jsonObject(with: signed) as! [String: Any]
+                let keyID = signedObject["signature_key_id"] as! String
+                let referenceVerifier = DataPackageSignatureVerifier(trustedKeys: [keyID: pub])
+                let authenticated = try referenceVerifier.verify(manifestData: signed)
+                let actual = try authenticated.canonicalSigningPayload()
+                precondition(actual.map { String(format: "%02x", $0) }.joined() == vector["canonical_utf8_hex"]!)
+            }
+            print("PASS_6_MACOS_APP_REFERENCE_CRYPTO_KIT_VECTORS: signatures and canonical bytes incl Unicode/control/Int64.max")
         }
         print("PASS_SIGNED_MANIFEST: valid Unicode/escape/null/Int64/formatting + 15 rejection cases; ephemeral test key only")
     }

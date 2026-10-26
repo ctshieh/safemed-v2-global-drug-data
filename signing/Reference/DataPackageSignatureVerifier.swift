@@ -1,9 +1,13 @@
 import Foundation
+#if canImport(CryptoKit)
 import CryptoKit
+#else
+import Crypto
+#endif
 
 /// Ed25519 authenticity checks with application-pinned keys, never manifest-supplied keys.
-struct DataPackageSignatureVerifier {
-    static let algorithm = "ED25519_SAFEMED_SORTED_JSON_V1"
+public struct DataPackageSignatureVerifier {
+    public static let algorithm = "ED25519_SAFEMED_SORTED_JSON_V1"
     static let trustedKeysInfoKey = "SafeMedTrustedDataPackageKeys"
     // Bound only transport metadata; the existing clinical package32MiB consumer contract is unchanged.
     static let maximumManifestBytes2117 = 1024 * 1024
@@ -48,7 +52,7 @@ struct DataPackageSignatureVerifier {
     }
 
     /// Injection is for tests or keys obtained from the application bundle, never network input.
-    init(trustedKeys: [String: Data]) { self.trustedKeys = trustedKeys }
+    public init(trustedKeys: [String: Data]) { self.trustedKeys = trustedKeys }
 
     static func bundled(bundle: Bundle = .main) throws -> DataPackageSignatureVerifier {
         try configured(infoDictionary: bundle.infoDictionary ?? [:])
@@ -69,7 +73,7 @@ struct DataPackageSignatureVerifier {
     }
 
     /// Returns the authenticated typed manifest. Call before URL resolution, version checks or activation.
-    func verify(manifestData: Data) throws -> SignedDataPackageManifest {
+    public func verify(manifestData: Data) throws -> SignedDataPackageManifest {
         guard !manifestData.isEmpty, manifestData.count <= Self.maximumManifestBytes2117 else { throw VerificationError.invalidManifest }
         do { try SignedManifestObjectMembers2117.validateUniqueMembers(manifestData) }
         catch { throw VerificationError.invalidManifest }
@@ -102,7 +106,7 @@ struct DataPackageSignatureVerifier {
 }
 
 /// Exact versioned producer contract. Optional legacy sha256 is signed as explicit null if absent.
-struct SignedDataPackageManifest: Codable, Equatable, Sendable {
+public struct SignedDataPackageManifest: Codable, Equatable, Sendable {
     let schemaVersion: String
     let packageMajorVersion: Int
     let productLine: String
@@ -132,7 +136,7 @@ struct SignedDataPackageManifest: Codable, Equatable, Sendable {
     }
     static let allowedKeys = Set(CodingKeys.allCases.map(\.rawValue) + ["signature_payload_prefix"])
 
-    func canonicalSigningPayload() throws -> Data {
+    public func canonicalSigningPayload() throws -> Data {
         func isHash(_ value: String) -> Bool {
             value.count == 64 && value.utf8.allSatisfy { (48...57).contains($0) || (97...102).contains($0) }
         }
