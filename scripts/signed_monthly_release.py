@@ -9,6 +9,7 @@ import gzip
 import json
 import os
 from pathlib import Path
+import platform
 import re
 import sqlite3
 import subprocess
@@ -122,6 +123,8 @@ def prepare(repo, tag, root):
         'formal_app_shipping_approved': False,
         'transport_note': 'GitHub asset download redirects; existing App no-redirect policy must be resolved by App owner.',
         'source_archive_assets_preserved': True,
+        'publisher_python': platform.python_version(), 'publisher_host': platform.platform(),
+        'publisher_sqlite': sqlite3.sqlite_version,
         'no_private_key_in_assets': True}
     (root / 'PREPARED.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps({'status': 'PASS_FULL_DOWNLOAD_AND_SQLITE_VERIFICATION', 'signed_tag': signed_tag}))
