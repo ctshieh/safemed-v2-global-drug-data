@@ -111,8 +111,20 @@ created_at TEXT,package_format TEXT);''')
             receipt = json.loads((root/'PREPARED.json').read_text())
             self.assertEqual(receipt['source_rights'],'PENDING')
             self.assertFalse(receipt['formal_app_shipping_approved'])
-            # A valid digest cannot hide invalid SQLite content or a forged verification length.
             self.assertEqual(digest(root/'snapshot.sqlite3'),v['sqlite_sha256'])
+            # Even with matching remote/marker digests, forged decompressed lengths fail closed.
+            v['sqlite_bytes'] -= 1
+            (source/'MONTHLY_VERIFICATION.json').write_text(json.dumps(v))
+            marker['assets']['MONTHLY_VERIFICATION.json'] = {
+                'sha256':digest(source/'MONTHLY_VERIFICATION.json'),
+                'bytes':(source/'MONTHLY_VERIFICATION.json').stat().st_size}
+            (source/'MONTHLY_SUCCESS.json').write_text(json.dumps(marker))
+            for a in release['assets']:
+                p = source/a['name']; a.update(size=p.stat().st_size,digest='sha256:'+digest(p))
+            with patch.dict(os.environ,env), patch('signed_monthly_release.api',side_effect=[release,run]), \
+                 patch('signed_monthly_release.download',side_effect=fake_download):
+                with self.assertRaisesRegex(ValueError,'Decompression exceeds declared bytes'):
+                    prepare('owner/repo',release['tag_name'],top/'bad-length')
 
 
 if __name__ == '__main__': unittest.main()

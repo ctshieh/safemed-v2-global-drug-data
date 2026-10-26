@@ -96,6 +96,7 @@ def prepare(repo, tag, root):
     require(len(rows) == 1, 'Expected one package manifest')
     p = dict(rows[0])
     c.close()
+    require(p['data_version'] == f'candidate-{match[2]}-{match[3]}', 'SQLite build version provenance mismatch')
     signed_tag = (SIGNED_PREFIX + match[1] + '-run-' + match[2] + '-' + match[3] +
                   '-sign-' + os.environ['GITHUB_RUN_ID'] + '-' + os.environ['GITHUB_RUN_ATTEMPT'])
     payload = root / 'snapshot.sqlite3.gz'
