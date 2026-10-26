@@ -31,8 +31,8 @@ The dedicated private key is a standard Base64-encoded 32-byte Ed25519 seed
 in the Actions repository secret
 `SAFEMED_DATA_PACKAGE_ED25519_PRIVATE_KEY_B64`. It is exposed only to the
 signing step, never printed, committed, uploaded, placed in command-line
-arguments, or included in the App. There is no signing credential for pull
-requests or arbitrary branch execution. The publisher needs only
+arguments, or included in the App. This signing workflow does not expose
+the credential to pull requests or arbitrary branch execution. The publisher needs only
 GITHUB_TOKEN with contents:write; no personal access token is stored.
 
 Public variables `SAFEMED_DATA_PACKAGE_SIGNING_KEY_ID` and
