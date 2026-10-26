@@ -1,5 +1,9 @@
 name: Sign verified monthly reference download
 on:
+  workflow_run:
+    workflows: [Monthly public medicine reference candidate]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       source_tag:
@@ -16,7 +20,12 @@ defaults:
     shell: bash
 jobs:
   sign-and-publish:
-    if: github.ref == 'refs/heads/main' && github.repository == 'ctshieh/safemed-v2-global-drug-data'
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      github.repository == 'ctshieh/safemed-v2-global-drug-data' &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.head_repository.full_name == github.repository))
     runs-on: macos-15
     timeout-minutes: 60
     permissions:
@@ -35,6 +44,7 @@ jobs:
       - name: Validate public key pin and producer regressions
         run: |
           python scripts/test_signed_monthly_release.py
+          python scripts/test_resolve_monthly_signing_source.py
           python scripts/test_monthly_pipeline.py
           python - <<'PY'
           import json,os
@@ -45,18 +55,27 @@ jobs:
           swiftc scripts/DataPackageSignatureVerifier.swift scripts/TestSignedManifest.swift -o "$RUNNER_TEMP/test-manifest"
           swiftc scripts/DataPackageSignatureVerifier.swift scripts/SignDrugManifest.swift -o "$RUNNER_TEMP/sign-manifest"
           "$RUNNER_TEMP/test-manifest" "$RUNNER_TEMP/sign-manifest"
+      - name: Resolve successful monthly source release
+        id: source
+        run: python scripts/resolve_monthly_signing_source.py --repo "$GITHUB_REPOSITORY" --event "$GITHUB_EVENT_PATH" --manual-tag "$SOURCE_TAG"
       - name: Download successful source and independently validate complete payload
+        if: steps.source.outputs.ready == 'true'
         run: |
           python scripts/signed_monthly_release.py prepare --repo "$GITHUB_REPOSITORY" --source-tag "$SOURCE_TAG" --root signed-reference
       - name: Sign exact Foundation canonical manifest bytes
+        if: steps.source.outputs.ready == 'true'
         env:
           SAFEMED_DATA_PACKAGE_ED25519_PRIVATE_KEY_B64: ${{ secrets.SAFEMED_DATA_PACKAGE_ED25519_PRIVATE_KEY_B64 }}
         run: |
           "$RUNNER_TEMP/sign-manifest" sign signed-reference/manifest-input.json signed-reference/manifest.json "$SAFEMED_DATA_PACKAGE_ED25519_PUBLIC_KEY_B64"
       - name: Reverify and publish independent signed reference assets
+        if: steps.source.outputs.ready == 'true'
         run: |
           python scripts/signed_monthly_release.py publish --repo "$GITHUB_REPOSITORY" --root signed-reference --commit "$GITHUB_SHA" --signer "$RUNNER_TEMP/sign-manifest" | tee publication-result.json
           cat publication-result.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Explain successful cadence skip
+        if: steps.source.outputs.ready == 'false'
+        run: echo 'The source workflow produced no new complete monthly release (for example an already-built monthly cadence skip). No signing or publication was performed.' >> "$GITHUB_STEP_SUMMARY"
       - name: Preserve small public receipts on success or failure
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6

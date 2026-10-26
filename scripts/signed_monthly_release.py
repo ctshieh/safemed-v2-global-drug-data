@@ -136,7 +136,7 @@ def publish(repo, root, commit, signer):
     tag = receipt['signed_tag']
     # Reverify the signed manifest with the pinned public key; no secret is needed here.
     canonical = root / 'canonical-payload.json'
-    subprocess.run([signer, 'verify', str(root / 'manifest.json'), str(canonical), receipt['public_key_base64']], check=True)
+    subprocess.run([signer, 'verify', str(root / 'manifest.json'), str(canonical), receipt['public_key_base64']], check=True, stdout=subprocess.PIPE)
     m = json.loads((root / 'manifest.json').read_text())
     v = receipt['verification']
     require(m['gzip_sha256'] == sha(root / 'snapshot.sqlite3.gz') == v['gzip_sha256'] and

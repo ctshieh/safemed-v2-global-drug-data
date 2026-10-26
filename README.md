@@ -2,6 +2,24 @@
 
 這個 repository 是 SafeMed Box V2.x 專業 / 商業版資料包發布通道。
 
+## 每月七市場資料包自動建置（目前流程）
+
+GitHub Actions 在每月 **18 日 09:17（Asia/Taipei，UTC 01:17）**執行
+`monthly-public-reference.yml`，於 GitHub runner 取得七市場官方來源、建立完整
+SQLite/gzip 並驗證。成功後透過 `workflow_run` 自動啟動
+`sign-monthly-reference.yml`，使用 GitHub Actions Secret 內的 Ed25519 私鑰，
+重驗完整成品、簽章並建立獨立公開下載。整個月更不需要本機電腦開機或本機建立藥包。
+
+來源建置失敗不簽章、不以舊資料冒新包；本月已有完整包而排程略過時，不重複簽另一個
+run 的包。手動 dispatch 僅供補建／故障復原。原候選包保留最近兩個成功月份；
+簽章下載與來源副本獨立保存，不受候選清理影響。
+
+目前醫療／來源再散布權利及 App 採用驗收仍有 PENDING／UNKNOWN，因此簽章下載
+保留為 prerelease，不冒正式臨床 shipping 通過、不寫入正式 App 的 latest feed。
+詳見 [每月候選流程](docs/monthly-seven-market-candidate.md) 與
+[自動簽章流程](docs/signed-monthly-reference.md)。以下內容包含歷史 MVP 測試包範例，
+不能將其手動上傳方式或舊 manifest 當成上述月更流程。
+
 V2.x 與 V1.x 完全區隔：
 
 - V1.x 免費 / 公益線資料包：`ctshieh/ai-pharmacist-taiwan-data`

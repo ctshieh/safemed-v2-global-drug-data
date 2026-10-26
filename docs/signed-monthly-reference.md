@@ -1,7 +1,16 @@
 # Signed monthly reference downloads
 
-`sign-monthly-reference.yml` takes the exact tag of a successful monthly
-seven-market build. It runs only from this repository's main branch. It does
+The existing monthly collection schedule remains the 18th at 01:17 UTC
+(09:17 Asia/Taipei), in `monthly-public-reference.yml`. Successful completion
+automatically triggers `sign-monthly-reference.yml` through `workflow_run`.
+It resolves only the immutable candidate tag matching that exact source run
+and attempt. A successful cadence skip with no new candidate does not sign
+an unrelated previous package. Failed, foreign-repository, non-main and
+unrelated workflow runs cannot sign. Neither step needs a local computer.
+
+`sign-monthly-reference.yml` also accepts the exact tag of a successful monthly
+seven-market build through manual dispatch for recovery. It runs only from
+this repository's main branch. It does
 not collect a substitute fixture, rebuild the App, activate a package, alter
 the medical/rights statuses, or delete older releases.
 
