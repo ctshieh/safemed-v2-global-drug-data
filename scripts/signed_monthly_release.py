@@ -5,13 +5,11 @@ This release remains a prerelease while medical/rights/runtime acceptance is pen
 No candidate cleanup, mutable latest alias, App configuration, or activation occurs here.
 """
 import argparse
-import datetime as dt
 import gzip
 import json
 import os
 from pathlib import Path
 import re
-import shutil
 import sqlite3
 import subprocess
 
