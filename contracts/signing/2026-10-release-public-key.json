@@ -1,0 +1,8 @@
+{
+  "algorithm": "Ed25519",
+  "key_id": "safemed-pro-data-2026-10-v1",
+  "public_key_base64": "l6yZ0LHcFMWhN6Ah+OZVcDfVjoxz/MGQXtPc22CaJV8=",
+  "public_key_sha256": "dc01bed26d628826a698dbfeca64226d7fc9e0eda1afc4c4272fb85ef54b6450",
+  "configured_at": "2026-10-26T08:25:35Z",
+  "scope": "Drug package producer authenticity only; not medical/rights/runtime approval"
+}

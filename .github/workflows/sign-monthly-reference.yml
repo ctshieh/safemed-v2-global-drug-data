@@ -1,0 +1,72 @@
+name: Sign verified monthly reference download
+on:
+  workflow_dispatch:
+    inputs:
+      source_tag:
+        description: Exact successful immutable global-drug-candidate monthly release tag
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: signed-monthly-reference
+  cancel-in-progress: false
+defaults:
+  run:
+    shell: bash
+jobs:
+  sign-and-publish:
+    if: github.ref == 'refs/heads/main' && github.repository == 'ctshieh/safemed-v2-global-drug-data'
+    runs-on: macos-15
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_TAG: ${{ inputs.source_tag }}
+      SAFEMED_DATA_PACKAGE_SIGNING_KEY_ID: ${{ vars.SAFEMED_DATA_PACKAGE_SIGNING_KEY_ID }}
+      SAFEMED_DATA_PACKAGE_ED25519_PUBLIC_KEY_B64: ${{ vars.SAFEMED_DATA_PACKAGE_ED25519_PUBLIC_KEY_B64 }}
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12.12'
+      - name: Validate public key pin and producer regressions
+        run: |
+          python scripts/test_signed_monthly_release.py
+          python scripts/test_monthly_pipeline.py
+          python - <<'PY'
+          import json,os
+          p=json.load(open('contracts/signing/2026-10-release-public-key.json'))
+          assert os.environ['SAFEMED_DATA_PACKAGE_SIGNING_KEY_ID']==p['key_id']
+          assert os.environ['SAFEMED_DATA_PACKAGE_ED25519_PUBLIC_KEY_B64']==p['public_key_base64']
+          PY
+          swiftc scripts/DataPackageSignatureVerifier.swift scripts/TestSignedManifest.swift -o "$RUNNER_TEMP/test-manifest"
+          swiftc scripts/DataPackageSignatureVerifier.swift scripts/SignDrugManifest.swift -o "$RUNNER_TEMP/sign-manifest"
+          "$RUNNER_TEMP/test-manifest" "$RUNNER_TEMP/sign-manifest"
+      - name: Download successful source and independently validate complete payload
+        run: |
+          python scripts/signed_monthly_release.py prepare --repo "$GITHUB_REPOSITORY" --source-tag "$SOURCE_TAG" --root signed-reference
+      - name: Sign exact Foundation canonical manifest bytes
+        env:
+          SAFEMED_DATA_PACKAGE_ED25519_PRIVATE_KEY_B64: ${{ secrets.SAFEMED_DATA_PACKAGE_ED25519_PRIVATE_KEY_B64 }}
+        run: |
+          "$RUNNER_TEMP/sign-manifest" sign signed-reference/manifest-input.json signed-reference/manifest.json "$SAFEMED_DATA_PACKAGE_ED25519_PUBLIC_KEY_B64"
+      - name: Reverify and publish independent signed reference assets
+        run: |
+          python scripts/signed_monthly_release.py publish --repo "$GITHUB_REPOSITORY" --root signed-reference --commit "$GITHUB_SHA" --signer "$RUNNER_TEMP/sign-manifest" | tee publication-result.json
+          cat publication-result.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve small public receipts on success or failure
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: SIGNED-REFERENCE-RECEIPTS-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            signed-reference/PREPARED.json
+            signed-reference/manifest.json
+            signed-reference/canonical-payload.json
+            signed-reference/SIGNED_RELEASE.json
+            publication-result.json
+          retention-days: 90
+          if-no-files-found: warn
